@@ -18,8 +18,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name', 'last_name', 'username', 'email', 
-        'password', 'country_code','phone_number_with_code', 'phone_number'
+        'first_name',
+        'last_name',
+        'username',
+        'email',
+        'password',
+        'country_code',
+        'phone_number_with_code',
+        'phone_number'
     ];
 
     /**
@@ -43,14 +49,16 @@ class User extends Authenticatable
 
 
 
-    public function address(){
+    public function address()
+    {
         return $this->hasMany(Address::class);
     }
-    public function bank_detail(){
+    public function bankDetail()
+    {
         return $this->hasMany(BankDetail::class);
     }
-    public function scrap_collection(){
+    public function scrapCollection()
+    {
         return $this->hasMany(ScrapCollection::class);
     }
-    
 }

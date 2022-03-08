@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\api\MaterialTypesController;
 use App\Http\Controllers\api\ScrapCollectionController;
-use App\Http\Controllers\api\ScrapTypesController;
 use App\Http\Controllers\api\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,10 +35,13 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::prefix('material-types')->group(function () {
-        Route::get('/', [ScrapTypesController::class, 'index'])->name('material-types.show');
+        Route::get('/', [MaterialTypesController::class, 'index'])->name('material-types.show');
     });
 
-    Route::prefix('scrap')->group(function () {
-        Route::post('/book-a-scrap', [ScrapCollectionController::class, 'store'])->name('scrap.store');
+    Route::prefix('pickup')->group(function () {
+        Route::post('/', [ScrapCollectionController::class, 'store'])->name('user-scrap.store');
+        Route::get('/', [ScrapCollectionController::class, 'index'])->name('user-scrap.list');
+        Route::get('/{pickup}', [ScrapCollectionController::class, 'show'])->name('user-scrap.show');
+        Route::put('/cancel/{pickup}', [ScrapCollectionController::class, 'cancelPickup'])->name('user-scrap.cancel');
     });
 });

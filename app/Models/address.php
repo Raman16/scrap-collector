@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use App\Http\Traits\BelongsToUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
     use HasFactory;
+    use BelongsToUser;
 
     protected $fillable = [
-        'pickup_date',
+        'user_id',
+        'address',
         'land_mark',
         'country_id',
         'state_id',
@@ -19,7 +22,7 @@ class Address extends Model
         'address_type'
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
+    // public function scrap_collection(){
+    //     return $this->belongsToMany(Address::class);
+    // }
 }

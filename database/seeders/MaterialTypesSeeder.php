@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\ScrapType;
+use App\Models\MaterialType;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class ScrapTypesSeeder extends Seeder
+class MaterialTypesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +17,7 @@ class ScrapTypesSeeder extends Seeder
 
         
 
-        $scrap_types = [
+        $material_types = [
             [
                 'name' => 'Furniture',
                 'description' => ''
@@ -57,8 +56,8 @@ class ScrapTypesSeeder extends Seeder
             ]
         ];
 
-        foreach ($scrap_types as $type) {
-            ScrapType::create($type);
+        foreach ($material_types as $material) {
+            MaterialType::create($material);
         }
     }
 }

@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(
             [
                 UsersSeeder::class,
-                ScrapTypesSeeder::class,
+                MaterialTypesSeeder::class,
                 CountrySeeder::class,
                 StateSeeder::class
             ]

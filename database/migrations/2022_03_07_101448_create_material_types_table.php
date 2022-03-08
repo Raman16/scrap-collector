@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScrapTypesTable extends Migration
+class CreateMaterialTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateScrapTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('scrap_types', function (Blueprint $table) {
+        Schema::create('material_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->string('description')->nullable();
@@ -28,6 +28,6 @@ class CreateScrapTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scrap_types');
+        Schema::dropIfExists('material_types');
     }
 }

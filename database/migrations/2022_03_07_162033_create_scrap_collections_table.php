@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ScrapCollection;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,14 +23,15 @@ class CreateScrapCollectionsTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->bigInteger('scrap_type_id')->unsigned();
-            $table->foreign('scrap_type_id')
+            $table->bigInteger('material_type_id')->unsigned();
+            $table->foreign('material_type_id')
                 ->references('id')
-                ->on('scrap_types')
+                ->on('material_types')
                 ->onDelete('cascade');
             $table->text('message')->nullable();
 
-            $table->timestamp('pickup_date');
+            $table->dateTime('pickup_date');
+
             $table->bigInteger('address_id')->unsigned();
             $table->foreign('address_id')
                 ->references('id')
@@ -43,7 +45,7 @@ class CreateScrapCollectionsTable extends Migration
                 ->on('bank_details')
                 ->onDelete('cascade');
 
-            $table->enum('status', array('Created', 'Cancelled', 'Completed'));
+            $table->enum('status', ScrapCollection::BOOKING_STATUS)->default(1);
             $table->timestamps();
         });
     }
