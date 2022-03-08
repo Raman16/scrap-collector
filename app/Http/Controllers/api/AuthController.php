@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use phpDocumentor\Reflection\Types\Boolean;
+use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
@@ -91,6 +92,8 @@ class AuthController extends Controller
                       ->first();
 
         if (!$user) {
+            return response()->json(['message' =>"User Not Found"],  Response::HTTP_NOT_FOUND);
+
             throw ValidationException::withMessages([
                 'phone number' => ['Incorrect Phone Number'],
             ]);

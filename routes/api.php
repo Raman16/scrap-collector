@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\api\ScrapCollectionController;
 use App\Http\Controllers\api\ScrapTypesController;
 use App\Http\Controllers\api\UserController;
 use Illuminate\Http\Request;
@@ -28,16 +29,17 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::prefix('user')->group(function(){
+    Route::prefix('user')->group(function () {
         Route::get('/', [UserController::class, 'show'])->name('user.show');
         Route::put('/', [UserController::class, 'update'])->name('user.update');
     });
 
 
-    Route::prefix('material-types')->group(function(){
+    Route::prefix('material-types')->group(function () {
         Route::get('/', [ScrapTypesController::class, 'index'])->name('material-types.show');
     });
 
-
-   
+    Route::prefix('scrap')->group(function () {
+        Route::post('/book-a-scrap', [ScrapCollectionController::class, 'store'])->name('scrap.store');
+    });
 });
