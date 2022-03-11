@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\ScrapCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ScrapCollectionResource extends JsonResource
@@ -15,29 +16,17 @@ class ScrapCollectionResource extends JsonResource
     public function toArray($request)
     {
 
-        
         $result = [
             'pick_id'             => $this->id,
             'material_type_id'    => $this->material_type_id,
+            'material_name'       => $this->materialType->name,
             'message'             => $this->message,
             'pickup_date'         => $this->pickup_date,
-            //Address
-            'address_id'          => $this->address_id,
-            'address'             => $this->address->address,
-            'land_mark'           => $this->address->land_mark,
-            'city'                => $this->address->city,
-            'country_id'          => $this->address->country_id,
-            'state_id'            => $this->address->state_id,
-            'pincode'             => $this->address->pincode,
-            'address_type'        => $this->address->address_type,
-            //Bank 
-
-            'bank_id'             => $this->bank_id,
-            'bank_name'           => $this->bankDetail->bank_name,
-            'account_name'        => $this->bankDetail->account_name,
-            'account_no'          => $this->bankDetail->account_no,
-            'ifsc_code'           => $this->bankDetail->ifsc_code,
-            'branch'              => $this->bankDetail->branch,
+            'status'              => array_search($this->status, ScrapCollection::BOOKING_STATUS),
+            'status_id'           => (int)$this->status,
+            'address'             => new AddressResource($this->whenLoaded('address')),
+            'bank'                => new BankResource($this->whenLoaded('bankDetail')),
+            'created_at'          => (string)$this->created_at
         ];
         return $result;
     }

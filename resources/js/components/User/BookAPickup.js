@@ -1,17 +1,84 @@
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import useAxios from "../hooks/use-axios";
 import Button from "../UI/Button";
+import InputH from "../UI/InputH";
+import Select from "../UI/Select";
+import TextArea from "../UI/TextArea";
 
-const BookAPickup = () => {
+const BookAPickup = (props) => {
+    const [materialType, setMaterialType] = useState([]);
+    const [countries, setCountries] = useState([]);
+    const [countryState, setcountryState] = useState([]);
+
+    const {
+        isLoading: isLoading,
+        error: isError,
+        sendRequest: getDropdowns,
+    } = useAxios();
+
     const {
         register,
         handleSubmit,
-        getValues,
+        setValue,
         formState: { errors },
     } = useForm();
+
+    useEffect(
+        function () {
+            const dropdownResponse = (data) => {
+                setMaterialType(data.material_types);
+                setCountries(data.countries);
+            };
+            getDropdowns(
+                {
+                    method: "GET",
+                    url: "/pickup/dropdowns",
+                    data: [],
+                },
+                dropdownResponse
+            );
+        },
+        [getDropdowns]
+    );
+    const handleCountry = (event) => {
+        if (event.target.value != "") {
+            const country_states = countries.find(
+                (ctry) => ctry.id == event.target.value
+            );
+            setcountryState(country_states.state);
+        }
+    };
+
+    let material_options = [];
+    let country_options = [];
+    let state_options = [];
+
+    if (!isLoading) {
+        materialType.map((matrl) => {
+            material_options.push({
+                id: matrl.id,
+                value: matrl.material,
+            });
+        });
+        countries.map((ctry) => {
+            country_options.push({
+                id: ctry.id,
+                value: ctry.name,
+            });
+        });
+        countryState.map((st) => {
+            state_options.push({
+                id: st.id,
+                value: st.name,
+            });
+        });
+    }
     return (
         <>
             <h5>Book Your Pickup</h5>
-            <form>
+            <form onSubmit={handleSubmit(props.onSubmit)}>
                 <div className="row">
                     <div className="col-12">
                         <div className="card">
@@ -23,67 +90,50 @@ const BookAPickup = () => {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Material Type:
-                                            </label>
+                                        <div className="col-sm-6">
+                                            <Select
+                                                id="material_type_id"
+                                                label="Material Type"
+                                                name="material_type_id"
+                                                placeholder="--select material--"
+                                                errors={errors}
+                                                register={register}
+                                                onChange={(e) => {
+                                                    setValue(
+                                                        "material_type_id",
+                                                        e.target.value
+                                                    );
+                                                }}
+                                                options={material_options}
+                                            />
                                         </div>
-                                        <div className="col-sm-4">
-                                            <select
-                                                id="material_type"
-                                                className="form-control"
-                                            >
-                                                <option>Furniture</option>
-                                                <option>
-                                                    Washers & Dryers
-                                                </option>
-                                                <option>
-                                                    Industrial & Factory
-                                                    Equipment
-                                                </option>
-                                                <option>
-                                                    Electronics, TV's & Monitors
-                                                </option>
-                                                <option>
-                                                    Junk Cars & Equipment
-                                                </option>
-                                                <option>
-                                                    Scrap Tires of All Sizes
-                                                </option>
-                                            </select>
-                                        </div>
-
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Image:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input type="file" />
+                                        <div className="col-sm-6">
+                                            <InputH
+                                                id="image"
+                                                label="Image"
+                                                type="file"
+                                                placeholder="upload image"
+                                                register={register}
+                                                // errors={errors}
+                                                // required
+                                            />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="form-group mb-50">
                                     <div className="row">
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Description:
-                                            </label>
+                                        <div className="col-sm-6">
+                                            <TextArea
+                                                id="message"
+                                                label="Message"
+                                                type="text"
+                                                placeholder="Enter some text"
+                                                register={register}
+                                                required
+                                                errors={errors}
+                                            />
                                         </div>
-                                        <div className="col-sm-4">
-                                            <textarea className="form-control"></textarea>
-                                        </div>
-                                        <div className="col-sm-2"></div>
-                                        <div className="col-sm-4"></div>
+                                        <div className="col-sm-6"></div>
                                     </div>
                                 </div>
                             </div>
@@ -104,101 +154,145 @@ const BookAPickup = () => {
                                     </div>
                                 </div>
 
-                                <div className="form-group mb-50">
-                                    <div className="row">
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Date:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
-                                        </div>
-                                        <div className="col-sm-2"></div>
-                                        <div className="col-sm-4"></div>
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <InputH
+                                            id="pickup_date"
+                                            label="Date"
+                                            type="text"
+                                            placeholder="Pickup Date"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
                                     </div>
+                                    <div className="col-sm-6"></div>
                                 </div>
-                                <div className="form-group mb-50">
-                                    <div className="row">
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Address:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <textarea className="form-control"></textarea>
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                LandMark:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <textarea className="form-control"></textarea>
-                                        </div>
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <TextArea
+                                            id="address"
+                                            label="Address"
+                                            placeholder="Enter Address"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <TextArea
+                                            id="land_mark"
+                                            label="Land Mark"
+                                            placeholder="Enter Landmark"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="form-group mb-50">
                                     <div className="row">
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Country:
-                                            </label>
+                                        <div className="col-sm-6">
+                                            {/* <Controller
+                                                name="countries"
+                                                control={control}
+                                                
+                                                render={({ field: { value, ref } }) => (
+                                                    <Select
+                                                        id="countries"
+                                                        label="Country"
+                                                        placeholder="--select country--"
+                                                        onChange={handleCountry}
+                                                        options={
+                                                            country_options
+                                                        }
+                                                        selected={value}
+
+                                                    />
+                                                )}
+                                            /> */}
+                                            <Select
+                                                id="country_id"
+                                                label="Country"
+                                                name="country_id"
+                                                placeholder="--select country--"
+                                                register={register}
+                                                errors={errors}
+                                                onChange={(e) => {
+                                                    handleCountry(e);
+                                                    setValue(
+                                                        "country_id",
+                                                        e.target.value
+                                                    );
+                                                }}
+                                                options={country_options}
+                                            />
+
+                                            {/* <Select
+                                                id="countries"
+                                                label="Country"
+                                                placeholder="--select country--"
+                                                options={country_options}
+                                                register={register}
+                                                onChange={handleCountry}
+                                                errors={errors}
+                                                required
+                                            />  */}
                                         </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Pincode:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
+                                        <div className="col-sm-6">
+                                            <Select
+                                                id="state_id"
+                                                label="State"
+                                                name="state_id"
+                                                placeholder="--select state--"
+                                                register={register}
+                                                require
+                                                errors={errors}
+                                                onChange={(e) => {
+                                                    setValue(
+                                                        "state_id",
+                                                        e.target.value
+                                                    );
+                                                }}
+                                                options={state_options}
+                                            />
+
+                                            {/* <Select
+                                                id="state"
+                                                label="State"
+                                                placeholder="--select state--"
+                                                register={register}
+                                                options={state_options}
+                                                required
+                                                errors={errors}
+                                                required
+                                            /> */}
                                         </div>
                                     </div>
                                 </div>
-
-                                <div className="form-group mb-50">
-                                    <div className="row">
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                City:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                State:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
-                                        </div>
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <InputH
+                                            id="city"
+                                            label="City"
+                                            type="text"
+                                            placeholder="Enter City"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <InputH
+                                            id="pincode"
+                                            label="Pincode"
+                                            type="text"
+                                            placeholder="Enter Pincode"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -216,70 +310,67 @@ const BookAPickup = () => {
                                         <h5 className="py-50">Bank Details</h5>
                                     </div>
                                 </div>
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <InputH
+                                            id="bank_name"
+                                            label="Bank Name"
+                                            type="text"
+                                            placeholder="Enter Bank Name"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
+                                    </div>
+                                    <div className="col-sm-6"></div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <InputH
+                                            id="account_name"
+                                            label="Account Name"
+                                            type="text"
+                                            placeholder="Enter Account Name"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
+                                    </div>
 
-                                <div className="form-group mb-50">
-                                    <div className="row">
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Account No#:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
-                                        </div>
-                                        <div className="col-sm-2">
-                                            Account Name:
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
-                                        </div>
+                                    <div className="col-sm-6">
+                                        <InputH
+                                            id="account_no"
+                                            label="Account No#"
+                                            type="text"
+                                            placeholder="Enter Account Number"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
                                     </div>
                                 </div>
-                                <div className="form-group mb-50">
-                                    <div className="row">
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                IFSC Code:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Branch:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
-                                        </div>
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <InputH
+                                            id="ifsc_code"
+                                            label="Ifsc Code"
+                                            type="text"
+                                            placeholder="Enter Ifsc Code"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
                                     </div>
-                                </div>
-
-                                <div className="form-group mb-50">
-                                    <div className="row">
-                                        <div className="col-sm-2">
-                                            <label
-                                                htmlFor="material_type"
-                                                className="text-bold-600"
-                                            >
-                                                Bank Name:
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <input className="form-control" />
-                                        </div>
-                                        <div className="col-sm-2"></div>
-                                        <div className="col-sm-4"></div>
+                                    <div className="col-sm-6">
+                                        <InputH
+                                            id="branch"
+                                            label="Branch"
+                                            type="text"
+                                            placeholder="Enter Branch Name"
+                                            register={register}
+                                            required
+                                            errors={errors}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -288,9 +379,7 @@ const BookAPickup = () => {
                 </div>
                 <div className="margin-8"></div>
                 <div>
-                    <div>
-                        <Button type="submit">Submit</Button>
-                    </div>
+                    <Button type="submit">Book Pickup</Button>
                 </div>
             </form>
         </>

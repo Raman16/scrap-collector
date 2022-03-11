@@ -11,4 +11,9 @@ class MaterialType extends Model
     protected $fillable = [
         'name', 'description'
     ];
+
+    public function scrapCollection()
+    {
+        return $this->hasMany(ScrapCollection::class, 'material_type_id', 'id');
+    }
 }

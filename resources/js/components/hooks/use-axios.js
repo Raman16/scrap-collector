@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 
 import axios from "axios";
 import { API_SERVER } from "../config/constant";
@@ -17,7 +17,7 @@ const useAxios = () => {
     const [error, setError] = useState(false);
     const auth = useContext(AuthContext);
 
-    const sendRequest = async (requestConfig, applyData) => {
+    const sendRequest = useCallback(async (requestConfig, applyData) => {
         try {
 
 
@@ -41,11 +41,13 @@ const useAxios = () => {
             }
 
             applyData(data);
+            
         } catch (err) {
             setError(err || "Something went wrong!");
         }
         setIsLoading(false);
-    };
+    },[]);
+    
     return {
         isLoading,
         error,

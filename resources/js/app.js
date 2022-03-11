@@ -17,13 +17,17 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import Index from "./components/index";
 import {AuthContextProvider} from "./components/store/auth-context";
+import { ScrapContextProvider } from "./components/store/scrap-context";
 
 if (document.getElementById("root")) {
     ReactDOM.render(
         <AuthContextProvider>
+            <ScrapContextProvider>
             <HashRouter>
                 <Index />
             </HashRouter>
+            </ScrapContextProvider>
+            
         </AuthContextProvider>,
         document.getElementById("root")
     );

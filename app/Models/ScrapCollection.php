@@ -27,12 +27,21 @@ class ScrapCollection extends Model
         'address_id',
         'bank_id',
     ];
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
     public function address()
     {
-        return $this->hasOne(Address::class,'id','address_id');
+        return $this->hasOne(Address::class, 'id', 'address_id');
     }
     public function bankDetail()
     {
-        return $this->hasOne(BankDetail::class,'id','bank_id');
+        return $this->hasOne(BankDetail::class, 'id', 'bank_id');
+    }
+    public function materialType()
+    {
+        return $this->belongsTo(MaterialType::class, 'material_type_id', 'id');
     }
 }

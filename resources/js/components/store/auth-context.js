@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+
+//Context
 const AuthContext = React.createContext({
     user: "",
     isLoggedIn: false,
@@ -8,6 +10,7 @@ const AuthContext = React.createContext({
     logout: () => {},
 });
 
+//Provider
 export const AuthContextProvider = (props) => {
     
     const initialUser = JSON.parse(localStorage.getItem("user"));

@@ -22,7 +22,13 @@ class Address extends Model
         'address_type'
     ];
 
-    // public function scrap_collection(){
-    //     return $this->belongsToMany(Address::class);
-    // }
+    public function scrap_collection(){
+        return $this->belongsTo(Address::class);
+    }
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+    public function state(){
+        return $this->belongsTo(State::class);
+    }
 }

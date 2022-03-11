@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import MyPickup from "./MyPickup";
 const MyPickups = (props) => {
+    const { product } = props;
+    const bank = product.bank;
+    const address = product.address;
+
+    const fontStyle = {
+        fontSize: "14px",
+    };
+
+    const handleCancel = () => {
+       props.cancelPickup(product.pick_id, 3);
+    };
+    const handleRetry = () => {
+        props.cancelPickup(product.pick_id, 1);
+     };
+
+    const showModalHandler = () => {
+        props.showModalHandler(product.pick_id);
+    };
+
     return (
         <>
             <div className="card">
                 <div className="card-body">
                     <div className="table-responsive ps ps--active-x">
-                        <h5>Industrial & Factory Equipment</h5>
+                        <h5>{product.material_name}</h5>
 
                         <table className="table table-borderless">
                             <tbody>
@@ -44,22 +64,35 @@ const MyPickups = (props) => {
                                         </div>
                                     </td>
                                     <td className="pl-0">
-                                        <div className="badge badge-light-danger text-bold-500 py-50">
+                                        <div className="badge badge-light-success text-bold-500 py-50">
                                             06 May 2019
                                         </div>
                                     </td>
                                     <td>
-                                        <span className="badge badge-light-success">
-                                            Completed
-                                        </span>
+                                        {(product.status == "CANCELLED" ||
+                                            product.status == "INPROGRESS") && (
+                                            <span className="badge badge-light-danger text-bold-500 py-50">
+                                                {product.status}
+                                            </span>
+                                        )}
+                                        {(product.status == "CREATED" ||
+                                            product.status == "COMPLETED") && (
+                                            <span className="badge badge-light-success text-bold-500 py-50">
+                                                {product.status}
+                                            </span>
+                                        )}
                                     </td>
                                     <td>
                                         <div className="d-flex align-items-center justify-content-between">
                                             <div>
-                                                <p className="mb-0">
-                                                    Bank Name:ICIC
+                                                <p
+                                                    className="mb-0"
+                                                    style={fontStyle}
+                                                >
+                                                    Bank Name:{bank.bank_name},
+                                                    <br />
+                                                    IFSC :{bank.ifsc_code}
                                                 </p>
-                                                <span>IFSC:ICIC0000</span>
                                             </div>
                                             <i className="bx bx-cloud font-large-2"></i>
                                         </div>
@@ -67,26 +100,41 @@ const MyPickups = (props) => {
                                     <td>
                                         <div className="d-flex align-items-center justify-content-between">
                                             <div>
-                                                <p className="mb-0">
-                                                    Sicklerville, New Jersey
+                                                <p
+                                                    className="mb-0"
+                                                    style={fontStyle}
+                                                >
+                                                    {address.address},<br />
+                                                    {address.city}, <br />
+                                                    {address.state},
+                                                    {address.country}
                                                 </p>
-                                                <span>Fri 13 May, 2019</span>
                                             </div>
-                                            <i className="bx bx-cloud font-large-2"></i>
+                                            {/* <i className="bx bx-cloud font-large-2"></i> */}
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary glow"
-                                            >
-                                                Cancel
-                                            </button>
+                                            {product.status != "CANCELLED" && (
+                                                <button
+                                                    className="btn mr-1 mb-1 btn-danger btn-sm"
+                                                    onClick={handleCancel}
+                                                >
+                                                    Cancel
+                                                </button>
+                                            )}
+                                            {product.status == "CANCELLED" && (
+                                                <button
+                                                    className="btn mr-1 mb-1 btn-success btn-sm"
+                                                    onClick={handleRetry}
+                                                >
+                                                    Retry
+                                                </button>
+                                            )}
                                             &nbsp;
                                             <button
-                                                type="button"
-                                                className="btn btn-primary glow"
+                                                className="btn mr-1 mb-1 btn-primary btn-sm"
+                                                onClick={showModalHandler}
                                             >
                                                 View
                                             </button>
@@ -99,102 +147,6 @@ const MyPickups = (props) => {
                 </div>
             </div>
             <div className="margin-8"></div>
-            <div className="card">
-                <div className="card-body">
-                    <div className="table-responsive ps ps--active-x">
-                        <h5>Industrial & Factory Equipment</h5>
-
-                        <table className="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <strong>Product Image</strong>
-                                    </td>
-                                    <td className="pb-0 pl-0">
-                                        <strong>Pickup Date:</strong>
-                                    </td>
-                                    <td className="pb-0 pl-0">
-                                        <strong>Status</strong>
-                                    </td>
-                                    <td className="pb-0">
-                                        <strong>Bank Details</strong>
-                                    </td>
-                                    <td className="pb-0">
-                                        <strong>Pickup Location</strong>
-                                    </td>
-                                    <td className="pb-0">
-                                        <strong>Action</strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="pl-0">
-                                        <div className="badge badge-light-primary text-bold-500 py-50">
-                                            <div className="avatar bg-rgba-primary p-25 mr-2 ml-0">
-                                                <img
-                                                    className="img-fluid"
-                                                    src="../../../app-assets/images/profile/user-uploads/social-2.jpg"
-                                                    alt="img placeholder"
-                                                    height="70"
-                                                    width="70"
-                                                />
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="pl-0">
-                                        <div className="badge badge-light-danger text-bold-500 py-50">
-                                            06 May 2019
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span className="badge badge-light-success">
-                                            Completed
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div className="d-flex align-items-center justify-content-between">
-                                            <div>
-                                                <p className="mb-0">
-                                                    Bank Name:ICIC
-                                                </p>
-                                                <span>IFSC:ICIC0000</span>
-                                            </div>
-                                            <i className="bx bx-cloud font-large-2"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="d-flex align-items-center justify-content-between">
-                                            <div>
-                                                <p className="mb-0">
-                                                    Sicklerville, New Jersey
-                                                </p>
-                                                <span>Fri 13 May, 2019</span>
-                                            </div>
-                                            <i className="bx bx-cloud font-large-2"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary glow"
-                                            >
-                                                Cancel
-                                            </button>
-                                            &nbsp;
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary glow"
-                                            >
-                                                View
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </>
     );
 };

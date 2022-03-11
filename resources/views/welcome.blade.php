@@ -10,7 +10,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-   
+
     <!-- <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap-extended.css') }}"> -->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/colors.css') }}">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/themes/semi-dark-layout.css') }}">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/swiper.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Styles -->
     <style>
@@ -415,6 +416,8 @@
 </head>
 
 <body class="antialiased">
+
+    <div id="overlays"></div>
     <div id="root"></div>
     <div id="notification-root"></div>
     <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
