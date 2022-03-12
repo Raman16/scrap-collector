@@ -51,17 +51,12 @@ const MyPickups = (props) => {
                                 </tr>
                                 <tr>
                                     <td className="pl-0">
-                                        <div className="badge badge-light-primary text-bold-500 py-50">
-                                            <div className="avatar bg-rgba-primary p-25 mr-2 ml-0">
-                                                <img
+                                    <img
                                                     className="img-fluid"
-                                                    src="../../../app-assets/images/profile/user-uploads/social-2.jpg"
+                                                    src={product.image}
                                                     alt="img placeholder"
-                                                    height="70"
-                                                    width="70"
+                                                   style={{width:"120px",borderRadius:"15px"}}
                                                 />
-                                            </div>
-                                        </div>
                                     </td>
                                     <td className="pl-0">
                                         <div className="badge badge-light-success text-bold-500 py-50">

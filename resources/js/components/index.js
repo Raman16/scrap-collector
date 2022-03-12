@@ -10,6 +10,10 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import AboutUsPage from "./pages/AboutusPage";
 import HomePage from "./pages/HomePage";
+import DashboardPage from "./Admin/DashboardPage";
+import UserPickupsPage from "./Admin/UserPickupsPage";
+import DeliveryAgentPage from "./Admin/DeliveryAgent";
+import SettingsPage from "./Admin/SettingsPage";
 
 function Index() {
     const authCtx = useContext(AuthContext);
@@ -39,13 +43,30 @@ function Index() {
                                     path="/my-pickups"
                                     element={<MyPickupPage />}
                                 />
-                             <Route
-                                path="/book-a-pickup"
-                                element={<BookAPickupPage />}
-                            />
+                                <Route
+                                    path="/book-a-pickup"
+                                    element={<BookAPickupPage />}
+                                />
                                 <Route
                                     path="/profile"
                                     element={<ProfilePage />}
+                                />
+
+                                <Route
+                                    path="/admin/dashboard"
+                                    element={<DashboardPage />}
+                                />
+                                <Route
+                                    path="/admin/user-pickups"
+                                    element={<UserPickupsPage />}
+                                />
+                                <Route
+                                    path="/admin/delivery-agent"
+                                    element={<DeliveryAgentPage />}
+                                />
+                                <Route
+                                    path="/admin/settings"
+                                    element={<SettingsPage />}
                                 />
                             </>
                         )}

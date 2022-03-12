@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class UserResource extends JsonResource
 {
@@ -23,6 +25,7 @@ class UserResource extends JsonResource
             'email'                 => $this->email,
             'emailVerifiedAt'       => $this->email_verified_at,
             'phone_number'          => $this->phone_number,
+            'image'                  => $this->image != null ?URL::to('/').Storage::url('avatar/'.$this->image->name ) : '',
             'country_code'          => $this->country_code,
             'createdAt'             => $this->created_at->diffForHumans(),
         ];

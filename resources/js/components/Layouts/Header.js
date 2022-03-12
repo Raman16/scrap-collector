@@ -145,6 +145,63 @@ const Header = (props) => {
                                             </li>
                                         </ul>
                                     </li>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            to="admin/dashboard"
+                                            className="dropdown-item"
+                                        >
+                                            Dashboard
+                                        </NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            to="admin/user-pickups"
+                                            className="dropdown-item"
+                                        >
+                                            Pickup List
+                                        </NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            to="admin/delivery-agent"
+                                            className="dropdown-item"
+                                        >
+                                            Delivery Agent
+                                        </NavLink>
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <a
+                                            className="nav-link dropdown-toggle"
+                                            href="#"
+                                            id="dropdown01"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                        >
+                                            {authCtx.user.username}
+                                        </a>
+                                        <ul
+                                            className="dropdown-menu"
+                                            aria-labelledby="dropdown01"
+                                        >
+                                            <li>
+                                                <NavLink
+                                                    to="/admin/settings"
+                                                    className="dropdown-item"
+                                                >
+                                                    Settings
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
+                                                <NavLink
+                                                    to="logout"
+                                                    className="dropdown-item"
+                                                    onClick={logoutHandler}
+                                                >
+                                                    Logout
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </>
                             )}
                         </ul>

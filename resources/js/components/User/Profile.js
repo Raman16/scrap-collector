@@ -5,6 +5,7 @@ import useAxios from "../hooks/use-axios";
 import AuthContext from "../store/auth-context";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
+import InputH from "../UI/InputH";
 
 const Profile = () => {
     const auth = useContext(AuthContext);
@@ -29,15 +30,45 @@ const Profile = () => {
         sendRequest: updateProfile,
     } = useAxios();
 
-    const profileResponse = (data) => {
-        toast.dismiss(toastId.current);
-        toast.success(data.message);
+    const {
+        isLoading: isImageUploading,
+        error: imageUploadError,
+        sendRequest: uploadImageRequest,
+    } = useAxios();
+
+    const imageUploadResponse = (data) => {
+        toast.success("Update Success");
     };
-    if (isLoading) {
-        toastId.current = toast("Updating your profile.");
-    }
+
+    let uploadedImage;
+    const profileResponse = (data) => {
+        let file = uploadedImage[0];
+        console.log(file);
+        let reader = new FileReader();
+        reader.onloadend = function () {
+            uploadImageRequest(
+                {
+                    method: "POST",
+                    url: "/image",
+                    data: {
+                        imageable_type: "user",
+                        imageable_id: data.user.id,
+                        image: reader.result,
+                    },
+                },
+                imageUploadResponse
+            );
+        };
+        reader.readAsDataURL(file);
+    };
+
+    // if (isLoading) {
+    //     toastId.current = toast("Updating your profile.");
+    // }
 
     const onSubmit = (requestData) => {
+        uploadedImage = requestData.image;
+        console.log(uploadedImage);
         updateProfile(
             {
                 method: "PUT",
@@ -59,7 +90,7 @@ const Profile = () => {
                         <div className="media">
                             <a>
                                 <img
-                                    src="../../../app-assets/images/portrait/small/avatar-s-16.jpg"
+                                    src={auth.user.image}
                                     className="rounded mr-75"
                                     alt="profile image"
                                     height="64"
@@ -68,27 +99,16 @@ const Profile = () => {
                             </a>
                             <div className="media-body mt-25">
                                 <div className="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                    <label
-                                        htmlFor="select-files"
-                                        className="btn btn-sm btn-light-primary ml-50 mb-50 mb-sm-0"
-                                    >
-                                        <span>Upload new photo</span>
-                                        <input
-                                            id="select-files"
-                                            type="file"
-                                            hidden=""
-                                        />
-                                    </label>
-                                    <button className="btn btn-sm btn-light-secondary ml-50">
-                                        Reset
-                                    </button>
+                                    <InputH
+                                        id="image"
+                                        label="Image"
+                                        type="file"
+                                        placeholder="upload image"
+                                        register={register}
+                                        // errors={errors}
+                                        // required
+                                    />
                                 </div>
-                                <p className="text-muted ml-1 mt-50">
-                                    <small>
-                                        Allowed JPG, GIF or PNG. Max size of
-                                        800kB
-                                    </small>
-                                </p>
                             </div>
                         </div>
                         <div className="form-group mb-50">

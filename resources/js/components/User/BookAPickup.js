@@ -75,6 +75,18 @@ const BookAPickup = (props) => {
             });
         });
     }
+    // const handleImage =(e)=>{
+    // console.log("file", e.target.files[0]);
+    // let file = e.target.files[0];
+       
+
+    //    let reader = new FileReader();
+    //    reader.onloadend = function() {
+    //      document.write('RESULT: ', reader.result);
+    //    }
+    //    reader.readAsDataURL(file);
+
+    // }
     return (
         <>
             <h5>Book Your Pickup</h5>
@@ -108,6 +120,13 @@ const BookAPickup = (props) => {
                                             />
                                         </div>
                                         <div className="col-sm-6">
+                                        {/* <input
+                                                id="image"
+                                                name="image"
+                                                type="file"
+                                                placeholder="upload image"
+                                                onChange={handleImage}
+                                            /> */}
                                             <InputH
                                                 id="image"
                                                 label="Image"

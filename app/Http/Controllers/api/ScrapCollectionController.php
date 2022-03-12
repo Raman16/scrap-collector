@@ -38,7 +38,7 @@ class ScrapCollectionController extends Controller
     {
         $pickup_list = ScrapCollection::where(
             ['user_id' => auth()->user()->id]
-        )->with(['address', 'bankDetail', 'materialType'])->get();
+        )->with(['address', 'bankDetail', 'materialType','image'])->get();
 
         return response()->json(
             [

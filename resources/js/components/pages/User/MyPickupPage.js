@@ -2,7 +2,6 @@ import _ from "lodash";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import ContactCard from "../../Cards/ContactCard";
-import RecentPickupCard from "../../Cards/RecentPickupCard";
 import useAxios from "../../hooks/use-axios";
 import ScrapContext from "../../store/scrap-context";
 import Notification from "../../UI/Notifications";
@@ -15,6 +14,10 @@ const MyPickupPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [showScrapDetail, setShowScrapDetail] = useState([]);
     const [recentPickup, setRecentPickup] = useState([]);
+    const [materialType, setMaterialType] = useState([]);
+
+    let scrapProductsCard = "";
+    let material_options = [];
 
     const {
         isLoading: isLoading,
@@ -32,6 +35,12 @@ const MyPickupPage = () => {
         isLoading: isPickups,
         error: isPickupError,
         sendRequest: getRecentPickups,
+    } = useAxios();
+
+    const {
+        isLoading: isMaterialLoading,
+        error: isMaterialError,
+        sendRequest: getDropdowns,
     } = useAxios();
 
     useEffect(() => {
@@ -57,6 +66,18 @@ const MyPickupPage = () => {
                 data: [],
             },
             recentPickUpResponse
+        );
+
+        const dropdownResponse = (data) => {
+            setMaterialType(data.material_types);
+        };
+        getDropdowns(
+            {
+                method: "GET",
+                url: "/material-types",
+                data: [],
+            },
+            dropdownResponse
         );
     }, []);
 
@@ -94,52 +115,79 @@ const MyPickupPage = () => {
     const closeModalHandler = () => {
         setShowModal(false);
     };
-    let scrapProductsCard = "";
+
     if (!isLoading) {
-        // console.log(scrapData.products);
-        scrapProductsCard = scrapData.products.map((product) => (
-            <MyPickups
-                product={product}
-                key={product.pick_id}
-                cancelPickup={cancelPickupHandler}
-                showModalHandler={showModalHandler}
-            />
-        ));
+        if (scrapData.products.length == 0) {
+            scrapProductsCard = (
+                <img
+                    src="../../../images/empty.PNG"
+                    className="rounded"
+                    alt="group image"
+                   style={{width:"70%",height:"70%"}}
+                />
+            );
+        } else {
+            scrapProductsCard = scrapData.products.map((product) => (
+                <MyPickups
+                    product={product}
+                    key={product.pick_id}
+                    cancelPickup={cancelPickupHandler}
+                    showModalHandler={showModalHandler}
+                />
+            ));
+        }
+    }
+    if (isLoading) {
+        scrapProductsCard = (
+            <div
+                className="spinner-border text-warning spinner-loading"
+                role="status"
+            >
+                <span className="sr-only">Loading...</span>
+            </div>
+        );
     }
 
+    if (!isMaterialLoading) {
+        material_options = materialType.map((matrl) => {
+            return (
+                <option key={matrl.id} value={matrl.id}>
+                    {matrl.material}
+                </option>
+            );
+        });
+    }
+
+    const handleSeachByMaterial = (event) => {
+        scrapData.searchPickup(event.target.value);
+    };
     return (
         <div className="basic-2">
             <div className="container">
                 <div className="row">
                     <div className="col-sm-9">
                         <div className="row">
-                            <div className="col-sm-3">
-                                <fieldset className="form-group">
-                                    <select className="form-control">
-                                        <option>Furniture</option>
-                                        <option>Washers & Dryers</option>
-                                        <option>
-                                            Industrial & Factory Equipment
-                                        </option>
-                                        <option>
-                                            Electronics, TV's & Monitors
-                                        </option>
-                                        <option>Junk Cars & Equipment</option>
-                                        <option>
-                                            Scrap Tires of All Sizes
-                                        </option>{" "}
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div className="col-sm-3">
-                                <fieldset className="form-group">
-                                    <select className="form-control">
-                                        <option>Bengalure</option>
-                                        <option>Hyderabad</option>
-                                    </select>
-                                </fieldset>
+                            <div className="col-sm-6">
+                                <div className="row">
+                                    <div className="col-sm-8">
+                                        <select
+                                            id="material_type_id"
+                                            label="Material Type"
+                                            name="material_type_id"
+                                            placeholder="--select material--"
+                                            className="form-control"
+                                            onChange={handleSeachByMaterial}
+                                        >
+                                            <option>
+                                                --Seach By Material--
+                                            </option>
+                                            {material_options}
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div className="margin-8"></div>
 
                         {scrapProductsCard}
                         {showModal && (
@@ -151,7 +199,7 @@ const MyPickupPage = () => {
                         <Notification />
                     </div>
                     <div className="col-sm-3">
-                        <div style={{ marginTop: "54px" }}>
+                        <div style={{ marginTop: "48px" }}>
                             {/* <RecentPickupCard /> */}
                             <div className="card">
                                 <div className="card-body">

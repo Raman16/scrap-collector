@@ -20,7 +20,7 @@ class ImageController extends Controller
         $request->validate([
             'imageable_type' => 'required',
             'imageable_id'   => 'required',
-            'image'          => ['required', new ImageBase64String]
+            // 'image'          => ['required', new ImageBase64String]
         ]);
 
 
@@ -49,7 +49,7 @@ class ImageController extends Controller
                 $scrap = ScrapCollection::findorFail($model_id);
 
                 $imageName = 'SCRAP' . $model_id . '_' . time() . '.' . get_base64_extension_string($image);
-                $image_path = 'avatar/' . $imageName;
+                $image_path = 'user_scraps/' . $imageName;
 
                 $scrap->image()->save(
                     Image::make(['name' => $imageName])
@@ -59,7 +59,7 @@ class ImageController extends Controller
                     convert_base64_to_image($image)
                 );
             }
-
+            DB::commit();
             return response()->json(
                 [
                     'message'   => 'Image Uploaded Successfully',
@@ -68,7 +68,7 @@ class ImageController extends Controller
                 201
             );
 
-            DB::commit();
+           
         } catch (Exception $e) {
             Db::rollBack();
             return response()->json(['message' => $e->getMessage()]);

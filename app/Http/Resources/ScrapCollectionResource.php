@@ -4,6 +4,8 @@ namespace App\Http\Resources;
 
 use App\Models\ScrapCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class ScrapCollectionResource extends JsonResource
 {
@@ -26,6 +28,7 @@ class ScrapCollectionResource extends JsonResource
             'status_id'           => (int)$this->status,
             'address'             => new AddressResource($this->whenLoaded('address')),
             'bank'                => new BankResource($this->whenLoaded('bankDetail')),
+            'image'               => $this->image != null ?URL::to('/').Storage::url('user_scraps/'.$this->image->name ) : '',
             'created_at'          => (string)$this->created_at
         ];
         return $result;

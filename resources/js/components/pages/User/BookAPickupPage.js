@@ -14,16 +14,45 @@ const BookAPickupPage = () => {
         sendRequest: BookingRequest,
     } = useAxios();
 
-    const bookingResponse = async (data) => {
+    const {
+        isLoading: isImageUploading,
+        error: imageUploadError,
+        sendRequest: uploadImageRequest,
+    } = useAxios();
+
+    let uploadedImage;
+    const imageUploadResponse = (data) => {
         if (!isBooking) {
             toast("Booking DOne...");
         }
     };
+    const bookingResponse = async (data) => {
+        let file = uploadedImage[0];
+        let reader = new FileReader();
+        reader.onloadend = function () {
+            uploadImageRequest(
+                {
+                    method: "POST",
+                    url: "/image",
+                    data: {
+                        imageable_type: "scrap_image",
+                        imageable_id: data.pickup_list.pick_id,
+                        image: reader.result,
+                    },
+                },
+                imageUploadResponse
+            );
+            // document.write("RESULT: ", reader.result);
+        };
+        reader.readAsDataURL(file);
+    };
+
     const handleSubmit = (requestData) => {
         requestData.address_type = "1";
         if (!isBooking) {
             toast("Booking in Process...");
         }
+        uploadedImage = requestData.image;
 
         BookingRequest(
             {
