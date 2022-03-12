@@ -25,7 +25,7 @@ const Select = React.forwardRef(
                     <select
                         {...register(id, { required: true })}
                         name={id}
-                        className="form-control"
+                        className="form-control shadow"
                         id={id}
                         ref={ref}
                         onChange={onChange}

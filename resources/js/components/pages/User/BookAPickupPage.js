@@ -48,6 +48,7 @@ const BookAPickupPage = () => {
     };
 
     const handleSubmit = (requestData) => {
+        
         requestData.address_type = "1";
         if (!isBooking) {
             toast("Booking in Process...");

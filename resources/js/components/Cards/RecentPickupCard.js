@@ -1,7 +1,7 @@
 const RecentPickupCard = () => {
     return (
         <div id="table-transactions-history">
-            <div className="card">
+            <div className="card shadow">
                 <div className="card-header">
                     <h5 className="card-title">Recent Pickups</h5>
                     <div className="heading-elements">

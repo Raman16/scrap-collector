@@ -18,7 +18,7 @@ const TextArea = (props) => {
             </label>
             <div className="col-sm-8">
                 <textarea
-                    className="form-control"
+                    className="form-control shadow"
                     type={props.type}
                     id={props.id}
                     value={props.value}

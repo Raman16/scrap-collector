@@ -7,7 +7,7 @@ const Input = (props) => {
                 {label}
             </label>
             <input
-                className="form-control"
+                className="form-control shadow"
                 type={props.type}
                 id={props.id}
                 value={props.value}

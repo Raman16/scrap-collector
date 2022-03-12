@@ -1,6 +1,6 @@
 const ContactCard = () => {
     return (
-        <div className="card">
+        <div className="card shadow">
             <div className="card-body">
                 <h5 className="card-title mb-1">
                     For Any Queries

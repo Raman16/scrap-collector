@@ -5,7 +5,7 @@ const SettingsPage = () => {
             <div className="row">
                 <div className="col-sm-12">
                     <div className="row">
-                        <div className="col-sm-4">
+                        <div className="col-sm-6">
                             <ul
                                 className="nav nav-tabs nav-fill"
                                 id="myTab"

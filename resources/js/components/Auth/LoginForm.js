@@ -9,6 +9,10 @@ import Button from "../UI/Button";
 import Input from "../UI/Input";
 
 const LoginForm = () => {
+    const authCtx = useContext(AuthContext);
+    const user = authCtx.user ?? "";
+    const user_role = user != "" ? authCtx.user.role[0] : "";
+
     const {
         register,
         handleSubmit,
@@ -30,9 +34,6 @@ const LoginForm = () => {
 
     const navigate = useNavigate();
 
-
-    const authCtx = useContext(AuthContext);
-
     const otpResponse = (data) => {
         toast.success(data.message);
     };
@@ -52,13 +53,16 @@ const LoginForm = () => {
         );
     };
     const loginResponse = async (data) => {
-
         await authCtx.login(data);
-        navigate("/book-a-pickup");
-
+        if (data.user.role[0].role_id == 1) {
+            navigate("/admin/dashboard");
+        } 
+        if (data.user.role[0].role_id == 2) {
+            navigate("/book-a-pickup");
+        }
     };
     const onSubmit = (requestData) => {
-        if(!isLogging){
+        if (!isLogging) {
             toast("Loggin In...");
         }
         requestData.device_name = navigator.userAgent;
@@ -75,7 +79,6 @@ const LoginForm = () => {
         );
     };
 
-
     // useEffect(() => {
     //     if (otpError) {
     //         console.log(otpError.response);
@@ -89,7 +92,7 @@ const LoginForm = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group mb-50">
                     <div className="row">
-                    <div className="col-sm-3">
+                        <div className="col-sm-3">
                             {/* <Input2 label="FirstName" register={register} required /> */}
                             <Input
                                 label="Country"

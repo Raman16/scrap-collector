@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
                 UsersSeeder::class,
                 MaterialTypesSeeder::class,
                 CountrySeeder::class,
-                StateSeeder::class
+                StateSeeder::class,
+                RolesTableSeeder::class
             ]
         );
         // \App\Models\User::factory(10)->create();

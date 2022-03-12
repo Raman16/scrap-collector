@@ -1,0 +1,28 @@
+{
+    "user": {
+        "id": 2,
+        "username": "Ragav",
+        "first_name": "Ragav",
+        "last_name": "R",
+        "email": "user@userbee.com",
+        "emailVerifiedAt": null,
+        "phone_number": "9886426564",
+        "image": "",
+        "country_code": "+91",
+        "role": [
+            {
+                "id": 2,
+                "name": "user",
+                "guard_name": "",
+                "created_at": "2022-03-12T17:41:29.000000Z",
+                "updated_at": "2022-03-12T17:41:29.000000Z",
+                "pivot": {
+                    "user_id": 2,
+                    "role_id": 2
+                }
+            }
+        ],
+        "createdAt": "7 minutes ago"
+    },
+    "message": "User login succesfully."
+}

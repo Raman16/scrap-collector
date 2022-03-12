@@ -17,6 +17,8 @@ import SettingsPage from "./Admin/SettingsPage";
 
 function Index() {
     const authCtx = useContext(AuthContext);
+    const user = authCtx.user ?? '';
+    const user_role = user!=''? authCtx.user.role[0]:'';
     return (
         <div className="">
             <Layout>
@@ -37,21 +39,8 @@ function Index() {
                             </>
                         )}
 
-                        {authCtx.isLoggedIn && (
+                        {authCtx.isLoggedIn && user_role.role_id == 1 && (
                             <>
-                                <Route
-                                    path="/my-pickups"
-                                    element={<MyPickupPage />}
-                                />
-                                <Route
-                                    path="/book-a-pickup"
-                                    element={<BookAPickupPage />}
-                                />
-                                <Route
-                                    path="/profile"
-                                    element={<ProfilePage />}
-                                />
-
                                 <Route
                                     path="/admin/dashboard"
                                     element={<DashboardPage />}
@@ -67,6 +56,22 @@ function Index() {
                                 <Route
                                     path="/admin/settings"
                                     element={<SettingsPage />}
+                                />
+                            </>
+                        )}
+                        {authCtx.isLoggedIn && user_role.role_id == 2 && (
+                            <>
+                                <Route
+                                    path="/my-pickups"
+                                    element={<MyPickupPage />}
+                                />
+                                <Route
+                                    path="/book-a-pickup"
+                                    element={<BookAPickupPage />}
+                                />
+                                <Route
+                                    path="/profile"
+                                    element={<ProfilePage />}
                                 />
                             </>
                         )}

@@ -155,7 +155,7 @@ const DashboardPage = () => {
                                             ></i>
                                         </div>
                                         <div className="text-muted line-ellipsis">
-                                            Uses
+                                            Users
                                         </div>
                                         <h3 className="mb-0">2.6k</h3>
                                     </div>

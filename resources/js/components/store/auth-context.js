@@ -28,6 +28,7 @@ export const AuthContextProvider = (props) => {
         setUser(null);
         localStorage.removeItem("user");
     };
+
     const contextValue = {
         user: user != null ? user.user :'',
         isLoggedIn: userIsLoggedIn,

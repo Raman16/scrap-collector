@@ -80,7 +80,7 @@ const Profile = () => {
     };
 
     return (
-        <div className="card">
+        <div className="card shadow">
             <div className="card-body">
                 <div className="tab-content">
                     <form

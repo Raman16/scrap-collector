@@ -1,6 +1,6 @@
 const HowWeOperate = () => {
     return (
-        <div className="card">
+        <div className="card shadow">
             <div className="card-title"></div>
             <div className="card-body">
                 <h5>How We Operate</h5>

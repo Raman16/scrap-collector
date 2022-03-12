@@ -4,6 +4,8 @@ import AuthContext from "../store/auth-context";
 
 const Header = (props) => {
     const authCtx = useContext(AuthContext);
+    const user = authCtx.user ?? '';
+    const user_role = user!=''? authCtx.user.role[0]:'';
     const isLoggedIn = authCtx.isLoggedIn;
     const navigate = useNavigate();
 
@@ -89,62 +91,8 @@ const Header = (props) => {
                                     </li>
                                 </>
                             )}
-                            {isLoggedIn && (
+                            {(isLoggedIn && user_role.role_id ==1) && (
                                 <>
-                                    <li className="nav-item">
-                                        <NavLink
-                                            to="book-a-pickup"
-                                            className="dropdown-item"
-                                        >
-                                            Book A Pickup
-                                        </NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink
-                                            to="my-pickups"
-                                            className="dropdown-item"
-                                        >
-                                            Pickup List
-                                        </NavLink>
-                                    </li>
-
-                                    <li className="nav-item dropdown">
-                                        <a
-                                            className="nav-link dropdown-toggle"
-                                            href="#"
-                                            id="dropdown01"
-                                            data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                        >
-                                            {authCtx.user.username}
-                                        </a>
-                                        <ul
-                                            className="dropdown-menu"
-                                            aria-labelledby="dropdown01"
-                                        >
-                                            <li>
-                                                <NavLink
-                                                    to="profile"
-                                                    className="dropdown-item"
-                                                >
-                                                    Profile
-                                                </NavLink>
-                                                <a
-                                                    className="dropdown-item"
-                                                    href="article.html"
-                                                ></a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <NavLink
-                                                    to="logout"
-                                                    className="dropdown-item"
-                                                    onClick={logoutHandler}
-                                                >
-                                                    Logout
-                                                </NavLink>
-                                            </li>
-                                        </ul>
-                                    </li>
                                     <li className="nav-item">
                                         <NavLink
                                             to="admin/dashboard"
@@ -190,6 +138,64 @@ const Header = (props) => {
                                                 >
                                                     Settings
                                                 </NavLink>
+                                            </li>
+                                            <li className="nav-item">
+                                                <NavLink
+                                                    to="logout"
+                                                    className="dropdown-item"
+                                                    onClick={logoutHandler}
+                                                >
+                                                    Logout
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </>
+                            )}
+                            {(isLoggedIn && user_role.role_id ==2) && (
+                                <>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            to="book-a-pickup"
+                                            className="dropdown-item"
+                                        >
+                                            Book A Pickup
+                                        </NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            to="my-pickups"
+                                            className="dropdown-item"
+                                        >
+                                            Pickup List
+                                        </NavLink>
+                                    </li>
+
+                                    <li className="nav-item dropdown">
+                                        <a
+                                            className="nav-link dropdown-toggle"
+                                            href="#"
+                                            id="dropdown01"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                        >
+                                            {authCtx.user.username}
+                                        </a>
+                                        <ul
+                                            className="dropdown-menu"
+                                            aria-labelledby="dropdown01"
+                                        >
+                                            <li>
+                                                <NavLink
+                                                    to="profile"
+                                                    className="dropdown-item"
+                                                >
+                                                    Profile
+                                                </NavLink>
+                                                <a
+                                                    className="dropdown-item"
+                                                    href="article.html"
+                                                ></a>
                                             </li>
                                             <li className="nav-item">
                                                 <NavLink

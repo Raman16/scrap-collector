@@ -22,7 +22,7 @@ const MyPickups = (props) => {
 
     return (
         <>
-            <div className="card">
+            <div className="card shadow">
                 <div className="card-body">
                     <div className="table-responsive ps ps--active-x">
                         <h5>{product.material_name}</h5>

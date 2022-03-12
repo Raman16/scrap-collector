@@ -6,11 +6,16 @@ import Button from "../UI/Button";
 import InputH from "../UI/InputH";
 import Select from "../UI/Select";
 import TextArea from "../UI/TextArea";
+import "react-datetime/css/react-datetime.css";
+import moment from "moment";
+
+import DatePicker from "react-datetime";
 
 const BookAPickup = (props) => {
     const [materialType, setMaterialType] = useState([]);
     const [countries, setCountries] = useState([]);
     const [countryState, setcountryState] = useState([]);
+    const [dt, setDt] = useState(moment());
 
     const {
         isLoading: isLoading,
@@ -75,10 +80,10 @@ const BookAPickup = (props) => {
             });
         });
     }
+
     // const handleImage =(e)=>{
     // console.log("file", e.target.files[0]);
     // let file = e.target.files[0];
-       
 
     //    let reader = new FileReader();
     //    reader.onloadend = function() {
@@ -93,7 +98,7 @@ const BookAPickup = (props) => {
             <form onSubmit={handleSubmit(props.onSubmit)}>
                 <div className="row">
                     <div className="col-12">
-                        <div className="card">
+                        <div className="card shadow">
                             <div className="card-body">
                                 <div className="form-group mb-50">
                                     <div className="row">
@@ -120,7 +125,7 @@ const BookAPickup = (props) => {
                                             />
                                         </div>
                                         <div className="col-sm-6">
-                                        {/* <input
+                                            {/* <input
                                                 id="image"
                                                 name="image"
                                                 type="file"
@@ -163,7 +168,7 @@ const BookAPickup = (props) => {
 
                 <div className="row">
                     <div className="col-12">
-                        <div className="card">
+                        <div className="card shadow">
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-12">
@@ -175,7 +180,43 @@ const BookAPickup = (props) => {
 
                                 <div className="row">
                                     <div className="col-sm-6">
-                                        <InputH
+                                        <div className="form-group row">
+                                            <label className="col-sm-4 col-form-label">
+                                                Pickup Date:
+                                            </label>
+                                            <div className="col-sm-8">
+                                                <DatePicker
+                                                    inputProps={{
+                                                        style: { width: 250 },
+                                                    }}
+                                                    value={dt}
+                                                    dateFormat="DD-MM-YYYY"
+                                                    timeFormat="hh:mm A"
+                                                    onChange={(val) =>
+                                                        setDt(val)
+                                                    }
+                                                />
+                                                <InputH
+                                                    id="pickup_date"
+                                                    name="pickup_date"
+                                                    type="hidden"
+                                                    placeholder="Enter Date"
+                                                    register={register}
+                                                    required
+                                                    errors={errors}
+                                                    value={dt.format(
+                                                        "D-M-Y LT"
+                                                    )}
+                                                />
+                                                <input
+                                                    type="hidden"
+                                                    value={dt.format(
+                                                        "D-M-Y LT"
+                                                    )}
+                                                />
+                                            </div>
+                                        </div>
+                                        {/* <InputH
                                             id="pickup_date"
                                             label="Date"
                                             type="text"
@@ -183,7 +224,7 @@ const BookAPickup = (props) => {
                                             register={register}
                                             required
                                             errors={errors}
-                                        />
+                                        /> */}
                                     </div>
                                     <div className="col-sm-6"></div>
                                 </div>
@@ -322,7 +363,7 @@ const BookAPickup = (props) => {
 
                 <div className="row">
                     <div className="col-12">
-                        <div className="card">
+                        <div className="card shadow">
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-12">

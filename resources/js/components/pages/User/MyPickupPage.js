@@ -175,7 +175,7 @@ const MyPickupPage = () => {
                                             label="Material Type"
                                             name="material_type_id"
                                             placeholder="--select material--"
-                                            className="form-control"
+                                            className="form-control shadow"
                                             onChange={handleSeachByMaterial}
                                         >
                                             <option>
@@ -201,7 +201,7 @@ const MyPickupPage = () => {
                     <div className="col-sm-3">
                         <div style={{ marginTop: "48px" }}>
                             {/* <RecentPickupCard /> */}
-                            <div className="card">
+                            <div className="card shadow">
                                 <div className="card-body">
                                     <h5 className="card-title mb-1">
                                         Recent Pickups

@@ -6,7 +6,7 @@ const UserPickupsPage = () => {
         <div className="basic-2">
             <div className="container">
                 <div className="row">
-                    <div className="col-sm-9">
+                    <div className="col-sm-12">
                         <div className="row">
                             <div className="col-sm-6">
                                 <div className="row">
@@ -59,6 +59,11 @@ const UserPickupsPage = () => {
                                                     </strong>
                                                 </td>
                                                 <td className="pb-0">
+                                                    <strong>
+                                                        Delivery Agent
+                                                    </strong>
+                                                </td>
+                                                <td className="pb-0">
                                                     <strong>Action</strong>
                                                 </td>
                                             </tr>
@@ -97,6 +102,8 @@ const UserPickupsPage = () => {
                                                                 Bank Name:ICICI
                                                                 <br />
                                                                 IFSC :ICIC00933
+                                                                <br/>
+                                                                Contact No:9886426568
                                                             </p>
                                                         </div>
                                                         <i className="bx bx-cloud font-large-2"></i>
@@ -110,6 +117,11 @@ const UserPickupsPage = () => {
                                                             </p>
                                                         </div>
                                                         {/* <i className="bx bx-cloud font-large-2"></i> */}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        Jeevan
                                                     </div>
                                                 </td>
                                                 <td>
@@ -158,6 +170,11 @@ const UserPickupsPage = () => {
                                                     </strong>
                                                 </td>
                                                 <td className="pb-0">
+                                                    <strong>
+                                                        Delivery Agent
+                                                    </strong>
+                                                </td>
+                                                <td className="pb-0">
                                                     <strong>Action</strong>
                                                 </td>
                                             </tr>
@@ -195,7 +212,8 @@ const UserPickupsPage = () => {
                                                             >
                                                                 Bank Name:ICICI
                                                                 <br />
-                                                                IFSC :ICIC00933
+                                                                IFSC :ICIC00933<br/>
+                                                                Contact No:9886426568
                                                             </p>
                                                         </div>
                                                         <i className="bx bx-cloud font-large-2"></i>
@@ -213,6 +231,11 @@ const UserPickupsPage = () => {
                                                 </td>
                                                 <td>
                                                     <div>
+                                                        John
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
                                                         <button className="btn mr-1 mb-1 btn-danger btn-sm">
                                                             Reject
                                                         </button>
@@ -225,68 +248,6 @@ const UserPickupsPage = () => {
                             </div>
                         </div>
                         <div className="margin-8"></div>
-                    </div>
-                    <div className="col-sm-3">
-                        <div style={{ marginTop: "48px" }}>
-                            {/* <RecentPickupCard /> */}
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title mb-1">
-                                        Recent Pickups
-                                        <i className="cursor-pointer bx bx-dots-vertical-rounded align-top float-right"></i>
-                                    </h5>
-                                    <div className="media d-flex align-items-center mb-1">
-                                        <a>
-                                            <img
-                                                src="../../../app-assets/images/banner/banner-31.jpg"
-                                                className="rounded"
-                                                alt="group image"
-                                                height="64"
-                                                width="64"
-                                            />
-                                        </a>
-                                       
-                                        <div className="media-body ml-1">
-                                            <h6 className="media-heading mb-0">
-                                                <small>Tyres</small>
-                                            </h6>
-                                            <small className="text-muted">
-                                                12-08-2011
-                                                <span className="badge badge-light-danger text-bold-500 py-50">
-                                                    Completed
-                                                </span>
-                                            </small>
-                                        </div>
-                                        <i className="cursor-pointer bx bx-plus-circle text-primary d-flex align-items-center "></i>
-                                    </div>
-                                    <div className="media d-flex align-items-center mb-1">
-                                        <a>
-                                            <img
-                                                        src="../../../app-assets/images/profile/user-uploads/sc.jpg"
-                                                        className="rounded"
-                                                alt="group image"
-                                                height="64"
-                                                width="64"
-                                            />
-                                        </a>
-                                       
-                                        <div className="media-body ml-1">
-                                            <h6 className="media-heading mb-0">
-                                                <small>Furniture</small>
-                                            </h6>
-                                            <small className="text-muted">
-                                                12-08-2011
-                                                <span className="badge badge-light-danger text-bold-500 py-50">
-                                                    Completed
-                                                </span>
-                                            </small>
-                                        </div>
-                                        <i className="cursor-pointer bx bx-plus-circle text-primary d-flex align-items-center "></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br></br>
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@ const InputH = (props) => {
             </label>
             <div className="col-sm-8">
                 <input
-                    className="form-control"
+                    className="form-control shadow"
                     type={props.type}
                     id={props.id}
                     value={props.value}
