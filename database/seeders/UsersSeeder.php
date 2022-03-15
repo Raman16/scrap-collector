@@ -22,8 +22,8 @@ class UsersSeeder extends Seeder
             'email'                  => 'admin@scrapbees2022.com',
             'password'               =>  bcrypt('Admin@123'),
             'country_code'           => '+91',
-            'phone_number'           => '9886426568',
-            'phone_number_with_code' => '+919886426568',
+            'phone_number'           => '9886426565',
+            'phone_number_with_code' => '+919886426565',
             'created_at'    => date('Y-m-d H:i:s'),
             'updated_at'    => date('Y-m-d H:i:s')
         ];

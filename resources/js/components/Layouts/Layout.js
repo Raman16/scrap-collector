@@ -6,7 +6,7 @@ const Layout = (props) => {
     return (
         <Fragment>
             <Header />
-            <div style={{ marginTop: "58px" }}
+            <div style={{ marginTop: "70px" }}
             >{props.children}</div>
             <Footer />
         </Fragment>

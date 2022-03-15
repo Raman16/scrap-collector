@@ -19,39 +19,27 @@ class MaterialTypesSeeder extends Seeder
 
         $material_types = [
             [
-                'name' => 'Furniture',
+                'name' => 'Fridges, freezers and other cooling equipment',
                 'description' => ''
             ],
             [
-                'name' => 'Washers & Dyers',
+                'name' => 'Computers and telecommunications equipment',
                 'description' => ''
             ],
             [
-                'name' => 'Industrail & Factory Equipment',
+                'name' => 'Consumer electronic devices and solar panels',
                 'description' => ''
             ],
             [
-                'name' => "Electronis, TV's & Monitors",
+                'name' => "TVs, monitors and screens",
                 'description' => ''
             ],
             [
-                'name' => "Junk Cars & Equipments",
+                'name' => "LED bulbs",
                 'description' => ''
             ],
             [
-                'name' => "Scrap Tyres of All Size",
-                'description' => ''
-            ],
-            [
-                'name' => "Farm Equipments",
-                'description' => ''
-            ],
-            [
-                'name' => "Matresses & Box Springs",
-                'description' => ''
-            ],
-            [
-                'name' => "Paints, Solvent & Chemicals",
+                'name' => "Vending machines",
                 'description' => ''
             ]
         ];

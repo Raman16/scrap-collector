@@ -6,6 +6,7 @@ import HowWeOperate from "../../Cards/HowWeOperateCard";
 import useAxios from "../../hooks/use-axios";
 import Notification from "../../UI/Notifications";
 import BookAPickup from "../../User/BookAPickup";
+import { useNavigate } from "react-router-dom";
 
 const BookAPickupPage = () => {
     const {
@@ -13,7 +14,7 @@ const BookAPickupPage = () => {
         error: bookingError,
         sendRequest: BookingRequest,
     } = useAxios();
-
+    const navigate = useNavigate();
     const {
         isLoading: isImageUploading,
         error: imageUploadError,
@@ -23,9 +24,11 @@ const BookAPickupPage = () => {
     let uploadedImage;
     const imageUploadResponse = (data) => {
         if (!isBooking) {
-            toast("Booking DOne...");
+            toast("Booking Done...");
+            navigate("/my-pickups");
         }
     };
+
     const bookingResponse = async (data) => {
         let file = uploadedImage[0];
         let reader = new FileReader();
@@ -48,7 +51,6 @@ const BookAPickupPage = () => {
     };
 
     const handleSubmit = (requestData) => {
-        
         requestData.address_type = "1";
         if (!isBooking) {
             toast("Booking in Process...");
@@ -64,11 +66,15 @@ const BookAPickupPage = () => {
             bookingResponse
         );
     };
+    const nabvs = () => {
+        navigate("/invoices");
+    };
     return (
         <div className="basic-2">
             <div className="container">
                 <div className="row">
                     <div className="col-sm-9">
+                        {/* <button onClick={nabvs}>test</button> */}
                         <BookAPickup onSubmit={handleSubmit} />
                         <Notification />
                     </div>

@@ -56,9 +56,9 @@ const BookAPickup = (props) => {
         }
     };
 
-    let material_options = [];
-    let country_options = [];
-    let state_options = [];
+    let material_options = [{id:'',value:'Select Type'}];
+    let country_options = [{id:'',value:'Select County'}];
+    let state_options = [{id:'',value:'Select State'}];
 
     if (!isLoading) {
         materialType.map((matrl) => {
@@ -95,7 +95,7 @@ const BookAPickup = (props) => {
     return (
         <>
             <h5>Book Your Pickup</h5>
-            <form onSubmit={handleSubmit(props.onSubmit)}>
+            <form onSubmit={handleSubmit(props.onSubmit)} autoComplete="none">
                 <div className="row">
                     <div className="col-12">
                         <div className="card shadow">
@@ -149,9 +149,9 @@ const BookAPickup = (props) => {
                                         <div className="col-sm-6">
                                             <TextArea
                                                 id="message"
-                                                label="Message"
+                                                label="Description"
                                                 type="text"
-                                                placeholder="Enter some text"
+                                                placeholder="Enter Description"
                                                 register={register}
                                                 required
                                                 errors={errors}
@@ -437,7 +437,8 @@ const BookAPickup = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="margin-8"></div>
+                <div style={{marginTop:"20px"}}></div>
+
                 <div>
                     <Button type="submit">Book Pickup</Button>
                 </div>

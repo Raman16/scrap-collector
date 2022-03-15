@@ -8,7 +8,7 @@ const RecentPickup = (props) => {
         >
             <a>
                 <img
-                    src="../../../app-assets/images/banner/banner-31.jpg"
+                    src={recentPickup.image}
                     className="rounded"
                     alt="group image"
                     height="64"
@@ -20,7 +20,8 @@ const RecentPickup = (props) => {
                     <small>{recentPickup.material_name}</small>
                 </h6>
                 <small className="text-muted">
-                    12-08-2011
+                    {recentPickup.pickup_date}
+
                     {(recentPickup.status == "CANCELLED" ||
                         recentPickup.status == "INPROGRESS") && (
                         <span className="badge badge-light-danger text-bold-500 py-50">

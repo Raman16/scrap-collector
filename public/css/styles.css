@@ -360,8 +360,7 @@ a:hover {
 }
 
 .navbar .logo-image img {
-    width: 80px;
-    height: 45px;
+    height: 50px;
 }
 
 .navbar .logo-text {
@@ -412,6 +411,10 @@ a:hover {
 .navbar .nav-item .nav-link:hover,
 .navbar .nav-item .nav-link.active {
     color: rgba(90, 141, 238, 0.15);
+}
+.active {
+    background-color: #0092ff !important;
+    color: #ffffff !important;
 }
 
 /* Dropdown Menu */
@@ -1341,6 +1344,11 @@ a:hover {
     }
     /* end of contact */
 
+    .form-control {
+        -webkit-appearance: "none !important";
+        appearance: "none !important";
+        -moz-appearance: "none !important";
+    }
     /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -1534,7 +1542,7 @@ a:hover {
 }
 /* end of min-width 1200px */
 
-.spinner-loading{
+.spinner-loading {
     float: right;
     text-align: center;
     margin-top: 100px;
@@ -1543,3 +1551,97 @@ a:hover {
     padding-top: 100px;
     padding-right: 100px;
 }
+
+
+
+/* Authentication page css */
+/*-------------------------*/
+.bg-authentication {
+    background-color: #F2F4F4;
+  }
+  
+  .bg-authentication #icon-arrow {
+    position: absolute;
+    top: 11px;
+    right: 15px;
+  }
+  
+  .bg-authentication .brand-text {
+    color: #5A8DEE;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+  }
+  
+  @media only screen and (min-width: 992px) {
+    .bg-authentication .disable-rounded-right {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
+  
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    /* IE Specific CSS */
+    .bg-authentication {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+
+
+  .modal:before {
+    content: "";
+    display: none;
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+  }
+  .modal:target:before {
+    display: block;
+  }
+  .modal-dialog {
+    background: #fefefe;
+    border: #333 solid 1px;
+    border-radius: 5px;
+    margin-left: -200px;
+    position: fixed;
+    left: 50%;
+    top: -100%;
+    z-index: 11;
+    width: 360px;
+    -webkit-transform: translate(0, -500%);
+    -ms-transform: translate(0, -500%);
+    transform: translate(0, -500%);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    -moz-transition: -moz-transform 0.3s ease-out;
+    -o-transition: -o-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+  }
+  .modal:target .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  top: 20%;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  .modal-header,
+  .modal-footer {
+    padding: 10px 20px;
+  }
+  .modal-header {
+    border-bottom: #eee solid 1px;
+  }
+  .modal-header h2 {
+    font-size: 20px;
+  }
+  .modal-footer {
+    border-top: #eee solid 1px;
+    text-align: right;
+  }

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import MyPickup from "./MyPickup";
 const MyPickups = (props) => {
     const { product } = props;
     const bank = product.bank;
@@ -10,11 +9,11 @@ const MyPickups = (props) => {
     };
 
     const handleCancel = () => {
-       props.cancelPickup(product.pick_id, 3);
+        props.cancelPickup(product.pick_id, 3);
     };
     const handleRetry = () => {
         props.cancelPickup(product.pick_id, 1);
-     };
+    };
 
     const showModalHandler = () => {
         props.showModalHandler(product.pick_id);
@@ -51,16 +50,24 @@ const MyPickups = (props) => {
                                 </tr>
                                 <tr>
                                     <td className="pl-0">
-                                    <img
-                                                    className="img-fluid"
-                                                    src={product.image}
-                                                    alt="img placeholder"
-                                                   style={{width:"120px",borderRadius:"15px"}}
-                                                />
+                                        <img
+                                            className="img-fluid"
+                                            src={product.image}
+                                            alt="img placeholder"
+                                            style={{
+                                                width: "120px",
+                                                borderRadius: "15px",
+                                            }}
+                                        />
                                     </td>
                                     <td className="pl-0">
                                         <div className="badge badge-light-success text-bold-500 py-50">
-                                            06 May 2019
+                                            {product.pickup_date}
+                                        </div>
+                                        <br />
+
+                                        <div className="badge badge-light-success text-bold-500 py-50">
+                                            {product.pickup_time}
                                         </div>
                                     </td>
                                     <td>

@@ -18,13 +18,14 @@ const TextArea = (props) => {
             </label>
             <div className="col-sm-8">
                 <textarea
-                    className="form-control shadow"
+                    className="form-control"
                     type={props.type}
                     id={props.id}
                     value={props.value}
                     onChange={props.onChange}
                     onBlur={props.onBlur}
                     placeholder={props.placeholder}
+                    autoComplete="none"
                     {...register(props.id, { required })}
                 />
                 {errorMessage}

@@ -50,13 +50,14 @@ class AuthController extends Controller
     public function register(RegistrationRequest $request, SMSController $sms)
     {
         $validated = $request->validated();
-        $validated['password'] = Hash::make(Str::random(60));
+        $validated['password'] = Hash::make($validated['password']);
 
        // $smsResponse = $sms->verifyOTP($request);
 
         try {
             //if ($smsResponse->status() == 201) {
-              if(true){
+            //   if(true){
+
                 DB::beginTransaction();
 
                 $user = User::create($validated);
@@ -80,9 +81,10 @@ class AuthController extends Controller
                     'user'    => new UserResource($user),
                     'message' => 'User registered succesfully.'
                 ], 200);
-            }
-        } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 422);
+            // }
+        } catch (\Illuminate\Database\QueryException $e)  {
+            
+            return response()->json(['error' =>$e->errorInfo], 422);
         }
     }
 
@@ -96,12 +98,18 @@ class AuthController extends Controller
                       ->first();
 
         if (!$user) {
-            return response()->json(['message' =>"User Not Found"],  Response::HTTP_NOT_FOUND);
-
+           // return response()->json(['message' =>"User Not Found"],  Response::HTTP_NOT_FOUND);
             throw ValidationException::withMessages([
                 'phone number' => ['Incorrect Phone Number'],
             ]);
         }
+
+        if (!Hash::check($loginValidated['password'], $user->password)) {
+            throw ValidationException::withMessages([
+                'password' => ['Incorrect Password'],
+            ]);
+        }
+     
        // $smsResponse = $sms->verifyOTP($loginRequest);
 
         try {

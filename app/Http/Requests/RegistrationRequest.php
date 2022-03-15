@@ -20,7 +20,7 @@ class RegistrationRequest extends FormRequest
     public function prepareForValidation()
     {
         $this->merge(['phone_number_with_code' => $this->request->get('country_code') .
-                                                  $this->request->get('phone_number')]);
+            $this->request->get('phone_number')]);
     }
     /**
      * Get the validation rules that apply to the request.
@@ -35,10 +35,11 @@ class RegistrationRequest extends FormRequest
             'first_name'                => 'required',
             'last_name'                 => 'required',
             'username'                  => 'required',
-            'email'                     => 'string|email|max:255',
+            'email'                     => 'string|max:255|unique:users',
             'country_code'              => 'required',
             'phone_number'              => 'required|digits:10',
-            'phone_number_with_code'    => 'required|string',
+            'phone_number_with_code'    => 'required|string|unique:users',
+            'password'                  => 'required|string|confirmed|min:6',
             'otp'                       => 'required|digits:6',
             'device_name'               => 'required',
             'device_id'                 => 'required',

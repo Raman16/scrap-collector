@@ -1,7 +1,10 @@
 import React from "react";
 
 const Select = React.forwardRef(
-    ({ onChange, onBlur, label, options, id, errors, register,require }, ref) => {
+    (
+        { onChange, onBlur, label, options, id, errors, register, require },
+        ref
+    ) => {
         const dropdownOptions = options.map((option) => (
             <option value={option.id} key={option.id}>
                 {option.value}
@@ -25,13 +28,12 @@ const Select = React.forwardRef(
                     <select
                         {...register(id, { required: true })}
                         name={id}
-                        className="form-control shadow"
+                        className="form-control"
                         id={id}
                         ref={ref}
                         onChange={onChange}
                         onBlur={onBlur}
                     >
-                        <option value="">--Select Option--</option>
                         {dropdownOptions}
                     </select>
                     {errorMessage}

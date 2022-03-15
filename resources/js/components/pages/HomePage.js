@@ -4,7 +4,36 @@ import { NavLink } from "react-router-dom";
 function HomePage() {
     return (
         <>
-            <header id="header" className="header">
+            <div id="details" className="basic-1">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 col-xl-7">
+                            <div className="image-container">
+                                <img
+                                    className="img-fluid"
+                                    src="images/header-image1.jpg"
+                                    alt="alternative"
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-6 col-xl-5">
+                            <div className="">
+                                <div className="section-title">WHAT WE DO</div>
+                                <h2>We are here on a Mission</h2>
+                                <p>
+                                    We are here to grow online Scrap market and
+                                    resolve all the loopholes related to Buy &
+                                    Sell of waste from the customers online
+                                </p>
+                                <NavLink to="login" className="btn-solid-reg">
+                                    Book A Pickup
+                                </NavLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* <header id="header" className="header">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 col-xl-5">
@@ -18,12 +47,13 @@ function HomePage() {
                                     Sell of waste from the customers online
                                 </p>
                                 <li className="nav-item">
-                                        <NavLink
-                                            to="login"
-                                            className="btn-solid-lg"                                        >
-                                            Book A Pickup
-                                        </NavLink>
-                                    </li>
+                                    <NavLink
+                                        to="login"
+                                        className="btn-solid-lg"
+                                    >
+                                        Book A Pickup
+                                    </NavLink>
+                                </li>
                             </div>
                         </div>
                         <div className="col-lg-6 col-xl-7">
@@ -31,11 +61,12 @@ function HomePage() {
                                 className="img-fluid"
                                 src="images/header-image1.jpg"
                                 alt="alternative"
+                                style={{ height: "295px" }}
                             />
                         </div>
                     </div>
                 </div>
-            </header>
+            </header> */}
 
             <div id="services" className="cards-1 bg-gray">
                 <div className="container">
@@ -70,8 +101,9 @@ function HomePage() {
                                 />
                                 <div className="card-body">
                                     <h5 className="card-title">
-                                        Sell Scrap and Make Money</h5>
-                                    
+                                        Sell Scrap and Make Money
+                                    </h5>
+
                                     <p>
                                         Dont Trash the scrap, Get Paid for the
                                         Scrap Materials.
@@ -88,8 +120,8 @@ function HomePage() {
                                 <div className="card-body">
                                     <h5 className="card-title">
                                         Corporate Tie-up
-                                        </h5>
-                                    
+                                    </h5>
+
                                     <p>
                                         We have customized panel for corporates
                                         to systematically get rid of the scrap
@@ -114,20 +146,122 @@ function HomePage() {
                             </div>
                         </div>
                         <div className="col-lg-6 col-xl-6">
-                            <h2>What we do?</h2>
-                            <div className="section-title">
-                                The right influencer can boost your conversion
+                            <h5>
+                                WHY E-WASTE IS IMPORTANT TO PROCESSED (OR)
+                                DISMANTELED IN SCIENTIFIC MANNER
+                            </h5> <br />
+                            <h6>E-WASTE GENERATION </h6>
+                           
+                            The Global E-Waste Monitor 2020 shows that consumers
+                            discarded 53.6 million tonnes worth of electronics
+                            in 2019 globally, up 20 percent in 5 years. India
+                            generated 3.2 million tonnes of e-waste last year,
+                            ranking third after China (10.1 million tonnes) and
+                            the United States (6.9 million tonnes). Following
+                            the current growth rate of e-waste, an ASSOCHAM-EY
+                            joint report, titled ‘Electronic Waste Management in
+                            India’ estimated India to generate 5 million tonnes
+                            by 2021.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="details" className="basic-1">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 col-xl-6">
+                            <div className="image-container">
+                                <img
+                                    className="img-fluid"
+                                    src="images/ewaste2.jpg"
+                                    alt="alternative"
+                                />
                             </div>
-
-                            <p>
-                                Our vendors & customers are surprised with the
-                                money worth outcomes we integrating our
-                                customized approach to master the world of
-                                Kabadiwala some unique attitude for revolving
-                                waste into a mutual benefiting cash cow.
-                                customers are satisfied with curiosity to come
-                                back again.
-                            </p>
+                        </div>
+                        <div className="col-lg-6 col-xl-6">
+                            <h6>
+                                E-WASTE & ITS NEGATIVE EFFECTS ON THE
+                                ENVIRONMENT
+                                <br />
+                            </h6> <br />
+                            <br />
+                            Contamination in the air occurs when e-waste is
+                            informally disposed by dismantling, shredding or
+                            melting the materials, releasing dust particles or
+                            toxins, such as dioxins, into the environment that
+                            cause air pollution and damage respiratory health.
+                            E-waste of little value is often burned, but burning
+                            also serves a way to get valuable metal from
+                            electronics, like copper. Chronic diseases and
+                            cancers are at a higher risk to occur when burning
+                            e-waste because it also releases fine particles,
+                            which can travel thousands of miles, creating
+                            numerous negative health risks to humans and
+                            animals. The negative effects on air from informal
+                            e-waste recycling are most dangerous for those who
+                            handle this waste, but the pollution can extend
+                            thousands of miles away from recycling sites
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="details" className="basic-1">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 col-xl-6">
+                            <div className="image-container">
+                                <img
+                                    className="img-fluid"
+                                    src="images/ewaste3.jpg"
+                                    alt="alternative"
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-6 col-xl-6">
+                            <h6>THE NEGATIVE EFFECTS ON SOIL</h6>
+                            <br />
+                            When improper disposal of e-waste in regular
+                            landfills or in places where it is dumped illegally,
+                            both heavy metals and flame retardants can seep
+                            directly from the e-waste into the soil, causing
+                            contamination of underlying groundwater or
+                            contamination of crops that may be planted near by
+                            or in the area in the future. When the soil is
+                            contaminated by heavy metals, the crops become
+                            vulnerable to absorbing these toxins, which can
+                            cause many illnesses and doesn’t allow the farmland
+                            to be as productive as possible. When large
+                            particles are released from burning, shredding or
+                            dismantling e-waste, they quickly re-deposit to the
+                            ground and contaminate the soil as well, due to
+                            their size and weight.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="details" className="basic-1">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 col-xl-6">
+                            <div className="image-container">
+                                <img
+                                    className="img-fluid"
+                                    src="images/ewaste4.jpg"
+                                    alt="alternative"
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-6 col-xl-6">
+                            <h6>THE NEGATIVE EFFECTS ON HUMANS</h6>
+                            <br />
+                            Electronic waste contains toxic components that are
+                            dangerous to human health, such as mercury, lead,
+                            cadmium, polybrominated flame retardants, barium and
+                            lithium. The negative health effects of these toxins
+                            on humans include brain, heart, liver, kidney and
+                            skeletal system damage. It can also considerably
+                            affect the nervous and reproductive systems of the
+                            human body, leading to disease and birth defects.
                         </div>
                     </div>
                 </div>
@@ -292,78 +426,22 @@ function HomePage() {
                         <div className="col-lg-12">
                             <div className="card">
                                 <ul className="list-styled">
-                                    <li>
-                                        Furniture, Carpeting & Flooring
-                                    </li>
-                                    <li>
-                                        Fluorescent Lightbulbs
-                                    </li>
-                                    <li>
-                                        Construction Debris
-                                    </li>
-                                    <li>
-                                        Junk Cars & Equipment
-                                    </li>
-                                    <li>
-                                        Scrap Tires of All Sizes
-                                    </li>
-                                    <li>
-                                        
-                                            Scrap Metal, Wire & Aluminium Cans
-                                        
-                                    </li>
-                                    <li>
-                                        Industrial & Factory Equipment
-                                    </li>
+                                    <li>Fridges, freezers and other cooling equipment</li>
+                                    <li>TVs, monitors and screens</li>
                                 </ul>
                             </div>
 
                             <div className="card">
                                 <ul className="list-styled">
-                                    <li>
-                                        Mattresses & Box Springs
-                                    </li>
-                                    <li>
-                                        Washers & Dryers
-                                    </li>
-                                    <li>
-                                        Microwaves & Kitchenware
-                                    </li>
-                                    <li>
-                                        Electronics, TV's & Monitors
-                                    </li>
-                                    <li>
-                                        Household Hazardous Waste
-                                    </li>
-                                    <li>
-                                        Drywall & Roof Shingles
-                                    </li>
-                                    <li>
-                                        Storm Debris
-                                    </li>
+                                    <li>Computers and telecommunications equipment</li>
+                                    <li>LED bulbs</li>
                                 </ul>
                             </div>
 
                             <div className="card">
                                 <ul className="list-styled">
-                                    <li>
-                                        Roof Shingles
-                                    </li>
-                                    <li>
-                                        Fencing
-                                    </li>
-                                    <li>
-                                        Farm Equipment
-                                    </li>
-                                    <li>
-                                        Demolition Debris
-                                    </li>
-                                    <li>
-                                        Paints, Solvents & Chemicals
-                                    </li>
-                                    <li>
-                                        and many more....
-                                    </li>
+                                    <li>Consumer electronic devices and solar panels</li>
+                                    <li>Vending machines</li>
                                 </ul>
                             </div>
                         </div>

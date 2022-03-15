@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useRef, useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import useAxios from "../hooks/use-axios";
@@ -10,7 +10,15 @@ import InputH from "../UI/InputH";
 const Profile = () => {
     const auth = useContext(AuthContext);
     const toastId = useRef(null);
-
+    const [img, setImg] = useState();
+    const chooseFileStyle = {
+        width: "232px",
+        height: "32px",
+        margin: "2px",
+        color: "teal",
+        fontSize: "12px",
+        overflow: "hidden",
+    };
     const {
         register,
         handleSubmit,
@@ -42,8 +50,9 @@ const Profile = () => {
 
     let uploadedImage;
     const profileResponse = (data) => {
-        let file = uploadedImage[0];
+        let file = img;
         console.log(file);
+
         let reader = new FileReader();
         reader.onloadend = function () {
             uploadImageRequest(
@@ -67,8 +76,9 @@ const Profile = () => {
     // }
 
     const onSubmit = (requestData) => {
-        uploadedImage = requestData.image;
-        console.log(uploadedImage);
+        // requestData.image = img;
+        // uploadedImage = requestData.image;
+        // console.log(uploadedImage);
         updateProfile(
             {
                 method: "PUT",
@@ -77,6 +87,15 @@ const Profile = () => {
             },
             profileResponse
         );
+    };
+    const handleUploadImage = (event) => {
+        if (event.target.files.length > 0) {
+            setImg(event.target.files[0]);
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("profile_image");
+            preview.src = src;
+            preview.style.display = "block";
+        }
     };
 
     return (
@@ -88,18 +107,39 @@ const Profile = () => {
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <div className="media">
-                            <a>
+                            <div
+                                style={{
+                                    width: "120px",
+                                    height:"120px",
+                                    border: "1px solid #888",
+                                }}
+                            >
                                 <img
                                     src={auth.user.image}
                                     className="rounded mr-75"
                                     alt="profile image"
-                                    height="64"
-                                    width="64"
+                                    id = "profile_image"
+                                    style={{
+                                        width: "150px",
+                                        height: "150px",
+                                        objectFit: "cover",
+                                    }}
                                 />
-                            </a>
+                            </div>
+
                             <div className="media-body mt-25">
-                                <div className="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                    <InputH
+                                <div className="col-4 px-0 d-flex flex-sm-row flex-column justify-content-start fileUpload ">
+                                    <input
+                                        id="image"
+                                        label="Image"
+                                        type="file"
+                                        className="upload"
+                                        style={chooseFileStyle}
+                                        onChange={handleUploadImage}
+                                    />
+                                    {/*
+                                     */}
+                                    {/* <InputH
                                         id="image"
                                         label="Image"
                                         type="file"
@@ -107,7 +147,7 @@ const Profile = () => {
                                         register={register}
                                         // errors={errors}
                                         // required
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                         </div>

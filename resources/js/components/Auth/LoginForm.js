@@ -56,7 +56,7 @@ const LoginForm = () => {
         await authCtx.login(data);
         if (data.user.role[0].role_id == 1) {
             navigate("/admin/dashboard");
-        } 
+        }
         if (data.user.role[0].role_id == 2) {
             navigate("/book-a-pickup");
         }
@@ -89,73 +89,111 @@ const LoginForm = () => {
     // }, [otpError]);
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group mb-50">
-                    <div className="row">
-                        <div className="col-sm-3">
-                            {/* <Input2 label="FirstName" register={register} required /> */}
-                            <Input
-                                label="Country"
-                                id="country_code"
-                                type="text"
-                                register={register}
-                                required
-                                value="+91"
-                            />
-                        </div>
-                        <div className="col-sm-5">
-                            {/* <Input2 label="FirstName" register={register} required /> */}
-                            <Input
-                                label="Phone Number"
-                                id="phone_number"
-                                type="text"
-                                placeholder="Enter Phone Number"
-                                register={register}
-                                required
-                            />
-                        </div>
-                        <div className="col-sm-4">
-                            <br></br>
-                            <Button onClick={otpRequest}>Request OTP</Button>
-                        </div>
-                        <span className="text-danger">
-                            {errors.phone_number && "Phone Number is Required"}
-                        </span>
+            <section
+                // id="auth-login"
+                className="row flexbox-container"
+            >
+                <div className="col-xl-9 col-11">
+                    <div className="card bg-authentication mb-0">
+                        <div className="row m-0">
+                            <div className="col-md-6 col-12 px-0">
+                                <div
+                                    className="card shadow"
+                                    style={{height:"100%" }}
+                                >
+                                    <div className="card-body">
+                                        <h4 className="text-center mb-2">
+                                            Login
+                                        </h4>
+                                        <form onSubmit={handleSubmit(onSubmit)}>
+                                            <div className="form-group mb-50">
+                                                <div className="row">
+                                                    <div className="col-sm-1"></div>
+                                                    <div className="col-sm-3">
+                                                        <Input
+                                                            label="Country"
+                                                            id="country_code"
+                                                            type="text"
+                                                            register={register}
+                                                            required
+                                                            value="+91"
+                                                        />
+                                                    </div>
+                                                    <div className="col-sm-7">
+                                                        {/* <Input2 label="FirstName" register={register} required /> */}
+                                                        <Input
+                                                            label="Phone Number"
+                                                            id="phone_number"
+                                                            type="text"
+                                                            placeholder="Enter Phone Number"
+                                                            register={register}
+                                                            required
+                                                        />
+                                                        <span className="text-danger">
+                                                            {errors.phone_number &&
+                                                                "Phone Number is Required"}
+                                                        </span>
+                                                    </div>
 
-                        <span className="text-success">
-                            {OTPsending && "Sending OTP..."}
-                        </span>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <div className="row">
-                        <div className="col-sm-8 col-sm-offset-4">
-                            <Input
-                                id="otp"
-                                label="OTP(One Time Password)"
-                                type="text"
-                                register={register}
-                            />
-                            <span className="text-danger">
-                                {errors.otp && "OTP is required"}
-                            </span>
+                                                    <div className="col-sm-1"></div>
+                                                </div>
+                                            </div>
+                                            <div className="form-group mb-50">
+                                                <div className="row">
+                                                    <div className="col-sm-1"></div>
+
+                                                    <div className="col-sm-10">
+                                                        <Input
+                                                            id="password"
+                                                            label="Password"
+                                                            type="text"
+                                                            placeholder="Enter Password"
+                                                            register={register}
+                                                            required
+                                                        />
+                                                        <span className="text-danger">
+                                                            {errors.password &&
+                                                                "Password is Required"}
+                                                        </span>
+                                                    </div>
+                                                    <div className="col-sm-1"></div>
+                                                </div>
+                                            </div>
+
+                                            <div className="row">
+                                                <div className="col-sm-1"></div>
+
+                                                <div className="col-sm-10">
+                                                    <Button type="submit">
+                                                        LOGIN
+                                                    </Button>
+                                                </div>
+                                                <div className="col-sm-1"></div>
+                                            </div>
+                                        </form>
+                                        <hr />
+                                        <div className="text-center">
+                                            <small className="mr-25">
+                                                Don't have an account?
+                                            </small>
+                                            <a href="auth-register.html">
+                                                <small>Sign up</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-6 d-md-block d-none text-center align-self-center p-3">
+                                <img
+                                    className="img-fluid"
+                                    src="../../../app-assets/images/pages/login.png"
+                                    alt="branding logo"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div className="row">
-                    <div className="col-sm-8 col-sm-offset-4">
-                        <Button type="submit">Login</Button>
-                    </div>
-                </div>
-            </form>
-            <hr />
-            <div className="text-center">
-                <small className="mr-25">Don't have an account?</small>
-                <a href="auth-register.html">
-                    <small>Sign up</small>
-                </a>
-            </div>
+            </section>
         </>
     );
 };
