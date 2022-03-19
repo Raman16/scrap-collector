@@ -117,20 +117,16 @@ const MyPickups = (props) => {
                                     </td>
                                     <td>
                                         <div>
-                                            {product.status != "CANCELLED" && (
+                                            {product.status != "CANCELLED" ? (
                                                 <button
                                                     className="btn mr-1 mb-1 btn-danger btn-sm"
                                                     onClick={handleCancel}
                                                 >
                                                     Cancel
                                                 </button>
-                                            )}
-                                            {product.status == "CANCELLED" && (
-                                                <button
-                                                    className="btn mr-1 mb-1 btn-success btn-sm"
-                                                    onClick={handleRetry}
-                                                >
-                                                    Retry
+                                            ) : (
+                                                <button className="btn mr-1 mb-1 btn-danger btn-sm disabled">
+                                                    Cancel
                                                 </button>
                                             )}
                                             &nbsp;

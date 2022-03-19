@@ -1344,11 +1344,7 @@ a:hover {
     }
     /* end of contact */
 
-    .form-control {
-        -webkit-appearance: "none !important";
-        appearance: "none !important";
-        -moz-appearance: "none !important";
-    }
+
     /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

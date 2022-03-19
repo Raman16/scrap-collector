@@ -146,7 +146,7 @@ const LoginForm = () => {
                                                         <Input
                                                             id="password"
                                                             label="Password"
-                                                            type="text"
+                                                            type="password"
                                                             placeholder="Enter Password"
                                                             register={register}
                                                             required

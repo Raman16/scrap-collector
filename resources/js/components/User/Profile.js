@@ -48,27 +48,30 @@ const Profile = () => {
         toast.success("Update Success");
     };
 
-    let uploadedImage;
     const profileResponse = (data) => {
-        let file = img;
-        console.log(file);
 
-        let reader = new FileReader();
-        reader.onloadend = function () {
-            uploadImageRequest(
-                {
-                    method: "POST",
-                    url: "/image",
-                    data: {
-                        imageable_type: "user",
-                        imageable_id: data.user.id,
-                        image: reader.result,
+        if (img != null) {
+            let file = img;
+            let reader = new FileReader();
+            reader.onloadend = function () {
+                uploadImageRequest(
+                    {
+                        method: "POST",
+                        url: "/image",
+                        data: {
+                            imageable_type: "user",
+                            imageable_id: data.user.id,
+                            image: reader.result,
+                        },
                     },
-                },
-                imageUploadResponse
-            );
-        };
-        reader.readAsDataURL(file);
+                    imageUploadResponse
+                );
+            };
+            reader.readAsDataURL(file);
+        }
+        else{
+            toast.success("Update Success");
+        }
     };
 
     // if (isLoading) {
@@ -76,6 +79,7 @@ const Profile = () => {
     // }
 
     const onSubmit = (requestData) => {
+        
         // requestData.image = img;
         // uploadedImage = requestData.image;
         // console.log(uploadedImage);
@@ -106,11 +110,11 @@ const Profile = () => {
                         className="validate-form"
                         onSubmit={handleSubmit(onSubmit)}
                     >
-                        <div className="media">
+                        {/* <div className="media">
                             <div
                                 style={{
                                     width: "120px",
-                                    height:"120px",
+                                    height: "120px",
                                     border: "1px solid #888",
                                 }}
                             >
@@ -118,7 +122,7 @@ const Profile = () => {
                                     src={auth.user.image}
                                     className="rounded mr-75"
                                     alt="profile image"
-                                    id = "profile_image"
+                                    id="profile_image"
                                     style={{
                                         width: "150px",
                                         height: "150px",
@@ -137,20 +141,10 @@ const Profile = () => {
                                         style={chooseFileStyle}
                                         onChange={handleUploadImage}
                                     />
-                                    {/*
-                                     */}
-                                    {/* <InputH
-                                        id="image"
-                                        label="Image"
-                                        type="file"
-                                        placeholder="upload image"
-                                        register={register}
-                                        // errors={errors}
-                                        // required
-                                    /> */}
+                                   
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="form-group mb-50">
                             <div className="row">
                                 <div className="col-sm-6">

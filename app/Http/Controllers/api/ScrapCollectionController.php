@@ -85,9 +85,13 @@ class ScrapCollectionController extends Controller
                     'pickup_date'       => date('Y-m-d H:m:s', strtotime($validated['pickup_date'])),
                     'address_id'        => $address->id,
                     'bank_id'           => $bank->id,
+                    'latitude'          => $validated['latitude'],
+                    'longitude'         => $validated['longitude'],
+
                     // 'status'            => ScrapCollection::BOOKING_STATUS['CREATED']
                 ]
             );
+           
 
             $pickup_list = ScrapCollection::where(['id' => $scrap_collection->id])
                 ->with(['address', 'bankDetail'])

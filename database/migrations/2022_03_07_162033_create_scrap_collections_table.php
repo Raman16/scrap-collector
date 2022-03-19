@@ -30,7 +30,11 @@ class CreateScrapCollectionsTable extends Migration
                 ->onDelete('cascade');
             $table->text('message')->nullable();
 
+            $table->float('latitude')->nullable();
+            $table->float('longitude')->nullable();
+
             $table->dateTime('pickup_date');
+
 
             $table->bigInteger('address_id')->unsigned();
             $table->foreign('address_id')

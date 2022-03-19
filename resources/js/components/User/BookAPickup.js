@@ -56,9 +56,9 @@ const BookAPickup = (props) => {
         }
     };
 
-    let material_options = [{id:'',value:'Select Type'}];
-    let country_options = [{id:'',value:'Select County'}];
-    let state_options = [{id:'',value:'Select State'}];
+    let material_options = [{ id: "", value: "Select Type" }];
+    let country_options = [{ id: "", value: "Select County" }];
+    let state_options = [{ id: "", value: "Select State" }];
 
     if (!isLoading) {
         materialType.map((matrl) => {
@@ -80,6 +80,22 @@ const BookAPickup = (props) => {
             });
         });
     }
+
+    // if (!navigator.geolocation) {
+    //     console.log("Your browser does not support geolocation");
+    // } else {
+    //     navigator.geolocation.getCurrentPosition(
+    //         (position) => {
+    //             setLocationCoordinates({
+    //                 lat: position.coords.latitude,
+    //                 lng: position.coords.longitude,
+    //             });
+    //         },
+    //         (error) => {
+    //             console.log(error);
+    //         }
+    //     );
+    // }
 
     // const handleImage =(e)=>{
     // console.log("file", e.target.files[0]);
@@ -208,12 +224,13 @@ const BookAPickup = (props) => {
                                                         "D-M-Y LT"
                                                     )}
                                                 />
-                                                <input
+                                                {/* <input
                                                     type="hidden"
                                                     value={dt.format(
                                                         "D-M-Y LT"
-                                                    )}
-                                                />
+                                                    )
+                                                }
+                                                /> */}
                                             </div>
                                         </div>
                                         {/* <InputH
@@ -437,7 +454,7 @@ const BookAPickup = (props) => {
                         </div>
                     </div>
                 </div>
-                <div style={{marginTop:"20px"}}></div>
+                <div style={{ marginTop: "20px" }}></div>
 
                 <div>
                     <Button type="submit">Book Pickup</Button>

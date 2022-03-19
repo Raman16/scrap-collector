@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../UI/Button";
 
-const OTPInputCard = ({ id, name, register, required, onChange }) => {
+const OTPInputCard = ({
+    id,
+    name,
+    register,
+    required,
+    onKeyUp,
+    autoFocus,
+}) => {
     return (
         <input
             className="m-2 text-center form-control rounded"
@@ -10,32 +17,43 @@ const OTPInputCard = ({ id, name, register, required, onChange }) => {
             id={id}
             name={name}
             maxLength="1"
-            onChange={onChange}
+            onKeyUp={onKeyUp}
+            autoFocus={autoFocus}
             {...register(id, { required })}
         />
     );
 };
 
 const OTPForm = (props) => {
+   
     const {
         register,
         getValues,
         formState: { errors },
     } = useForm();
 
-    const onChangeOTP = () => {
-        let otpValues =
+    let otpValues;
+    const onKeyUpOTP = (e) => {
+         otpValues =
             getValues("first") +
             getValues("second") +
             getValues("third") +
             getValues("fourth") +
             getValues("fifth") +
             getValues("sixth");
-        console.log(otpValues);
-        props.handleOTP(otpValues);
+
+        if (e.target.value.length != 0 && e.target.id !='sixth') {
+            e.target.nextSibling.focus();
+        }
+        
+
     };
 
-    const submitForm = () => props.submitForm();
+    
+
+    
+    const submitForm = () => props.submitForm(otpValues);
+
     return (
         <>
             <h4 className="text-center mb-2">Mobile Phone Verification</h4>
@@ -51,37 +69,38 @@ const OTPForm = (props) => {
                     id="first"
                     name="first"
                     register={register}
-                    onChange={onChangeOTP}
+                    onKeyUp={onKeyUpOTP}
+                    autoFocus={true}
                 />
                 <OTPInputCard
                     id="second"
                     name="second"
                     register={register}
-                    onChange={onChangeOTP}
+                    onKeyUp={onKeyUpOTP}
                 />
                 <OTPInputCard
                     id="third"
                     name="third"
                     register={register}
-                    onChange={onChangeOTP}
+                    onKeyUp={onKeyUpOTP}
                 />
                 <OTPInputCard
                     id="fourth"
                     name="fourth"
                     register={register}
-                    onChange={onChangeOTP}
+                    onKeyUp={onKeyUpOTP}
                 />
                 <OTPInputCard
                     id="fifth"
                     name="fifth"
                     register={register}
-                    onChange={onChangeOTP}
+                    onKeyUp={onKeyUpOTP}
                 />
                 <OTPInputCard
                     id="sixth"
                     name="sixth"
                     register={register}
-                    onChange={onChangeOTP}
+                    onKeyUp={onKeyUpOTP}
                 />
             </div>
             <div className="row">
@@ -95,7 +114,10 @@ const OTPForm = (props) => {
                 <div className="col-sm-12">
                     <div className="text-center">
                         <small className="mr-25">Didn't get the code? </small>
-                        <a href="auth-register.html">
+                        <a
+                            onClick={props.handleSendOTP}
+                            style={{ textDecoration: "underline",cursor:'pointer' }}
+                        >
                             <small>Resend</small>
                         </a>
                     </div>

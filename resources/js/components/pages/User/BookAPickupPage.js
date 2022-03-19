@@ -9,12 +9,19 @@ import BookAPickup from "../../User/BookAPickup";
 import { useNavigate } from "react-router-dom";
 
 const BookAPickupPage = () => {
+    const [locationCoordinates, setLocationCoordinates] = useState({
+        lat: "",
+        lng: "",
+    });
+
     const {
         isLoading: isBooking,
         error: bookingError,
         sendRequest: BookingRequest,
     } = useAxios();
+
     const navigate = useNavigate();
+
     const {
         isLoading: isImageUploading,
         error: imageUploadError,
@@ -22,6 +29,7 @@ const BookAPickupPage = () => {
     } = useAxios();
 
     let uploadedImage;
+
     const imageUploadResponse = (data) => {
         if (!isBooking) {
             toast("Booking Done...");
@@ -30,28 +38,38 @@ const BookAPickupPage = () => {
     };
 
     const bookingResponse = async (data) => {
-        let file = uploadedImage[0];
-        let reader = new FileReader();
-        reader.onloadend = function () {
-            uploadImageRequest(
-                {
-                    method: "POST",
-                    url: "/image",
-                    data: {
-                        imageable_type: "scrap_image",
-                        imageable_id: data.pickup_list.pick_id,
-                        image: reader.result,
+        if (uploadedImage[0] != null) {
+            let file = uploadedImage[0];
+            let reader = new FileReader();
+            reader.onloadend = function () {
+                uploadImageRequest(
+                    {
+                        method: "POST",
+                        url: "/image",
+                        data: {
+                            imageable_type: "scrap_image",
+                            imageable_id: data.pickup_list.pick_id,
+                            image: reader.result,
+                        },
                     },
-                },
-                imageUploadResponse
-            );
-            // document.write("RESULT: ", reader.result);
-        };
-        reader.readAsDataURL(file);
+                    imageUploadResponse
+                );
+                // document.write("RESULT: ", reader.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            if (!isBooking) {
+                toast("Booking Done...");
+                navigate("/my-pickups");
+            }
+        }
     };
 
     const handleSubmit = (requestData) => {
         requestData.address_type = "1";
+        requestData.latitude = locationCoordinates.lat;
+        requestData.longitude = locationCoordinates.lng;
+
         if (!isBooking) {
             toast("Booking in Process...");
         }
@@ -66,9 +84,23 @@ const BookAPickupPage = () => {
             bookingResponse
         );
     };
-    const nabvs = () => {
-        navigate("/invoices");
-    };
+
+    if (!navigator.geolocation) {
+        console.log("Your browser does not support geolocation");
+    } else {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setLocationCoordinates({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                });
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+
     return (
         <div className="basic-2">
             <div className="container">

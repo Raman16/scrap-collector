@@ -26,6 +26,8 @@ class ScrapCollection extends Model
         'status',
         'address_id',
         'bank_id',
+        'latitude',
+        'longitude'
     ];
 
     public function image()
