@@ -27,6 +27,7 @@ class UserResource extends JsonResource
             'phone_number'          => $this->phone_number,
             'image'                 => $this->image != null ? URL::to('/') . Storage::url('avatar/' . $this->image->name) : '',
             'country_code'          => $this->country_code,
+            'status'                => $this->status,
             'role'                  => UserRoleResource::collection($this->roles),
             'createdAt'             => $this->created_at->diffForHumans(),
         ];

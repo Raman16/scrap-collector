@@ -34,5 +34,7 @@ class UserController extends Controller
             'message' => 'User registered succesfully.'
         ], 201);
     }
+
+    
 }
 

@@ -49,7 +49,10 @@ class CreateScrapCollectionsTable extends Migration
                 ->on('bank_details')
                 ->onDelete('cascade');
 
-            $table->enum('status', ScrapCollection::BOOKING_STATUS)->default(1);
+            $table->bigInteger('pickup_agent_id')->unsigned()->nullable();
+
+            $table->enum('status', ScrapCollection::BOOKING_STATUS)->default('Created');
+
             $table->timestamps();
         });
     }

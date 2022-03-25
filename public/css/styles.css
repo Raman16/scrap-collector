@@ -412,7 +412,7 @@ a:hover {
 .navbar .nav-item .nav-link.active {
     color: rgba(90, 141, 238, 0.15);
 }
-.active {
+a.dropdown-item.active {
     background-color: #0092ff !important;
     color: #ffffff !important;
 }
@@ -1067,7 +1067,7 @@ a:hover {
         padding-top: 1.75rem;
         background-color: #fcfafb;
         box-shadow: none;
-        transition: all 0.2s;
+        /* transition: all 0.2s; */
     }
 
     .navbar.top-nav-collapse {
@@ -1344,7 +1344,6 @@ a:hover {
     }
     /* end of contact */
 
-
     /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -1548,43 +1547,40 @@ a:hover {
     padding-right: 100px;
 }
 
-
-
 /* Authentication page css */
 /*-------------------------*/
 .bg-authentication {
-    background-color: #F2F4F4;
-  }
-  
-  .bg-authentication #icon-arrow {
+    background-color: #f2f4f4;
+}
+
+.bg-authentication #icon-arrow {
     position: absolute;
     top: 11px;
     right: 15px;
-  }
-  
-  .bg-authentication .brand-text {
-    color: #5A8DEE;
+}
+
+.bg-authentication .brand-text {
+    color: #5a8dee;
     font-weight: 600;
     letter-spacing: 0.01rem;
-  }
-  
-  @media only screen and (min-width: 992px) {
+}
+
+@media only screen and (min-width: 992px) {
     .bg-authentication .disable-rounded-right {
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
-  }
-  
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     /* IE Specific CSS */
     .bg-authentication {
-      width: 100%;
-      display: block;
+        width: 100%;
+        display: block;
     }
-  }
-  
+}
 
-
+/* 
   .modal:before {
     content: "";
     display: none;
@@ -1640,4 +1636,21 @@ a:hover {
   .modal-footer {
     border-top: #eee solid 1px;
     text-align: right;
-  }
+  } */
+
+.thumbnail-container-sm {
+    width: 80px;
+    height: 60px;
+}
+
+.thumbnail-container-sm > img {
+   height: inherit;
+}
+
+.thumbnail-container-lg {
+    height: 100px;
+}
+
+.thumbnail-container-lg > img {
+   height: inherit;
+}

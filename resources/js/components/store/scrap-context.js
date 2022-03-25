@@ -40,6 +40,7 @@ const productReducer = (state, action) => {
             pick_id: action.product.pick_id,
         });
         product_items[index] = action.product;
+        
         return {
             items: product_items,
             filteredData:product_items

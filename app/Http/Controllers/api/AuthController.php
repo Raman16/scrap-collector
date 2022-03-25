@@ -17,6 +17,8 @@ use Illuminate\Validation\ValidationException;
 use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\HttpFoundation\Response;
 
+use App\Http\Requests\AddPickupAgentRequest;
+
 class AuthController extends Controller
 {
 
@@ -131,6 +133,9 @@ class AuthController extends Controller
             return response()->json(['error' => $e->getMessage()], 422);
         }
     }
+
+
+
 
     public function logout()
     {

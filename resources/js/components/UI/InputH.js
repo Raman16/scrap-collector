@@ -1,15 +1,23 @@
+import _ from "lodash";
 import React from "react";
 const InputH = (props) => {
     const { label, register, required, errors } = props;
-   
+
     let errorMessage = "";
-    if (typeof errors !== "undefined") {
-        errorMessage = (
-            <span className="text-danger">
-                {errors.message && `${label} is required`}
-            </span>
-        );
+
+    if (!_.isEmpty(errors)) {
+        if (errors.hasOwnProperty(props.id)) {
+            errorMessage = (
+                <span className="text-danger">
+                    {/* {errors.message && `${label} is required`} */}
+                    {`${label} is required`}
+                </span>
+            );
+        }
+    } else {
+        errorMessage = "";
     }
+
     return (
         <div className="form-group row">
             <label htmlFor={props.id} className="col-sm-4 col-form-label">

@@ -8,7 +8,16 @@ const Footer = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 col-md-6 footer-contact">
-                                <h3>ScrapBees</h3>
+                                <a
+                                    className="logo-image"
+                                    href="index.html"
+                                >
+                                    <img
+                                        src="images/logo.png"
+                                        alt="alternative"
+                                        style={{width:"130px"}}
+                                    />
+                                </a>{" "}
                                 <p>
                                     Road NO:7, Padma Nagar Street, Banashankar,{" "}
                                     <br />

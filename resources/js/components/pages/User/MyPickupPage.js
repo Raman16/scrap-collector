@@ -4,18 +4,21 @@ import { toast } from "react-toastify";
 import ContactCard from "../../Cards/ContactCard";
 import useAxios from "../../hooks/use-axios";
 import ScrapContext from "../../store/scrap-context";
+import Loader from "../../UI/Loader.";
 import Notification from "../../UI/Notifications";
 import MyPickup from "../../User/MyPickup";
 import MyPickups from "../../User/MyPickups";
 import RecentPickup from "../../User/RecentPickup";
 
 const MyPickupPage = () => {
+
     const scrapData = useContext(ScrapContext);
     const [showModal, setShowModal] = useState(false);
     const [showScrapDetail, setShowScrapDetail] = useState([]);
     const [recentPickup, setRecentPickup] = useState([]);
     const [materialType, setMaterialType] = useState([]);
 
+   
     let scrapProductsCard = "";
     let material_options = [];
 
@@ -44,6 +47,7 @@ const MyPickupPage = () => {
     } = useAxios();
 
     useEffect(() => {
+      
         const pickUpResponse = (data) => {
             scrapData.userPickUps(data.pickup_list);
         };
@@ -83,7 +87,15 @@ const MyPickupPage = () => {
 
     const cancelResponse = (data) => {
         toast(data.message);
+       
         scrapData.updatePickUp(data.pickup);
+
+        updateRecentPickupIfAny(data.pickup);
+    };
+    const updateRecentPickupIfAny = (pickup) => {
+        const index = _.findIndex(recentPickup, { pick_id: pickup.pick_id });
+        recentPickup[index] = pickup;
+        setRecentPickup(recentPickup);
     };
 
     const cancelPickupHandler = (pickup_id, status_id) => {
@@ -116,6 +128,7 @@ const MyPickupPage = () => {
         setShowModal(false);
     };
 
+    
     if (!isLoading) {
         if (scrapData.products.length == 0) {
             scrapProductsCard = (
@@ -123,7 +136,7 @@ const MyPickupPage = () => {
                     src="../../../images/empty.PNG"
                     className="rounded"
                     alt="group image"
-                   style={{width:"70%",height:"70%"}}
+                    style={{ width: "70%", height: "70%" }}
                 />
             );
         } else {
@@ -138,14 +151,7 @@ const MyPickupPage = () => {
         }
     }
     if (isLoading) {
-        scrapProductsCard = (
-            <div
-                className="spinner-border text-warning spinner-loading"
-                role="status"
-            >
-                <span className="sr-only">Loading...</span>
-            </div>
-        );
+        scrapProductsCard = <Loader/>
     }
 
     if (!isMaterialLoading) {
@@ -194,8 +200,10 @@ const MyPickupPage = () => {
                             <MyPickup
                                 closeModal={closeModalHandler}
                                 product={showScrapDetail}
+                                modalShow={showModal}
                             />
-                        )}
+                        )}        
+
                         <Notification />
                     </div>
                     <div className="col-sm-3">

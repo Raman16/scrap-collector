@@ -5,6 +5,8 @@ use App\Http\Controllers\api\ImageController;
 use App\Http\Controllers\api\MaterialTypesController;
 use App\Http\Controllers\api\ScrapCollectionController;
 use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\api\StateController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,33 +37,52 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
 
+    Route::prefix('states')->group(function () {
+
+        Route::controller(StateController::class)->group(function () {
+            Route::get('/', 'index')->name('states.show');
+            Route::post('/','store')->name('state.store');
+            Route::put('/update','update')->name('state.update');
+            Route::delete('/delete','delete')->name('state.delete');
+        });
+        
+    });
+
     Route::prefix('material-types')->group(function () {
-        Route::get('/', [MaterialTypesController::class, 'index'])->name('material-types.show');
+
+        Route::controller(MaterialTypesController::class)->group(function () {
+            Route::get('/', 'index')->name('material-types.show');
+            Route::post('/','store')->name('material-types.store');
+            Route::put('/update','update')->name('material-types.update');
+            Route::delete('/delete','delete')->name('material-types.delete');
+        });
+
     });
 
     Route::prefix('pickup')->group(function () {
 
-        Route::get('/dropdowns', [ScrapCollectionController::class, 'index'])
-            ->name('user-scrap.dropdowns');
+        Route::controller(ScrapCollectionController::class)->group(function () {
+            Route::get('/dropdowns', 'index')->name('user-scrap.dropdowns');
+            Route::get('/recent', 'recentPickup')->name('user-scrap.recentPickup');
+            Route::post('/','store')->name('user-scrap.store');
+            Route::get('/','showAll')->name('user-scrap.showAll');
+            Route::put('/change-status','changeStatus')->name('user-scrap.changeStatus');
+            Route::get('/{pickup}','show')->name('user-scrap.show');
+        });
 
-        Route::get('/recent', [ScrapCollectionController::class, 'recentPickup'])
-            ->name('user-scrap.recentPickup');
-
-        Route::post('/', [ScrapCollectionController::class, 'store'])
-            ->name('user-scrap.store');
-
-        Route::get('/', [ScrapCollectionController::class, 'showAll'])
-            ->name('user-scrap.showAll');
-
-
-        Route::put('/change-status', [ScrapCollectionController::class, 'changeStatus'])
-            ->name('user-scrap.changeStatus');
-
-        Route::get('/{pickup}', [ScrapCollectionController::class, 'show'])
-            ->name('user-scrap.show');
     });
 
     Route::prefix('image')->group(function () {
         Route::post('/', [ImageController::class, 'store'])->name('image.upload');
     });
+
+
 });
+
+
+
+// Route::group(['namespace' => 'api/Admin', 'prefix' => 'admin','middleware' => ['auth:sanctum']], function()
+//    {
+//        Route::get('/dashboard', [ScrapCollectionController::class, 'index']);
+//    });
+

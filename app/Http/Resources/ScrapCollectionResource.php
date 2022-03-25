@@ -25,10 +25,11 @@ class ScrapCollectionResource extends JsonResource
             'message'             => $this->message,
             'pickup_date'         => date('m-d-Y',strtotime($this->pickup_date)),
             'pickup_time'         => date('H:i a',strtotime($this->pickup_date)),
-            'status'              => array_search($this->status, ScrapCollection::BOOKING_STATUS),
-            'status_id'           => (int)$this->status,
+            //'status'            => array_search($this->status, ScrapCollection::BOOKING_STATUS),
+            'status'              => $this->status,
             'address'             => new AddressResource($this->whenLoaded('address')),
             'bank'                => new BankResource($this->whenLoaded('bankDetail')),
+            'agent'               => new UserResource($this->whenLoaded('agent')),
             'image'               => $this->image != null ?URL::to('/').Storage::url('user_scraps/'.$this->image->name ) : '',
             'created_at'          => (string)$this->created_at
         ];

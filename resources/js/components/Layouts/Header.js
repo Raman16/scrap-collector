@@ -4,8 +4,8 @@ import AuthContext from "../store/auth-context";
 
 const Header = (props) => {
     const authCtx = useContext(AuthContext);
-    const user = authCtx.user ?? '';
-    const user_role = user!=''? authCtx.user.role[0]:'';
+    const user = authCtx.user ?? "";
+    const user_role = user != "" ? authCtx.user.role[0] : "";
     const isLoggedIn = authCtx.isLoggedIn;
     const navigate = useNavigate();
 
@@ -91,16 +91,16 @@ const Header = (props) => {
                                     </li>
                                 </>
                             )}
-                            {(isLoggedIn && user_role.role_id ==1) && (
+                            {isLoggedIn && user_role.role_id == 1 && (
                                 <>
-                                    <li className="nav-item">
+                                    {/* <li className="nav-item">
                                         <NavLink
                                             to="admin/dashboard"
                                             className="dropdown-item"
                                         >
                                             Dashboard
                                         </NavLink>
-                                    </li>
+                                    </li> */}
                                     <li className="nav-item">
                                         <NavLink
                                             to="admin/user-pickups"
@@ -111,10 +111,10 @@ const Header = (props) => {
                                     </li>
                                     <li className="nav-item">
                                         <NavLink
-                                            to="admin/delivery-agent"
+                                            to="admin/pickup-agents"
                                             className="dropdown-item"
                                         >
-                                            Delivery Agent
+                                            Pickup Agents
                                         </NavLink>
                                     </li>
                                     <li className="nav-item dropdown">
@@ -152,7 +152,7 @@ const Header = (props) => {
                                     </li>
                                 </>
                             )}
-                            {(isLoggedIn && user_role.role_id ==2) && (
+                            {isLoggedIn && user_role.role_id == 2 && (
                                 <>
                                     <li className="nav-item">
                                         <NavLink
@@ -197,6 +197,36 @@ const Header = (props) => {
                                                     href="article.html"
                                                 ></a>
                                             </li>
+                                            <li className="nav-item">
+                                                <NavLink
+                                                    to="logout"
+                                                    className="dropdown-item"
+                                                    onClick={logoutHandler}
+                                                >
+                                                    Logout
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </>
+                            )}
+
+                            {isLoggedIn && user_role.role_id == 3 && (
+                                <>
+                                    <li className="nav-item dropdown">
+                                        <a
+                                            className="nav-link dropdown-toggle"
+                                            href="#"
+                                            id="dropdown01"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                        >
+                                            {authCtx.user.username}
+                                        </a>
+                                        <ul
+                                            className="dropdown-menu"
+                                            aria-labelledby="dropdown01"
+                                        >
                                             <li className="nav-item">
                                                 <NavLink
                                                     to="logout"

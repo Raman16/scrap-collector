@@ -1,3 +1,5 @@
+import { BOOKING_STATUS } from "../config/constant";
+
 const RecentPickup = (props) => {
     const { recentPickup } = props;
 
@@ -8,7 +10,11 @@ const RecentPickup = (props) => {
         >
             <a>
                 <img
-                    src={recentPickup.image}
+                    src={
+                        recentPickup.image != ""
+                            ? recentPickup.image
+                            : "images/noImage.png"
+                    }
                     className="rounded"
                     alt="group image"
                     height="64"
@@ -22,14 +28,15 @@ const RecentPickup = (props) => {
                 <small className="text-muted">
                     {recentPickup.pickup_date}
 
-                    {(recentPickup.status == "CANCELLED" ||
-                        recentPickup.status == "INPROGRESS") && (
+                    {(recentPickup.status == BOOKING_STATUS[2] ||
+                        recentPickup.status == BOOKING_STATUS[3]) && (
                         <span className="badge badge-light-danger text-bold-500 py-50">
                             {recentPickup.status}
                         </span>
                     )}
-                    {(recentPickup.status == "CREATED" ||
-                        recentPickup.status == "COMPLETED") && (
+                    {(recentPickup.status == BOOKING_STATUS[0] ||
+                        (recentPickup.status == BOOKING_STATUS[4] &&
+                            recentPickup.status == BOOKING_STATUS[1])) && (
                         <span className="badge badge-light-success text-bold-500 py-50">
                             {recentPickup.status}
                         </span>

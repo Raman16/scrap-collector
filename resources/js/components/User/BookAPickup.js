@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import useAxios from "../hooks/use-axios";
@@ -10,6 +10,19 @@ import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 
 import DatePicker from "react-datetime";
+const renderInput = ( props, openCalendar )=>{
+    
+    return (
+        <div className="input-group" onClick={openCalendar}>
+        <input type="text" className="form-control" placeholder="Search this blog" {...props}/>
+        <div className="input-group-append">
+        <button className="btn btn-secondary" type="button">
+        <i className="fa fa-calendar" ></i>
+        </button>
+        </div>
+        </div>
+    )
+    };
 
 const BookAPickup = (props) => {
     const [materialType, setMaterialType] = useState([]);
@@ -108,9 +121,15 @@ const BookAPickup = (props) => {
     //    reader.readAsDataURL(file);
 
     // }
+
+
     return (
         <>
             <h5>Book Your Pickup</h5>
+            {/* <input type="datetime-local" /> */}
+
+           
+
             <form onSubmit={handleSubmit(props.onSubmit)} autoComplete="none">
                 <div className="row">
                     <div className="col-12">
@@ -201,9 +220,20 @@ const BookAPickup = (props) => {
                                                 Pickup Date:
                                             </label>
                                             <div className="col-sm-8">
-                                                <DatePicker
+                                            <DatePicker renderInput={ renderInput } 
+                                              value={dt}
+                                              dateFormat="DD-MM-YYYY"
+                                              timeFormat="hh:mm A"
+                                              onChange={(val) =>
+                                                  setDt(val)
+                                              }
+                                            />
+
+                                                {/* <DatePicker
                                                     inputProps={{
-                                                        style: { width: 250 },
+                                                        style: {
+                                                            width: 250,
+                                                        },
                                                     }}
                                                     value={dt}
                                                     dateFormat="DD-MM-YYYY"
@@ -211,7 +241,8 @@ const BookAPickup = (props) => {
                                                     onChange={(val) =>
                                                         setDt(val)
                                                     }
-                                                />
+                                                /> */}
+
                                                 <InputH
                                                     id="pickup_date"
                                                     name="pickup_date"

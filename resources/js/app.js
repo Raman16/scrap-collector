@@ -6,6 +6,7 @@
 
 require("./bootstrap");
 
+import { useContext } from "react";
 /**
  * Next, we will create a fresh React component instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -16,18 +17,20 @@ require("./bootstrap");
 import ReactDOM from "react-dom";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import Index from "./components/index";
-import {AuthContextProvider} from "./components/store/auth-context";
+import { AdminPickupsContextProvider } from "./components/store/admin-pickups-context";
+import { AuthContextProvider } from "./components/store/auth-context";
 import { ScrapContextProvider } from "./components/store/scrap-context";
 
 if (document.getElementById("root")) {
     ReactDOM.render(
         <AuthContextProvider>
-            <ScrapContextProvider>
-            <HashRouter>
-                <Index />
-            </HashRouter>
-            </ScrapContextProvider>
-            
+            <AdminPickupsContextProvider>
+                <ScrapContextProvider>
+                    <HashRouter>
+                        <Index />
+                    </HashRouter>
+                </ScrapContextProvider>
+            </AdminPickupsContextProvider>
         </AuthContextProvider>,
         document.getElementById("root")
     );

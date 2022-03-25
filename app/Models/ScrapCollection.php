@@ -12,12 +12,21 @@ class ScrapCollection extends Model
     use BelongsToUser;
 
     public const BOOKING_STATUS = [
-        'CREATED' => 1,
-        'INPROGESS' => 2,
-        'CANCELLED' => 3,
-        'COMPLETED' => 4
+        'Created',
+        'Accepted',
+        'InProgress',
+        'Cancelled',
+        'Completed'
     ];
+    // public const BOOKING_STATUS = [
+    //     'Created',
+    //     'Accepted',
+    //     'InProgress',
+    //     'Cancelled',
+    //     'Completed'  ];
 
+
+   
     protected $fillable = [
         'material_type_id',
         'address',
@@ -26,10 +35,15 @@ class ScrapCollection extends Model
         'status',
         'address_id',
         'bank_id',
+        'pickup_agent_id',
         'latitude',
         'longitude'
-    ];
+    ];  
 
+    public function agent()
+    {
+        return $this->belongsTo(User::class, 'pickup_agent_id', 'id');
+    }
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');

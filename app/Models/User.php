@@ -25,7 +25,8 @@ class User extends Authenticatable
         'password',
         'country_code',
         'phone_number_with_code',
-        'phone_number'
+        'phone_number',
+        'status'
     ];
 
     /**
@@ -50,7 +51,7 @@ class User extends Authenticatable
     public function roles() {
         return $this->belongsToMany('App\Models\Role', 'user_roles');
     }
-
+   
 
     public function image()
     {

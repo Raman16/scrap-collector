@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('country_code');
             $table->string('phone_number');
             $table->string('phone_number_with_code')->unique();
+            $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

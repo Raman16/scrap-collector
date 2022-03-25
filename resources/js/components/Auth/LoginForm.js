@@ -55,7 +55,7 @@ const LoginForm = () => {
     const loginResponse = async (data) => {
         await authCtx.login(data);
         if (data.user.role[0].role_id == 1) {
-            navigate("/admin/dashboard");
+            navigate("/admin/user-pickups");
         }
         if (data.user.role[0].role_id == 2) {
             navigate("/book-a-pickup");

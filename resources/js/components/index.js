@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./Layouts/Layout";
 import ScrollToTop from "../scrollTop";
 import AuthContext from "./store/auth-context";
+
 import ProfilePage from "./pages/User/ProfilePage";
 import MyPickupPage from "./pages/User/MyPickupPage";
 import BookAPickupPage from "./pages/User/BookAPickupPage";
@@ -10,15 +11,16 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import AboutUsPage from "./pages/AboutusPage";
 import HomePage from "./pages/HomePage";
-import DashboardPage from "./Admin/DashboardPage";
-import UserPickupsPage from "./Admin/UserPickupsPage";
-import DeliveryAgentPage from "./Admin/DeliveryAgent";
-import SettingsPage from "./Admin/SettingsPage";
+
+import DashboardPage from "./pages/Admin/DashboardPage";
+import UserPickupsPage from "./pages/Admin/UserPickupsPage";
+import PickupAgentPage from "./pages/Admin/PickupAgentPage";
+import SettingsPage from "./pages/Admin/SettingsPage";
 
 function Index() {
     const authCtx = useContext(AuthContext);
-    const user = authCtx.user ?? '';
-    const user_role = user!=''? authCtx.user.role[0]:'';
+    const user = authCtx.user ?? "";
+    const user_role = user != "" ? authCtx.user.role[0] : "";
     return (
         <div className="">
             <Layout>
@@ -41,17 +43,17 @@ function Index() {
 
                         {authCtx.isLoggedIn && user_role.role_id == 1 && (
                             <>
-                                <Route
+                                {/* <Route
                                     path="/admin/dashboard"
                                     element={<DashboardPage />}
-                                />
+                                /> */}
                                 <Route
                                     path="/admin/user-pickups"
                                     element={<UserPickupsPage />}
                                 />
                                 <Route
-                                    path="/admin/delivery-agent"
-                                    element={<DeliveryAgentPage />}
+                                    path="/admin/pickup-agents"
+                                    element={<PickupAgentPage />}
                                 />
                                 <Route
                                     path="/admin/settings"
@@ -80,7 +82,13 @@ function Index() {
                             path="*"
                             element={
                                 <main style={{ padding: "1rem" }}>
-                                    <p>There's nothing here!</p>
+                                    <center>
+                                        <img
+                                            className="img-fluid"
+                                            src="../../../app-assets/images/pages/404.png"
+                                            alt="404 error"
+                                        />
+                                    </center>
                                 </main>
                             }
                         ></Route>
