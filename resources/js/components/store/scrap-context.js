@@ -11,26 +11,27 @@ const ScrapContext = React.createContext({
 
 const defaultProductState = {
     items: [],
-    filteredData:[]
+    filteredData: [],
 };
 
 const productReducer = (state, action) => {
     if (action.type === "showProductByMaterialType") {
-        const product_items = state.items.filter(
-            (product) => product.material_type_id == action.material_id
+        const product_items = state.items.filter((product) =>
+            action.material_id != -1
+                ? product.material_type_id == action.material_id
+                : true
         );
-       
+
         return {
-            items:state.items,
-            filteredData:product_items
+            items: state.items,
+            filteredData: product_items,
         };
     }
 
     if (action.type === "showProducts") {
         return {
             items: action.products,
-            filteredData:action.products
-
+            filteredData: action.products,
         };
     }
 
@@ -40,11 +41,10 @@ const productReducer = (state, action) => {
             pick_id: action.product.pick_id,
         });
         product_items[index] = action.product;
-        
+
         return {
             items: product_items,
-            filteredData:product_items
-
+            filteredData: product_items,
         };
     }
     return defaultProductState;

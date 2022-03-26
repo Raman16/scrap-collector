@@ -184,7 +184,7 @@ const MyPickupPage = () => {
                                             className="form-control shadow"
                                             onChange={handleSeachByMaterial}
                                         >
-                                            <option>
+                                            <option  value={-1}>
                                                 --Seach By Material--
                                             </option>
                                             {material_options}

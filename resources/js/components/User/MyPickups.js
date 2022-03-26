@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BOOKING_STATUS } from "../config/constant";
 const MyPickups = (props) => {
     const { product } = props;
     const bank = product.bank;
@@ -77,15 +78,15 @@ const MyPickups = (props) => {
                                         <br></br> */}
                                     </td>
                                     <td>
-                                        {(product.status == "Cancelled" ||
-                                            product.status == "InProgress") && (
+                                        {(product.status == BOOKING_STATUS[2] ||
+                                            product.status == BOOKING_STATUS[3]) && (
                                             <span className="badge badge-light-danger text-bold-500 py-50">
                                                 {product.status}
                                             </span>
                                         )}
-                                        {(product.status == "Created" ||
-                                            product.status == "Completed" ||
-                                            product.status == "Accepted") && (
+                                        {(product.status == BOOKING_STATUS[0] ||
+                                            product.status == BOOKING_STATUS[1] ||
+                                            product.status == BOOKING_STATUS[4]) && (
                                             <span className="badge badge-light-success text-bold-500 py-50">
                                                 {product.status}
                                             </span>
@@ -140,7 +141,8 @@ const MyPickups = (props) => {
                                         {/* <strong>Action:</strong> */}
                                         <br />
                                         <div>
-                                            {product.status != "Cancelled" ? (
+                                            {product.status != BOOKING_STATUS[3] &&
+                                            product.status != BOOKING_STATUS[4] ? (
                                                 <button
                                                     className="btn mr-1 mb-1 btn-danger btn-sm"
                                                     onClick={handleCancel}

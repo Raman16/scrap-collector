@@ -1,12 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { BOOKING_STATUS } from "../../config/constant";
 import useAxios from "../../hooks/use-axios";
 import AdminPickupsContext from "../../store/admin-pickups-context";
 // import Modal from "../../UI/Modal";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 const UserPickup = (props) => {
+    const [selectedStatus, setSelectedStatus] = useState();
+    const [selectedAgent, setSelectedAgent] = useState();
+
     const adminCtx = useContext(AdminPickupsContext);
 
     const {
@@ -25,10 +30,17 @@ const UserPickup = (props) => {
     let bookingStatus_options,
         agents_options = [];
 
-    const selectedStatus = BOOKING_STATUS.findIndex(
-        (value) => value === product.status
-    );
-    const selectedAgent = 1;
+    // const selectedStatus = BOOKING_STATUS.findIndex(
+    //     (value) => value === product.status
+    // );
+    useEffect(() => {
+        const selectedStatus = BOOKING_STATUS.findIndex(
+            (value) => value === product.status
+        );
+        setSelectedStatus(selectedStatus);
+        const agent_id = product.agent != null ? product.agent.id : -1;
+        setSelectedAgent(agent_id);
+    }, []);
 
     const closeModalHandler = () => {
         props.closeModal();
@@ -62,26 +74,35 @@ const UserPickup = (props) => {
     const handleStatusChange = (e) => {
         let confim = confirm("Please confirm to change the status");
 
+        setSelectedStatus(e.target.value);
         if (confim) {
-            changeStatus(
-                {
-                    method: "PUT",
-                    url: "/admin/pickups/change-status",
-                    data: {
-                        pickup_id: product.pick_id,
-                        status: e.target.value,
-                    },
-                },
-                statusResponse
-            );
+            changePickupStatus(e.target.value);
         }
     };
 
+    const changePickupStatus = (status) => {
+        changeStatus(
+            {
+                method: "PUT",
+                url: "/admin/pickups/change-status",
+                data: {
+                    pickup_id: product.pick_id,
+                    status: status,
+                },
+            },
+            statusResponse
+        );
+    };
+
     const pickUpDetailsResponse = (data) => {
+        toast(data.message);
+        changePickupStatus(2); //InProgress
+        setSelectedStatus(2);
         adminCtx.updatePickUp(data.pickup);
     };
 
     const handlePickupAgent = (e) => {
+        setSelectedAgent(e.target.value);
         updatePickUpDetails(
             {
                 method: "PUT",
@@ -162,7 +183,7 @@ const UserPickup = (props) => {
                                         </div>
                                     </div>
                                 </div>
-                               
+
                                 <div className="margin-8"></div>
                                 <div className="row">
                                     <div className="col-sm-6 form-group">
@@ -171,15 +192,19 @@ const UserPickup = (props) => {
                                                 E-Waste Image
                                             </div>
                                             <div className="col-sm-6">
-                                                <div className="thumbnail-container-sm">
-                                                    <img
-                                                          src={
-                                                            product.image != ""
-                                                                ? product.image
-                                                                : "images/noImage.png"
-                                                        }
-                                                    />
-                                                </div>
+                                                <Zoom>
+                                                    <div className="thumbnail-container-sm">
+                                                        <img
+                                                            alt="that wanaka tree"
+                                                            src={
+                                                                product.image !=
+                                                                ""
+                                                                    ? product.image
+                                                                    : "images/noImage.png"
+                                                            }
+                                                        />
+                                                    </div>
+                                                </Zoom>
                                             </div>
                                         </div>
                                     </div>
@@ -292,8 +317,9 @@ const UserPickup = (props) => {
                                                     placeholder="--select Agent--"
                                                     className="form-control form-select"
                                                     onChange={handlePickupAgent}
+                                                    value={selectedAgent}
                                                 >
-                                                    <option>
+                                                    <option value={-1}>
                                                         Assign Pickup Agent
                                                     </option>
                                                     {agents_options}

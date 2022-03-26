@@ -27,20 +27,9 @@ const RecentPickup = (props) => {
                 </h6>
                 <small className="text-muted">
                     {recentPickup.pickup_date}
-
-                    {(recentPickup.status == BOOKING_STATUS[2] ||
-                        recentPickup.status == BOOKING_STATUS[3]) && (
-                        <span className="badge badge-light-danger text-bold-500 py-50">
-                            {recentPickup.status}
-                        </span>
-                    )}
-                    {(recentPickup.status == BOOKING_STATUS[0] ||
-                        (recentPickup.status == BOOKING_STATUS[4] &&
-                            recentPickup.status == BOOKING_STATUS[1])) && (
-                        <span className="badge badge-light-success text-bold-500 py-50">
-                            {recentPickup.status}
-                        </span>
-                    )}
+                    <span className="badge badge-light-warning text-bold-500 py-50">
+                        {recentPickup.status}
+                    </span>
                 </small>
             </div>
             <i className="cursor-pointer bx bx-plus-circle text-primary d-flex align-items-center "></i>

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+
 const UserPickups = (props) => {
     const { product } = props;
     const bank = product.bank;
@@ -59,19 +62,20 @@ const UserPickups = (props) => {
                             <tbody>
                                 <tr>
                                     <td className="pl-0">
-                                        <img
-                                            className="img-fluid"
-                                            src={
-                                                product.image != ""
-                                                    ? product.image
-                                                    : ""
-                                            }
-                                            alt="img placeholder"
-                                            style={{
-                                                width: "120px",
-                                                borderRadius: "15px",
-                                            }}
-                                        />
+                                        <Zoom>
+                                            <img
+                                                alt="that wanaka tree"
+                                                src={
+                                                    product.image != ""
+                                                        ? product.image
+                                                        : ""
+                                                }
+                                                style={{
+                                                    width: "120px",
+                                                }}
+                                            />
+                                        </Zoom>
+
                                     </td>
                                     <td className="pl-0">
                                         <span className="badge badge-light-success text-bold-500 py-50">

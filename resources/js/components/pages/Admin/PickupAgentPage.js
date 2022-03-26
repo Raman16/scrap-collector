@@ -35,7 +35,6 @@ const PickupAgentPage = () => {
         sendRequest: updateAgent,
     } = useAxios();
 
-
     const registerResponse = (data) => {
         let users = agentsList.concat(data.user);
         setAgentsList(users);
@@ -73,9 +72,7 @@ const PickupAgentPage = () => {
         );
     }, []);
 
-
-    const updateResponse = (data) =>{
-        
+    const updateResponse = (data) => {
         let agents = agentsList;
         const index = _.findIndex(agents, {
             id: data.user.id,
@@ -83,22 +80,21 @@ const PickupAgentPage = () => {
         agents[index] = data.user;
         setAgentsList(agents);
         toast(data.message);
-    }
+    };
 
-    const handleUpdateAgent= (status,user_id) =>{
-
+    const handleUpdateAgent = (status, user_id) => {
         updateAgent(
             {
                 method: "PUT",
                 url: "/admin/pickup-agents/update",
                 data: {
                     status: !status,
-                    user_id:user_id
+                    user_id: user_id,
                 },
             },
             updateResponse
         );
-    }
+    };
 
     if (isLoading) {
         pickupAgentsData = <Loader />;
@@ -114,12 +110,14 @@ const PickupAgentPage = () => {
     return (
         <div className="basic-2">
             <div className="container card">
-                <div className="row" style={{minHeight:"500px"}}>
+                <div className="row" style={{ minHeight: "500px",padding:"15px" }}>
                     <div className="col-sm-12 ">
                         <>
                             <div className="margin-8"></div>
                             <div className="row">
-                                <div className="col-10  px-0 "></div>
+                                <div className="col-10  px-0 ">
+                                        <h5 style={{marginLeft:"15px"}}>PickUp Agents</h5>
+                                </div>
                                 <div className="col-2">
                                     <Button onClick={handleModalShow}>
                                         Add Agent

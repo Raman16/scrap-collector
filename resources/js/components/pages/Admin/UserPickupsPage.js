@@ -14,20 +14,23 @@ import "rc-pagination/assets/index.css";
 import UserPickup from "../../Admin/Users/UserPickup";
 import Notification from "../../UI/Notifications";
 
-
-const renderInput = ( props, openCalendar )=>{
-    
+const renderInput = (props, openCalendar) => {
     return (
         <div className="input-group" onClick={openCalendar}>
-        <input type="text" className="form-control" placeholder="Search this blog" {...props}/>
-        <div className="input-group-append">
-        <button className="btn btn-secondary" type="button">
-        <i className="fa fa-calendar" ></i>
-        </button>
+            <input
+                type="text"
+                className="form-control"
+                placeholder="Search this blog"
+                {...props}
+            />
+            <div className="input-group-append">
+                <button className="btn btn-secondary" type="button">
+                    <i className="fa fa-calendar"></i>
+                </button>
+            </div>
         </div>
-        </div>
-    )
-    };
+    );
+};
 
 const UserPickupsPage = () => {
     const [materialType, setMaterialType] = useState([]);
@@ -160,7 +163,11 @@ const UserPickupsPage = () => {
     }
 
     const handleDate = (val) => {
-        setDt(val);
+        var timestamp = Date.parse(val);
+
+        if (isNaN(timestamp) == false) {
+            setDt(val);
+        }
     };
 
     const handleFilter = (e) => {
@@ -176,6 +183,7 @@ const UserPickupsPage = () => {
         fontSize: "14px",
     };
 
+    
     return (
         <div className="basic-2">
             <div className="container">
@@ -183,14 +191,14 @@ const UserPickupsPage = () => {
                     <div className="col-sm-12">
                         <div className="row">
                             <div className="col-sm-3">
-                            <DatePicker renderInput={ renderInput } 
-                                              value={dt}
-                                              dateFormat="DD-MM-YYYY"
-                                              timeFormat="hh:mm A"
-                                              onChange={(val) => handleDate(val)}
-                                              closeOnSelect={true}
-
-                                            />
+                                <DatePicker
+                                    renderInput={renderInput}
+                                    value={dt}
+                                    dateFormat="DD-MM-YYYY"
+                                    timeFormat={false}
+                                    onChange={(val) => handleDate(val)}
+                                    closeOnSelect={true}
+                                />
 
                                 {/* <DatePicker
                                     inputProps={{
@@ -270,7 +278,7 @@ const UserPickupsPage = () => {
                                 <Notification />
                             </>
                         )}
-                        <Pagination total={1} />
+                        {/* <Pagination total={1} /> */}
                     </div>
                 </div>
             </div>

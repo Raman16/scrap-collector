@@ -26,7 +26,7 @@ const Footer = () => {
                                     India. <br />
                                     <strong>Phone:</strong> +1431326871
                                     <br />
-                                    <strong>Email:</strong> info@scrapbee.com
+                                    <strong>Email:</strong> info@ewpotformotherearth.com
                                     <br />
                                 </p>
                             </div>
@@ -107,11 +107,11 @@ const Footer = () => {
 
                 <div className="container footer-bottom clearfix">
                     <div className="copyright">
-                        &copy; Copyright{" "}
+                        &copy; Copyright
                         <strong>
-                            <span>Raman</span>
+                            <span>&nbsp; EW-POT(For Mother Earth)</span>
                         </strong>
-                        . All Rights Reserved
+                         All Rights Reserved
                     </div>
                     <div className="credits"></div>
                 </div>
