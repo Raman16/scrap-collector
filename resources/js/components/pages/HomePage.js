@@ -2,10 +2,132 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function HomePage() {
+    const myStyle = {
+        backgroundImage: "url('images/header-image1.jpg')",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+    };
+
     return (
         <>
-            <div id="details" className="basic-1">
+            <section id="hero">
+                <div
+                    id="heroCarousel"
+                    data-bs-interval="5000"
+                    className="carousel slide carousel-fade"
+                    data-bs-ride="carousel"
+                >
+                    <ol
+                        className="carousel-indicators"
+                        id="hero-carousel-indicators"
+                    ></ol>
+
+                    <div className="carousel-inner " role="listbox">
+                        <div className="carousel-item active" style={myStyle}>
+                            <div className="carousel-container">
+                                <div className="container">
+                                    <h2 className="animate__animated animate__fadeInDown">
+                                        Welcome to <span>E-Waste</span>
+                                    </h2>
+                                    <p className="animate__animated animate__fadeInUp">
+                                        Monitoring the quantities and flows of
+                                        e-waste is essential for evaluating
+                                        developments over time, and to set and
+                                        assess targets towards a sustainable
+                                        society and circular economy. We offer
+                                        simple, practical advice that anyone can
+                                        follow. Together we can make a
+                                        difference today & save tomorrow.
+                                    </p>
+                                    <NavLink
+                                        to="login"
+                                        className="btn-solid-reg homepage-pickup-btn"
+                                    >
+                                            Book A Pickup
+                                    </NavLink>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="carousel-item">
+                            <div className="carousel-container">
+                                <div className="container">
+                                    <h2 className="animate__animated animate__fadeInDown">
+                                        Lorem Ipsum Dolor
+                                    </h2>
+                                    <p className="animate__animated animate__fadeInUp">
+                                        Ut velit est quam dolor ad a aliquid qui
+                                        aliquid. Sequi ea ut et est quaerat
+                                        sequi nihil ut aliquam. Occaecati alias
+                                        dolorem mollitia ut. Similique ea
+                                        voluptatem. Esse doloremque accusamus
+                                        repellendus deleniti vel. Minus et
+                                        tempore modi architecto.
+                                    </p>
+                                    <a
+                                        href="#about"
+                                        className="btn-get-started animate__animated animate__fadeInUp scrollto"
+                                    >
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="carousel-item">
+                            <div className="carousel-container">
+                                <div className="container">
+                                    <h2 className="animate__animated animate__fadeInDown">
+                                        Sequi ea ut et est quaerat
+                                    </h2>
+                                    <p className="animate__animated animate__fadeInUp">
+                                        Ut velit est quam dolor ad a aliquid qui
+                                        aliquid. Sequi ea ut et est quaerat
+                                        sequi nihil ut aliquam. Occaecati alias
+                                        dolorem mollitia ut. Similique ea
+                                        voluptatem. Esse doloremque accusamus
+                                        repellendus deleniti vel. Minus et
+                                        tempore modi architecto.
+                                    </p>
+                                    <a
+                                        href="#about"
+                                        className="btn-get-started animate__animated animate__fadeInUp scrollto"
+                                    >
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a
+                        className="carousel-control-prev"
+                        href="#heroCarousel"
+                        role="button"
+                        data-bs-slide="prev"
+                    >
+                        <span
+                            className="carousel-control-prev-icon bi bi-chevron-left"
+                            aria-hidden="true"
+                        ></span>
+                    </a>
+
+                    <a
+                        className="carousel-control-next"
+                        href="#heroCarousel"
+                        role="button"
+                        data-bs-slide="next"
+                    >
+                        <span
+                            className="carousel-control-next-icon bi bi-chevron-right"
+                            aria-hidden="true"
+                        ></span>
+                    </a>
+                </div>
+            </section>
+            {/* <div id="details" className="basic-1">
                 <div className="container">
+                    <div className="row"></div>
                     <div className="row">
                         <div className="col-lg-6 col-xl-7">
                             <div className="image-container">
@@ -32,7 +154,7 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             {/* <header id="header" className="header">
                 <div className="container">
                     <div className="row">
@@ -84,7 +206,7 @@ function HomePage() {
                                     alt="alternative"
                                 />
                                 <div className="card-body">
-                                    <h5 className="card-title">Scrap Pickup</h5>
+                                    <h5 className="">Scrap Pickup</h5>
                                     <p>
                                         Our vendor will come to you on the
                                         scheduled time to pick up your scrap in
@@ -100,7 +222,7 @@ function HomePage() {
                                     alt="alternative"
                                 />
                                 <div className="card-body">
-                                    <h5 className="card-title">
+                                    <h5 className="">
                                         Sell Scrap and Make Money
                                     </h5>
 
@@ -118,9 +240,7 @@ function HomePage() {
                                     alt="alternative"
                                 />
                                 <div className="card-body">
-                                    <h5 className="card-title">
-                                        Corporate Tie-up
-                                    </h5>
+                                    <h5 className="">Corporate Tie-up</h5>
 
                                     <p>
                                         We have customized panel for corporates
@@ -133,8 +253,11 @@ function HomePage() {
                     </div>
                 </div>
             </div>
+
             <div id="details" className="basic-1">
                 <div className="container">
+                    <h2>We are here on a Mission</h2>
+
                     <div className="row">
                         <div className="col-lg-6 col-xl-6">
                             <div className="image-container">
@@ -149,9 +272,9 @@ function HomePage() {
                             <h5>
                                 WHY E-WASTE IS IMPORTANT TO PROCESSED (OR)
                                 DISMANTELED IN SCIENTIFIC MANNER
-                            </h5> <br />
+                            </h5>{" "}
+                            <br />
                             <h6>E-WASTE GENERATION </h6>
-                           
                             The Global E-Waste Monitor 2020 shows that consumers
                             discarded 53.6 million tonnes worth of electronics
                             in 2019 globally, up 20 percent in 5 years. India
@@ -183,7 +306,8 @@ function HomePage() {
                                 E-WASTE & ITS NEGATIVE EFFECTS ON THE
                                 ENVIRONMENT
                                 <br />
-                            </h6> <br />
+                            </h6>{" "}
+                            <br />
                             <br />
                             Contamination in the air occurs when e-waste is
                             informally disposed by dismantling, shredding or
@@ -426,21 +550,30 @@ function HomePage() {
                         <div className="col-lg-12">
                             <div className="card">
                                 <ul className="list-styled">
-                                    <li>Fridges, freezers and other cooling equipment</li>
+                                    <li>
+                                        Fridges, freezers and other cooling
+                                        equipment
+                                    </li>
                                     <li>TVs, monitors and screens</li>
                                 </ul>
                             </div>
 
                             <div className="card">
                                 <ul className="list-styled">
-                                    <li>Computers and telecommunications equipment</li>
+                                    <li>
+                                        Computers and telecommunications
+                                        equipment
+                                    </li>
                                     <li>LED bulbs</li>
                                 </ul>
                             </div>
 
                             <div className="card">
                                 <ul className="list-styled">
-                                    <li>Consumer electronic devices and solar panels</li>
+                                    <li>
+                                        Consumer electronic devices and solar
+                                        panels
+                                    </li>
                                     <li>Vending machines</li>
                                 </ul>
                             </div>
@@ -453,7 +586,7 @@ function HomePage() {
                     <div className="row">
                         <div className="col-lg-12">
                             <h2 className="h2-heading">
-                                Customer testimonials
+                               Experts Saying
                             </h2>
                         </div>
                     </div>
@@ -462,20 +595,20 @@ function HomePage() {
                             <div className="card">
                                 <img
                                     className="quotes"
-                                    src="images/quotes.svg"
+                                    src="images/double-quotation.png"
                                     alt="alternative"
                                 />
                                 <div className="card-body">
                                     <p className="testimonial-text">
-                                        Suspendisse vitae enim arcu. Aliqu
-                                        convallis risus a felis blandit, at
-                                        mollis nisi bibendum aliquam noto ricos
+                                        Recycling should come only after we’ve
+                                        gotten every bit of use out of a
+                                        product.
                                     </p>
                                     <div className="testimonial-author">
                                         Roe Smith
                                     </div>
                                     <div className="occupation">
-                                        General Manager, Presentop
+                                        Director, Presentop
                                     </div>
                                 </div>
                                 <div className="gradient-floor red-to-blue"></div>
@@ -484,14 +617,13 @@ function HomePage() {
                             <div className="card">
                                 <img
                                     className="quotes"
-                                    src="images/quotes.svg"
+                                    src="images/double-quotation.png"
                                     alt="alternative"
                                 />
                                 <div className="card-body">
                                     <p className="testimonial-text">
-                                        Suspendisse vitae enim arcu. Aliqu
-                                        convallis risus a felis blandit, at
-                                        mollis nisi bibendum aliquam noto ricos
+                                        E-waste is the Toxic Legacy of our
+                                        Digital Age
                                     </p>
                                     <div className="testimonial-author">
                                         Sam Bloom
@@ -506,20 +638,20 @@ function HomePage() {
                             <div className="card">
                                 <img
                                     className="quotes"
-                                    src="images/quotes.svg"
+                                    src="images/double-quotation.png"
                                     alt="alternative"
                                 />
                                 <div className="card-body">
                                     <p className="testimonial-text">
-                                        Suspendisse vitae enim arcu. Aliqu
-                                        convallis risus a felis blandit, at
-                                        mollis nisi bibendum aliquam noto ricos
+                                        Our waste electronics are polluting
+                                        drinking water and harming our
+                                        ecosystems.
                                     </p>
                                     <div className="testimonial-author">
                                         Bill McKenzie
                                     </div>
                                     <div className="occupation">
-                                        General Manager, Presentop
+                                        Publisher, Presentop
                                     </div>
                                 </div>
                                 <div className="gradient-floor purple-to-green"></div>

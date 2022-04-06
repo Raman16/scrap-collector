@@ -528,7 +528,11 @@
             </div>
         </div> -->
 
+        <!-- <script src="{{ asset('app-assets/js/core/libraries/bootstrap.bundle.min.js') }}"></script> -->
+        <script src="{{ asset('js/main.js') }}"></script>
+
     <script src="{{ mix('js/app.js') }}" defer></script>
+
 
 </body>
 

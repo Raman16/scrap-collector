@@ -45,7 +45,7 @@ p {
 }
 
 h1 {
-    color: #223150;
+    color: #0a6e3f;
     font-weight: 700;
     font-size: 2.5rem;
     line-height: 3.25rem;
@@ -53,7 +53,7 @@ h1 {
 }
 
 h2 {
-    color: #223150;
+    color: #0a6e3f;
     font-weight: 700;
     font-size: 2rem;
     line-height: 2.5rem;
@@ -61,7 +61,7 @@ h2 {
 }
 
 h3 {
-    color: #223150;
+    color: #0a6e3f;
     font-weight: 700;
     font-size: 1.75rem;
     line-height: 2.25rem;
@@ -69,7 +69,7 @@ h3 {
 }
 
 h4 {
-    color: #223150;
+    color: #0a6e3f;
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 2rem;
@@ -77,14 +77,14 @@ h4 {
 }
 
 h5 {
-    color: #223150;
+    color: #0a6e3f;
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 1.625rem;
 }
 
 h6 {
-    color: #223150;
+    color: #0a6e3f;
     font-weight: 700;
     font-size: 1rem;
     line-height: 1.375rem;
@@ -162,7 +162,7 @@ a:hover {
 
 .section-title {
     margin-bottom: 0.5rem;
-    color: #ef473d;
+    color:#0a6e3f;
     font-weight: 600;
     font-size: 0.875rem;
 }
@@ -170,9 +170,9 @@ a:hover {
 .btn-solid-reg {
     display: inline-block;
     padding: 1.375rem 2.25rem 1.375rem 2.25rem;
-    border: 1px solid #0092ff;
+    border: 1px solid #0a6e3f;
     border-radius: 30px;
-    background-color: #0092ff;
+    background-color: #0a6e3f;
     color: #ffffff;
     font-weight: 600;
     font-size: 0.875rem;
@@ -413,7 +413,7 @@ a:hover {
     color: rgba(90, 141, 238, 0.15);
 }
 a.dropdown-item.active {
-    background-color: #0092ff !important;
+    background-color:#0a6e3f !important;
     color: #ffffff !important;
 }
 
@@ -1349,12 +1349,12 @@ a.dropdown-item.active {
 --------------------------------------------------------------*/
     #footer {
         font-size: 14px;
-        background: #37517e;
+        background: #0a6e3f;
     }
 
     #footer .footer-newsletter {
         padding: 50px 0;
-        background: #f3f5fa;
+        background: #0a6e3f;
         text-align: center;
         font-size: 15px;
         color: #444444;
@@ -1366,7 +1366,7 @@ a.dropdown-item.active {
         padding: 0;
         line-height: 1;
         font-weight: 600;
-        color: #37517e;
+        color: #0a6e3f;
     }
 
     #footer .footer-newsletter form {
@@ -1391,10 +1391,9 @@ a.dropdown-item.active {
         right: 0;
         bottom: 0;
         border: 0;
-        background: none;
         font-size: 16px;
         padding: 0 20px;
-        background: #47b2e4;
+        background: #0a6e3f;
         color: #fff;
         transition: 0.3s;
         border-radius: 50px;
@@ -1435,7 +1434,7 @@ a.dropdown-item.active {
     #footer .footer-top h4 {
         font-size: 16px;
         font-weight: bold;
-        color: #37517e;
+        color: #0a6e3f;
         position: relative;
         padding-bottom: 12px;
     }
@@ -1482,7 +1481,7 @@ a.dropdown-item.active {
     #footer .footer-top .social-links a {
         font-size: 18px;
         display: inline-block;
-        background: #47b2e4;
+        background: #0a6e3f;
         color: #fff;
         line-height: 1;
         padding: 8px 0;
@@ -1495,7 +1494,7 @@ a.dropdown-item.active {
     }
 
     #footer .footer-top .social-links a:hover {
-        background: #209dd8;
+        background: #0a6e3f;
         color: #fff;
         text-decoration: none;
     }
@@ -1653,4 +1652,163 @@ a.dropdown-item.active {
 
 .thumbnail-container-lg > img {
    height: inherit;
+}
+
+.btn-primary{
+    background-color: #006837 !important;
+    border-color: #4db646 !important;
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+    width: 100%;
+    height: 70vh;
+    background-color: rgba(9, 9, 9, 0.8);
+    overflow: hidden;
+    position: relative;
+  }
+  #hero .carousel, #hero .carousel-inner, #hero .carousel-item, #hero .carousel-item::before {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+  #hero .carousel-item::before {
+    content: "";
+    background-color: rgba(45, 103, 60, 0.8);
+  }
+  #hero .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 50px;
+    right: 50px;
+  }
+  #hero .container {
+    text-align: center;
+  }
+  #hero h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 48px;
+    font-weight: 700;
+  }
+  #hero p {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+    margin: 0 auto 30px auto;
+    color: #fff;
+  }
+  #hero .carousel-inner .carousel-item {
+    transition-property: opacity;
+    background-position: center top;
+  }
+  #hero .carousel-inner .carousel-item,
+  #hero .carousel-inner .active.carousel-item-start,
+  #hero .carousel-inner .active.carousel-item-end {
+    opacity: 0;
+  }
+  #hero .carousel-inner .active,
+  #hero .carousel-inner .carousel-item-next.carousel-item-start,
+  #hero .carousel-inner .carousel-item-prev.carousel-item-end {
+    opacity: 1;
+    transition: 0.5s;
+  }
+  #hero .carousel-control-next-icon, #hero .carousel-control-prev-icon {
+    background: none;
+    font-size: 30px;
+    line-height: 0;
+    width: auto;
+    height: auto;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    transition: 0.3s;
+    color: rgba(255, 255, 255, 0.5);
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #hero .carousel-control-next-icon:hover, #hero .carousel-control-prev-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  #hero .carousel-indicators li {
+    cursor: pointer;
+    background: #fff;
+    overflow: hidden;
+    border: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    opacity: 0.6;
+    transition: 0.3s;
+  }
+  #hero .carousel-indicators li.active {
+    opacity: 1;
+    background: #5cb874;
+  }
+  #hero .btn-get-started {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 4px;
+    transition: 0.5s;
+    line-height: 1;
+    color: #fff;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+    background: #5cb874;
+  }
+  #hero .btn-get-started:hover {
+    background: #6ec083;
+  }
+  @media (max-width: 992px) {
+    #hero {
+      height: 100vh;
+    }
+    #hero .carousel-container {
+      top: 66px;
+    }
+  }
+  @media (max-width: 768px) {
+    #hero h2 {
+      font-size: 28px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #hero .carousel-control-prev, #hero .carousel-control-next {
+      width: 5%;
+    }
+  }
+  @media (max-height: 500px) {
+    #hero {
+      height: 120vh;
+    }
+  }
+  
+
+.homepage-pickup-btn,.homepage-pickup-btn:hover{
+    font-size :16px !important;
+    border-radius: 0px !important;
+    background-color: #0a6e3f;
+    border: 0px!important;
+    color: #fff;
 }

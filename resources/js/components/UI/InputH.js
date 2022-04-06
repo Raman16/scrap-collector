@@ -32,7 +32,7 @@ const InputH = (props) => {
                     onChange={props.onChange}
                     onBlur={props.onBlur}
                     placeholder={props.placeholder}
-                    autoComplete="none"
+                    autoComplete="off"
                     {...register(props.id, { required })}
                 />
                 {errorMessage}

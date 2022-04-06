@@ -130,7 +130,7 @@ const BookAPickup = (props) => {
 
            
 
-            <form onSubmit={handleSubmit(props.onSubmit)} autoComplete="none">
+            <form onSubmit={handleSubmit(props.onSubmit)} >
                 <div className="row">
                     <div className="col-12">
                         <div className="card shadow">

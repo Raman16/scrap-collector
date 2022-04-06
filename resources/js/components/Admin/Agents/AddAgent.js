@@ -19,7 +19,7 @@ const AddAgent = (props) => {
 
     return (
         <Modal show={props.modalShow} aria-labelledby="contained-modal-title">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} autoComplete="none">
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title">
                         Add Pickup Agent

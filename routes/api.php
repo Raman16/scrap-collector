@@ -6,6 +6,7 @@ use App\Http\Controllers\api\MaterialTypesController;
 use App\Http\Controllers\api\ScrapCollectionController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\StateController;
+use App\Http\Controllers\api\StripeController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -76,10 +77,14 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', [ImageController::class, 'store'])->name('image.upload');
     });
 
+   
+
 
 });
 
-
+Route::prefix('stripe')->group(function () {
+    Route::post('/', [StripeController::class, 'stripePost'])->name('stripe.post');  
+  });
 
 // Route::group(['namespace' => 'api/Admin', 'prefix' => 'admin','middleware' => ['auth:sanctum']], function()
 //    {

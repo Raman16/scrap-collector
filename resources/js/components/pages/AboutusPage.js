@@ -7,7 +7,7 @@ function AboutUsPage() {
                     <div className="row">
                         <div className="col-lg-6 col-xl-5">
                             <div className="text-container">
-                                <div className="section-title">ABOUT US</div>
+                                <h4>ABOUT US</h4>
                                 <p>
                                     We are a startup with a bull’s eye vison
                                     whose only ambition is to serve our nation

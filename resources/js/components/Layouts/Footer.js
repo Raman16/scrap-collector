@@ -106,14 +106,13 @@ const Footer = () => {
                 </div>
 
                 <div className="container footer-bottom clearfix">
-                    <div className="copyright">
+                    <div className="">
                         &copy; Copyright
                         <strong>
                             <span>&nbsp; EW-POT(For Mother Earth)</span>
                         </strong>
                          All Rights Reserved
                     </div>
-                    <div className="credits"></div>
                 </div>
             </footer>
         </React.Fragment>

@@ -20,7 +20,7 @@ const Input = (props) => {
                 onChange={props.onChange}
                 onBlur={props.onBlur}
                 placeholder={props.placeholder}
-                autoComplete="off"
+                autocomplete="off"
                 {...register(props.id, { required })}
             />
         </>
