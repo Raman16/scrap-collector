@@ -10,7 +10,7 @@ class Address extends Model
 {
     use HasFactory;
     use BelongsToUser;
-
+     //comments
     protected $fillable = [
         'user_id',
         'address',
