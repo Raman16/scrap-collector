@@ -54,11 +54,11 @@ class AuthController extends Controller
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
 
-       // $smsResponse = $sms->verifyOTP($request);
+       $smsResponse = $sms->verifyOTP($request);
 
         try {
-            //if ($smsResponse->status() == 201) {
-            //   if(true){
+            if ($smsResponse->status() == 201) {
+              if(true){
 
                 DB::beginTransaction();
 
@@ -83,7 +83,8 @@ class AuthController extends Controller
                     'user'    => new UserResource($user),
                     'message' => 'User registered succesfully.'
                 ], 200);
-            // }
+            }
+        }
         } catch (\Illuminate\Database\QueryException $e)  {
             
             return response()->json(['error' =>$e->errorInfo], 422);
