@@ -141,7 +141,7 @@ const RegisterForm = () => {
                                                 onSubmit={handleSubmit(
                                                     onSubmit
                                                 )}
-                                                autoComplete="none"
+                                                autoComplete="off"
                                             >
                                                 <div className="form-group mb-50">
                                                     <div className="row">

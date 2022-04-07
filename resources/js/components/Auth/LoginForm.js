@@ -105,7 +105,7 @@ const LoginForm = () => {
                                         <h4 className="text-center mb-2">
                                             Login
                                         </h4>
-                                        <form onSubmit={handleSubmit(onSubmit)} autoComplete="none">
+                                        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
                                             <div className="form-group mb-50">
                                                 <div className="row">
                                                     <div className="col-sm-1"></div>
