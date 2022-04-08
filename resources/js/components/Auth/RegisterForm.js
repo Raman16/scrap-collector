@@ -47,12 +47,8 @@ const RegisterForm = () => {
     const navigate = useNavigate();
 
     const otpResponse = (data) => {
-        console.log(data);
-        console.log(otpError);
+        setShowModal(!showModal);
 
-        if (!otpError) {
-            setShowModal(!showModal);
-        }
         toast.success(data.message);
     };
 
