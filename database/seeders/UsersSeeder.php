@@ -16,11 +16,11 @@ class UsersSeeder extends Seeder
     public function run()
     {
         $users = [
-            'first_name'             => 'Raman',
-            'last_name'              => 'Sai',
-            'username'               => 'bandari raman',
-            'email'                  => 'admin@scrapbees2022.com',
-            'password'               =>  bcrypt('Admin@123'),
+            'first_name'             => 'EW-POT',
+            'last_name'              => 'Admin',
+            'username'               => 'Admin',
+            'email'                  => 'admin.ewpot@gmail.com',
+            'password'               =>  bcrypt('Admin@2022'),
             'country_code'           => '+91',
             'phone_number'           => '9886426565',
             'phone_number_with_code' => '+919886426565',
@@ -40,14 +40,14 @@ class UsersSeeder extends Seeder
 
 
         $user2 = [
-            'first_name'             => 'Ragav',
-            'last_name'              => 'R',
-            'username'               => 'Ragav',
-            'email'                  => 'user@userbee.com',
+            'first_name'             => 'Raman',
+            'last_name'              => 'B',
+            'username'               => 'bandariraman',
+            'email'                  => 'raman.acube@gmail.com',
             'password'               =>  bcrypt('Admin@123'),
             'country_code'           => '+91',
-            'phone_number'           => '9886426564',
-            'phone_number_with_code' => '+919886426564',
+            'phone_number'           => '9886426568',
+            'phone_number_with_code' => '+919886426568',
             'created_at'    => date('Y-m-d H:i:s'),
             'updated_at'    => date('Y-m-d H:i:s')
         ];
