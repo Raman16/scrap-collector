@@ -58,19 +58,19 @@ const RegisterForm = () => {
     const otpRequest = () => {
         setShowModal(true);
 
-        let requestData = {
-            country_code: getValues("country_code"),
-            phone_number: getValues("phone_number"),
-            type: "USER_REGISTRATION",
-        };
-        sendOTP(
-            {
-                method: "POST",
-                url: "/send-otp",
-                data: requestData,
-            },
-            otpResponse
-        );
+        // let requestData = {
+        //     country_code: getValues("country_code"),
+        //     phone_number: getValues("phone_number"),
+        //     type: "USER_REGISTRATION",
+        // };
+        // sendOTP(
+        //     {
+        //         method: "POST",
+        //         url: "/send-otp",
+        //         data: requestData,
+        //     },
+        //     otpResponse
+        // );
     };
 
     const registerResponse = (data) => {
