@@ -47,6 +47,9 @@ const RegisterForm = () => {
     const navigate = useNavigate();
 
     const otpResponse = (data) => {
+        console.log(data);
+        console.log(otpError);
+
         if (!otpError) {
             setShowModal(!showModal);
         }
