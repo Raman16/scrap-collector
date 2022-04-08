@@ -22,8 +22,8 @@ class UsersSeeder extends Seeder
             'email'                  => 'admin.ewpot@gmail.com',
             'password'               =>  bcrypt('Admin@2022'),
             'country_code'           => '+91',
-            'phone_number'           => '9886426565',
-            'phone_number_with_code' => '+919886426565',
+            'phone_number'           => '8985542754',
+            'phone_number_with_code' => '+918985542754',
             'created_at'    => date('Y-m-d H:i:s'),
             'updated_at'    => date('Y-m-d H:i:s')
         ];
