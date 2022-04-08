@@ -99,13 +99,13 @@ const LoginForm = () => {
                             <div className="col-md-6 col-12 px-0">
                                 <div
                                     className="card shadow"
-                                    style={{height:"100%" }}
+                                    style={{ height: "100%" }}
                                 >
                                     <div className="card-body">
                                         <h4 className="text-center mb-2">
                                             Login
                                         </h4>
-                                        <form onSubmit={handleSubmit(onSubmit)} >
+                                        <form onSubmit={handleSubmit(onSubmit)}>
                                             <div className="form-group mb-50">
                                                 <div className="row">
                                                     <div className="col-sm-1"></div>
@@ -176,9 +176,12 @@ const LoginForm = () => {
                                             <small className="mr-25">
                                                 Don't have an account?
                                             </small>
-                                            <a href="auth-register.html">
-                                                <small>Sign up</small>
-                                            </a>
+                                            <NavLink
+                                                to="register"
+                                                className="dropdown-item"
+                                            >
+                                                Register
+                                            </NavLink>
                                         </div>
                                     </div>
                                 </div>
