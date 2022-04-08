@@ -68,7 +68,7 @@ return [
 
     'links' => [
 //        public_path('storage') => storage_path('app/public'),
-          public_path('../../../public/storage') => storage_path('app/public'),
+         '/home/t41dmffki69i/public/storage'=> storage_path('app/public'),
 
     ],
 
