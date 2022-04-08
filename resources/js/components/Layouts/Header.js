@@ -25,14 +25,14 @@ const Header = (props) => {
                         <img src="images/logo.png" alt="alternative" />
                     </NavLink>
 
-                    <button
+                    {/* <button
                         className="navbar-toggler p-0 border-0"
                         type="button"
                         id="navbarSideCollapse"
                         aria-label="Toggle navigation"
                     >
                         <span className="navbar-toggler-icon"></span>
-                    </button>
+                    </button> */}
 
                     <div
                         className="navbar-collapse offcanvas-collapse"
