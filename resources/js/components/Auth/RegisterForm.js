@@ -104,19 +104,19 @@ const RegisterForm = () => {
     };
 
     useEffect(() => {
-        if (otpError) {
-            toast.warn("Error:" + otpError.response.data.message);
-        }
-        if (registerError) {
-            var errors = registerError.response.data.errors;
-            var errormessage = "";
+        // if (otpError) {
+        //     toast.warn("Error:" + otpError.response.data.message);
+        // }
+        // if (registerError) {
+        //     var errors = registerError.response.data.errors;
+        //     var errormessage = "";
 
-            Object.keys(errors).forEach(function (key) {
-                errormessage += errors[key] + "\n";
-            });
+        //     Object.keys(errors).forEach(function (key) {
+        //         errormessage += errors[key] + "\n";
+        //     });
 
-            toast.warn("Error:" + errormessage);
-        }
+        //     toast.warn("Error:" + errormessage);
+        // }
     }, [otpError, registerError]);
 
     return (
