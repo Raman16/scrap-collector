@@ -57,7 +57,7 @@ class AuthController extends Controller
        $smsResponse = $sms->verifyOTP($request);
 
         try {
-            // if ($smsResponse->status() == 201) {
+            if ($smsResponse->status() == 201) {
               if(true){
 
                 DB::beginTransaction();
@@ -83,7 +83,7 @@ class AuthController extends Controller
                     'user'    => new UserResource($user),
                     'message' => 'User registered succesfully.'
                 ], 200);
-            // }
+            }
         }
         } catch (\Illuminate\Database\QueryException $e)  {
             
