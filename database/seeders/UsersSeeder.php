@@ -46,8 +46,8 @@ class UsersSeeder extends Seeder
             'email'                  => 'raman.acube@gmail.com',
             'password'               =>  bcrypt('Admin@123'),
             'country_code'           => '+91',
-            'phone_number'           => '9886426568',
-            'phone_number_with_code' => '+919886426568',
+            'phone_number'           => '9989615030',
+            'phone_number_with_code' => '+919989615030',
             'created_at'    => date('Y-m-d H:i:s'),
             'updated_at'    => date('Y-m-d H:i:s')
         ];
@@ -60,4 +60,4 @@ class UsersSeeder extends Seeder
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
-}
+}9886426568
