@@ -87,7 +87,7 @@ class AuthController extends Controller
         }
         } catch (\Illuminate\Database\QueryException $e)  {
             
-            return response()->json(['error' =>$e->errorInfo], 422);
+            return response()->json(['message' =>$e->errorInfo], 422);
         }
     }
 
@@ -101,16 +101,18 @@ class AuthController extends Controller
                       ->first();
 
         if (!$user) {
-           // return response()->json(['message' =>"User Not Found"],  Response::HTTP_NOT_FOUND);
-            throw ValidationException::withMessages([
-                'phone number' => ['Incorrect Phone Number'],
-            ]);
+           return response()->json(['message' =>"Incorrect Phone Number"],  Response::HTTP_NOT_FOUND);
+            // throw ValidationException::withMessages([
+            //     'phone number' => ['Incorrect Phone Number'],
+            // ]);
         }
 
         if (!Hash::check($loginValidated['password'], $user->password)) {
-            throw ValidationException::withMessages([
-                'password' => ['Incorrect Password'],
-            ]);
+            // throw ValidationException::withMessages([
+            //     'password' => ['Incorrect Password'],
+            // ]);
+            return response()->json(['message' =>"Incorrect Password"],  Response::HTTP_NOT_FOUND);
+
         }
      
        // $smsResponse = $sms->verifyOTP($loginRequest);

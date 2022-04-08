@@ -22,6 +22,8 @@ class RegistrationRequest extends FormRequest
         $this->merge(['phone_number_with_code' => $this->request->get('country_code') .
             $this->request->get('phone_number')]);
     }
+
+   
     /**
      * Get the validation rules that apply to the request.
      *
@@ -47,4 +49,7 @@ class RegistrationRequest extends FormRequest
             'device_type'               => ['required', 'in:1,2'],
         ];
     }
+
+    
+
 }

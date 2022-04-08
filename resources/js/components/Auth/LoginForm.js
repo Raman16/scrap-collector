@@ -61,6 +61,8 @@ const LoginForm = () => {
             navigate("/book-a-pickup");
         }
     };
+
+    
     const onSubmit = (requestData) => {
         if (!isLogging) {
             toast("Loggin In...");
@@ -79,14 +81,13 @@ const LoginForm = () => {
         );
     };
 
-    // useEffect(() => {
-    //     if (otpError) {
-    //         console.log(otpError.response);
-    //         // toast.warn(
-    //         //     "Error:" + otpError.response.data.error.phone_number
-    //         // );
-    //     }
-    // }, [otpError]);
+    useEffect(() => {
+        if (loginError) {
+            toast.warn(
+                "Error:" + loginError.response.data.message
+            );
+        }
+    }, [loginError]);
     return (
         <>
             <section
@@ -174,13 +175,13 @@ const LoginForm = () => {
                                         <hr />
                                         <div className="text-center">
                                             <small className="mr-25">
-                                                Don't have an account?
+                                                Don't have an account ?
                                             </small>
-                                            <NavLink
-                                                to="register"
-                                                className="dropdown-item"
-                                            >
-                                                Register
+                                            {/* <a onClick={handleSignup} href="#">
+                                                <small>Sign up</small>
+                                            </a> */}
+                                            <NavLink to="/register">
+                                                <small> Register</small>
                                             </NavLink>
                                         </div>
                                     </div>

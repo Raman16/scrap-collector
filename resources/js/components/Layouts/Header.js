@@ -21,9 +21,9 @@ const Header = (props) => {
                 aria-label="Main navigation"
             >
                 <div className="container">
-                    <a className="navbar-brand logo-image" href="index.html">
+                    <NavLink to="" className="navbar-brand logo-image">
                         <img src="images/logo.png" alt="alternative" />
-                    </a>
+                    </NavLink>
 
                     <button
                         className="navbar-toggler p-0 border-0"
