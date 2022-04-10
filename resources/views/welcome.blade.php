@@ -532,8 +532,6 @@
         <script src="{{ asset('js/main.js') }}"></script>
 
     <script src="{{ mix('js/app.js') }}" defer></script>
-
-
 </body>
 
 </html>

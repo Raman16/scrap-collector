@@ -57,7 +57,7 @@ class AuthController extends Controller
        $smsResponse = $sms->verifyOTP($request);
 
         try {
-            if ($smsResponse->status() == 201) {
+            if (201) {
               if(true){
 
                 DB::beginTransaction();

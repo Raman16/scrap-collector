@@ -60,4 +60,4 @@ class UsersSeeder extends Seeder
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
-}9886426568
+}

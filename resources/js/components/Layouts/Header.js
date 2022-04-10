@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../store/auth-context";
 
@@ -8,10 +8,17 @@ const Header = (props) => {
     const user_role = user != "" ? authCtx.user.role[0] : "";
     const isLoggedIn = authCtx.isLoggedIn;
     const navigate = useNavigate();
-
+    const [toggle, setToggle] = useState("close");
     const logoutHandler = async () => {
         await authCtx.logout();
         navigate("/");
+    };
+
+    const toggleOpen = () => {
+        setToggle("open");
+    };
+    const toggleClose = () => {
+        setToggle("close");
     };
     return (
         <React.Fragment>
@@ -30,12 +37,13 @@ const Header = (props) => {
                         type="button"
                         id="navbarSideCollapse"
                         aria-label="Toggle navigation"
+                        onClick={toggleOpen}
                     >
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
                     <div
-                        className="navbar-collapse offcanvas-collapse"
+                        className={`navbar-collapse offcanvas-collapse ${toggle}`}
                         id="navbarsExampleDefault"
                     >
                         <ul className="navbar-nav ms-auto navbar-nav-scroll">
@@ -59,7 +67,8 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to=""
-                                            className="dropdown-item"
+                                            className="dropdown-item nav-link"
+                                            onClick={toggleClose}
                                         >
                                             Home
                                         </NavLink>
@@ -67,7 +76,8 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="about-us"
-                                            className="dropdown-item"
+                                            className="dropdown-item nav-link"
+                                            onClick={toggleClose}
                                         >
                                             About Us
                                         </NavLink>
@@ -75,7 +85,8 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="login"
-                                            className="dropdown-item"
+                                            className="dropdown-item nav-link"
+                                            onClick={toggleClose}
                                         >
                                             Login
                                         </NavLink>
@@ -84,7 +95,8 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="register"
-                                            className="dropdown-item"
+                                            className="dropdown-item nav-link"
+                                            onClick={toggleClose}
                                         >
                                             Register
                                         </NavLink>
@@ -105,6 +117,7 @@ const Header = (props) => {
                                         <NavLink
                                             to="admin/user-pickups"
                                             className="dropdown-item"
+                                            onClick={toggleClose}
                                         >
                                             Pickup List
                                         </NavLink>
@@ -113,6 +126,7 @@ const Header = (props) => {
                                         <NavLink
                                             to="admin/pickup-agents"
                                             className="dropdown-item"
+                                            onClick={toggleClose}
                                         >
                                             Pickup Agents
                                         </NavLink>
@@ -135,6 +149,7 @@ const Header = (props) => {
                                                 <NavLink
                                                     to="/admin/settings"
                                                     className="dropdown-item"
+                                                    onClick={toggleClose}
                                                 >
                                                     Settings
                                                 </NavLink>
@@ -158,6 +173,7 @@ const Header = (props) => {
                                         <NavLink
                                             to="book-a-pickup"
                                             className="dropdown-item"
+                                            onClick={toggleClose}
                                         >
                                             Book A Pickup
                                         </NavLink>
@@ -166,6 +182,7 @@ const Header = (props) => {
                                         <NavLink
                                             to="my-pickups"
                                             className="dropdown-item"
+                                            onClick={toggleClose}
                                         >
                                             Pickup List
                                         </NavLink>
@@ -189,6 +206,7 @@ const Header = (props) => {
                                                 <NavLink
                                                     to="profile"
                                                     className="dropdown-item"
+                                                    onClick={toggleClose}
                                                 >
                                                     Profile
                                                 </NavLink>
