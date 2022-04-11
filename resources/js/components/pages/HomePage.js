@@ -8,6 +8,10 @@ function HomePage() {
         backgroundRepeat: "no-repeat",
     };
 
+    const expertSayStyle = {
+        padding: "0px !important",
+    };
+
     return (
         <>
             <section id="hero">
@@ -43,7 +47,7 @@ function HomePage() {
                                         to="login"
                                         className="btn-solid-reg homepage-pickup-btn"
                                     >
-                                            Book A Pickup
+                                        Book A Pickup
                                     </NavLink>
                                 </div>
                             </div>
@@ -539,6 +543,96 @@ function HomePage() {
                     </div>
                 </div>
             </div> */}
+
+            <div id="about" className="bg-gray">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 align-self-center">
+                            <div className="left-image">
+                                <img
+                                    src="images/about-left-image.png"
+                                    alt=""
+                                    style={{ width: "100%" }}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="section-heading">
+                                <h2>Our Pickups </h2>
+                                <span>Explore unlimited possibilities</span>
+                                <div className="row">
+                                    <div className="col-lg-4">
+                                        <div className="fact-item">
+                                            <div className="count-area-content">
+                                                <div className="icon">
+                                                    <img
+                                                        src="images/service-icon-01.png"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <div className="count-digit">
+                                                    320
+                                                </div>
+                                                <div className="count-title">
+                                                    Last Month
+                                                </div>
+                                                <p>
+                                                    We have picked 320 Scrap
+                                                    Materials for past month
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-4">
+                                        <div className="fact-item">
+                                            <div className="count-area-content">
+                                                <div className="icon">
+                                                    <img
+                                                        src="images/service-icon-02.png"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <div className="count-digit">
+                                                    4980
+                                                </div>
+                                                <div className="count-title">
+                                                    Current Year
+                                                </div>
+                                                <p>
+                                                    We have picked 4980 Scrap
+                                                    Materials for current year
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-4">
+                                        <div className="fact-item">
+                                            <div className="count-area-content">
+                                                <div className="icon">
+                                                    <img
+                                                        src="images/service-icon-03.png"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <div className="count-digit">
+                                                    12036
+                                                </div>
+                                                <div className="count-title">
+                                                    Overall
+                                                </div>
+                                                <p>
+                                                    We have picked total 12036 Materials till now.
+                                                    
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className="ex-cards-1 pt-3 pb-3 bg-gray">
                 <div className="container">
                     <div className="row">
@@ -581,13 +675,11 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <div className="cards-2 bg-gray">
+            <div className="cards-3 bg-gray" style={expertSayStyle}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <h2 className="h2-heading">
-                               Experts Saying
-                            </h2>
+                            <h2 className="h2-heading">Experts Saying</h2>
                         </div>
                     </div>
                     <div className="row">
