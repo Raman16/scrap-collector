@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { BOOKING_STATUS } from "../config/constant";
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+
+
 const MyPickups = (props) => {
     const { product } = props;
     const bank = product.bank;
@@ -52,7 +56,21 @@ const MyPickups = (props) => {
                                 <tr>
                                     <td className="pl-0">
                                         <div className="thumbnail-container-lg">
+                                        <Zoom>
                                             <img
+                                                alt="No Image"
+                                                src={
+                                                    product.image != ""
+                                                        ? product.image
+                                                        : ""
+                                                }
+                                                style={{
+                                                    width: "120px",
+                                                }}
+                                            />
+                                        </Zoom>
+
+                                            {/* <img
                                                 className="img-fluid"
                                                 src={
                                                     product.image != ""
@@ -60,7 +78,7 @@ const MyPickups = (props) => {
                                                         : "images/noImage.png"
                                                 }
                                                 alt="img placeholder"
-                                            />
+                                            /> */}
                                         </div>
                                     </td>
                                     <td className="pl-0">

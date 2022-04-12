@@ -4,6 +4,8 @@ import InputH from "../UI/InputH";
 // import Modal from "../UI/Modal";
 import Select from "../UI/Select";
 import TextArea from "../UI/TextArea";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 const MyPickup = (props) => {
     const { product } = props;
@@ -67,14 +69,28 @@ const MyPickup = (props) => {
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="thumbnail-container-sm">
-                                                    <img
+                                                <Zoom>
+                                                    <div className="thumbnail-container-sm">
+                                                        <img
+                                                        alt="Not Availble"
+                                                        src={
+                                                                product.image !=
+                                                                ""
+                                                                    ? product.image
+                                                                    : "images/noImage.png"
+                                                            }
+                                                        />
+                                                    </div>
+                                                </Zoom>
+                                                
+                                                    {/* <img
                                                         src={
                                                             product.image != ""
                                                                 ? product.image
                                                                 : "images/noImage.png"
                                                         }
                                                         alt="Not Availble"
-                                                    />
+                                                    /> */}
                                                 </div>
                                             </div>
                                         </div>

@@ -64,7 +64,7 @@ const UserPickups = (props) => {
                                     <td className="pl-0">
                                         <Zoom>
                                             <img
-                                                alt="that wanaka tree"
+                                                alt="No Image"
                                                 src={
                                                     product.image != ""
                                                         ? product.image

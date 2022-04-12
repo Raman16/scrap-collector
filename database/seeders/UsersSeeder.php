@@ -44,7 +44,7 @@ class UsersSeeder extends Seeder
             'last_name'              => 'B',
             'username'               => 'bandariraman',
             'email'                  => 'raman.acube@gmail.com',
-            'password'               =>  bcrypt('Admin@123'),
+            'password'               =>  bcrypt('user@123'),
             'country_code'           => '+91',
             'phone_number'           => '9989615030',
             'phone_number_with_code' => '+919989615030',
