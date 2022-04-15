@@ -31,7 +31,7 @@ function HomePage() {
                             <div className="carousel-container">
                                 <div className="container">
                                     <h2 className="animate__animated animate__fadeInDown">
-                                        Welcome to <span>E-Waste</span>
+                                        Welcome to <span>EW-POT</span>
                                     </h2>
                                     <p className="animate__animated animate__fadeInUp">
                                         Monitoring the quantities and flows of
@@ -205,8 +205,8 @@ function HomePage() {
                         <div className="col-lg-12">
                             <div className="card">
                                 <img
-                                    className="img-fluid"
-                                    src="images/scrap-pickup.png"
+                                    className="service-img-fluid"
+                                    src="images/scrap-pickup1.png"
                                     alt="alternative"
                                 />
                                 <div className="card-body">
@@ -221,7 +221,7 @@ function HomePage() {
 
                             <div className="card">
                                 <img
-                                    className="img-fluid"
+                                    className="service-img-fluid"
                                     src="images/scrap-pickup2.png"
                                     alt="alternative"
                                 />
@@ -239,7 +239,7 @@ function HomePage() {
 
                             <div className="card">
                                 <img
-                                    className="img-fluid"
+                                    className="service-img-fluid"
                                     src="images/scrap-pickup3.png"
                                     alt="alternative"
                                 />
@@ -558,18 +558,20 @@ function HomePage() {
                         </div>
                         <div className="col-lg-6">
                             <div className="section-heading">
-                                <h2>Our Pickups </h2>
+                                <h2 style={{marginTop:"10px"}}>Our Pickups </h2>
                                 <span>Explore unlimited possibilities</span>
                                 <div className="row">
                                     <div className="col-lg-4">
                                         <div className="fact-item">
                                             <div className="count-area-content">
-                                                <div className="icon">
+                                            <i class="fa fa-truck ourpickup-img" aria-hidden="true"></i>
+
+                                                {/* <div className="icon">
                                                     <img
                                                         src="images/service-icon-01.png"
                                                         alt=""
                                                     />
-                                                </div>
+                                                </div> */}
                                                 <div className="count-digit">
                                                     320
                                                 </div>
@@ -586,12 +588,14 @@ function HomePage() {
                                     <div className="col-lg-4">
                                         <div className="fact-item">
                                             <div className="count-area-content">
-                                                <div className="icon">
+                                            <i class="fa fa-truck ourpickup-img" aria-hidden="true"></i>
+
+                                                {/* <div className="icon">
                                                     <img
                                                         src="images/service-icon-02.png"
                                                         alt=""
                                                     />
-                                                </div>
+                                                </div> */}
                                                 <div className="count-digit">
                                                     4980
                                                 </div>
@@ -608,12 +612,14 @@ function HomePage() {
                                     <div className="col-lg-4">
                                         <div className="fact-item">
                                             <div className="count-area-content">
-                                                <div className="icon">
+                                            <i class="fa fa-truck ourpickup-img" aria-hidden="true"></i>
+
+                                                {/* <div className="icon">
                                                     <img
                                                         src="images/service-icon-03.png"
                                                         alt=""
                                                     />
-                                                </div>
+                                                </div> */}
                                                 <div className="count-digit">
                                                     12036
                                                 </div>
