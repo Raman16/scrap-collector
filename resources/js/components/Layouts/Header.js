@@ -139,7 +139,7 @@ const Header = (props) => {
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                         >
-                                            {authCtx.user.username}
+                                            {authCtx.user.first_name +' '+ authCtx.user.last_name}
                                         </a>
                                         <ul
                                             className="dropdown-menu"
@@ -196,7 +196,7 @@ const Header = (props) => {
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                         >
-                                            {authCtx.user.username}
+                                            {authCtx.user.first_name +' '+ authCtx.user.last_name}
                                         </a>
                                         <ul
                                             className="dropdown-menu"

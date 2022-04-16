@@ -179,7 +179,7 @@ const Profile = () => {
                         </div>
                         <div className="form-group mb-50">
                             <div className="row">
-                                <div className="col-sm-6">
+                                {/* <div className="col-sm-6">
                                     <Input
                                         id="username"
                                         label="Username"
@@ -192,7 +192,7 @@ const Profile = () => {
                                         {errors.username &&
                                             "Username is Required"}
                                     </span>
-                                </div>
+                                </div> */}
                                 <div className="col-sm-6">
                                     <Input
                                         id="email"
