@@ -38,7 +38,10 @@ class ScrapCollectionController extends Controller
     {
         $pickup_list = ScrapCollection::where(
             ['user_id' => auth()->user()->id]
-        )->with(['address', 'bankDetail', 'materialType','image','agent'])->get();
+        )
+        // ->with(['address', 'bankDetail', 'materialType','image','agent'])
+        ->with(['address','materialType','image','agent'])
+        ->get();
 
         return response()->json(
             [
@@ -68,15 +71,15 @@ class ScrapCollectionController extends Controller
                 ]
             );
 
-            $bank = auth()->user()->bankDetail()->create(
-                [
-                    'bank_name'         => $validated['bank_name'],
-                    'account_name'      => $validated['account_name'],
-                    'account_no'        => $validated['account_no'],
-                    'ifsc_code'         => $validated['ifsc_code'],
-                    'branch'            => $validated['branch']
-                ]
-            );
+            // $bank = auth()->user()->bankDetail()->create(
+            //     [
+            //         'bank_name'         => $validated['bank_name'],
+            //         'account_name'      => $validated['account_name'],
+            //         'account_no'        => $validated['account_no'],
+            //         'ifsc_code'         => $validated['ifsc_code'],
+            //         'branch'            => $validated['branch']
+            //     ]
+            // );
 
             $scrap_collection =  auth()->user()->scrapCollection()->create(
                 [
@@ -84,7 +87,7 @@ class ScrapCollectionController extends Controller
                     'message'           => $validated['message'],
                     'pickup_date'       => date('Y-m-d H:m:s', strtotime($validated['pickup_date'])),
                     'address_id'        => $address->id,
-                    'bank_id'           => $bank->id,
+                    'bank_id'           => 0,
                     'pickup_agent_id'   => 0
 
                     // 'latitude'          => $validated['latitude'],
@@ -96,7 +99,8 @@ class ScrapCollectionController extends Controller
            
 
             $pickup_list = ScrapCollection::where(['id' => $scrap_collection->id])
-                ->with(['address', 'bankDetail'])
+                //->with(['address', 'bankDetail'])
+                ->with(['address'])
                 ->first();
 
             DB::commit();
@@ -125,7 +129,8 @@ class ScrapCollectionController extends Controller
         try {
 
             $pickup_list = ScrapCollection::where(['id' => $pickup])
-                ->with(['address', 'bankDetail', 'materialType'])
+                //->with(['address', 'bankDetail', 'materialType'])
+                ->with(['address','materialType'])
                 ->first();
 
             return response()->json([
@@ -174,7 +179,8 @@ class ScrapCollectionController extends Controller
             ]);
 
             $pickup_data = ScrapCollection::where(['id' => $request->pickup_id])
-                ->with(['address', 'bankDetail', 'materialType'])
+                // ->with(['address', 'bankDetail', 'materialType'])
+                ->with(['address', 'materialType'])
                 ->first();
 
             $pickup_data->update(['status' => ScrapCollection::BOOKING_STATUS[$request->status]]);

@@ -108,17 +108,17 @@ const PickupAgentPage = () => {
     }
 
     return (
-        <div className="basic-2">
+        <div className="basic-5">
             <div className="container card">
                 <div className="row" style={{ minHeight: "500px",padding:"15px" }}>
                     <div className="col-sm-12 ">
                         <>
                             <div className="margin-8"></div>
                             <div className="row">
-                                <div className="col-10  px-0 ">
+                                <div className="col-sm-10  px-0 ">
                                         <h5 style={{marginLeft:"15px"}}>PickUp Agents</h5>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-sm-2">
                                     <Button onClick={handleModalShow}>
                                         Add Agent
                                     </Button>
@@ -132,7 +132,7 @@ const PickupAgentPage = () => {
                             </div>
                             <div className="margin-8"></div>
                             <div className="row m-0">
-                                <div className="col-md-12 col-12 px-0 ">
+                                <div className="col-md-12 col-sm-12 px-0 ">
                                     {pickupAgentsData}
                                 </div>
                             </div>

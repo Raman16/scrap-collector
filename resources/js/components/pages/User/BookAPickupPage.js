@@ -102,7 +102,7 @@ const BookAPickupPage = () => {
     }
 
     return (
-        <div className="basic-2">
+        <div className="basic-5">
             <div className="container">
                 <div className="row">
                     <div className="col-sm-9">

@@ -37,11 +37,11 @@ class ScrapCollectionRequest extends FormRequest
             'city'              => 'required',
             'pincode'           => 'required',
             'address_type'      => 'required',
-            'bank_name'         => 'required',
-            'account_name'      => 'required',
-            'account_no'        => 'required',
-            'ifsc_code'         => 'required',
-            'branch'            => 'required'
+            // 'bank_name'         => 'required',
+            // 'account_name'      => 'required',
+            // 'account_no'        => 'required',
+            // 'ifsc_code'         => 'required',
+            // 'branch'            => 'required'
         ];
     }
 }

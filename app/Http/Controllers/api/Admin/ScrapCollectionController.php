@@ -40,8 +40,9 @@ class ScrapCollectionController extends Controller
 
     public function showAll($date)
     {
-        $pickup_list = ScrapCollection::with(['address', 'bankDetail', 'materialType','image','agent','user'])
-                           ->whereDate('pickup_date','=',date("Y-m-d",strtotime($date)))->get();
+        // $pickup_list = ScrapCollection::with(['address', 'bankDetail', 'materialType','image','agent','user'])
+        $pickup_list = ScrapCollection::with(['address','materialType','image','agent','user'])
+        ->whereDate('pickup_date','=',date("Y-m-d",strtotime($date)))->get();
 
         return response()->json(
             [
@@ -57,7 +58,8 @@ class ScrapCollectionController extends Controller
         try {
 
             $pickup_data = ScrapCollection::where(['id' => $request->pickup_id])
-                ->with(['address', 'bankDetail', 'materialType','image','agent','user'])
+                // ->with(['address', 'bankDetail', 'materialType','image','agent','user'])
+                ->with(['address', 'materialType','image','agent','user'])
                 ->first();
 
             $pickup_data->update(['status' => ScrapCollection::BOOKING_STATUS[$request->status]]);
@@ -81,7 +83,8 @@ class ScrapCollectionController extends Controller
         try {
 
             $pickup_data = ScrapCollection::where(['id' => $request->pickup_id])
-                ->with(['address', 'bankDetail', 'materialType','image','agent','user'])
+                // ->with(['address', 'bankDetail', 'materialType','image','agent','user'])
+                ->with(['address','materialType','image','agent','user'])
                 ->first();
 
             $pickup_data->update($request->all());

@@ -38,7 +38,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-12">
                                         <div className="row">
                                             <div className="col-sm-3">
-                                                Pickup Material
+                                                <label className="label-bold">
+                                                    Pickup Material
+                                                </label>
                                             </div>
                                             <div className="col-sm-9">
                                                 {product.material_name}
@@ -51,7 +53,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-12">
                                         <div className="row">
                                             <div className="col-sm-3">
-                                                Message
+                                                <label className="label-bold">
+                                                    Message
+                                                </label>
                                             </div>
                                             <div className="col-sm-9">
                                                 {product.message}
@@ -65,24 +69,26 @@ const MyPickup = (props) => {
                                     <div className="col-sm-6 form-group">
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                E-Waste Image
+                                                <label className="label-bold">
+                                                    E-Waste Image
+                                                </label>
                                             </div>
                                             <div className="col-sm-6">
                                                 <div className="thumbnail-container-sm">
-                                                <Zoom>
-                                                    <div className="thumbnail-container-sm">
-                                                        <img
-                                                        alt="Not Availble"
-                                                        src={
-                                                                product.image !=
-                                                                ""
-                                                                    ? product.image
-                                                                    : "images/noImage.png"
-                                                            }
-                                                        />
-                                                    </div>
-                                                </Zoom>
-                                                
+                                                    <Zoom>
+                                                        <div className="thumbnail-container-sm">
+                                                            <img
+                                                                alt="Not Availble"
+                                                                src={
+                                                                    product.image !=
+                                                                    ""
+                                                                        ? product.image
+                                                                        : "images/noImage.png"
+                                                                }
+                                                            />
+                                                        </div>
+                                                    </Zoom>
+
                                                     {/* <img
                                                         src={
                                                             product.image != ""
@@ -117,7 +123,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-6">
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                Pickup Date
+                                                <label className="label-bold">
+                                                    Pickup Date
+                                                </label>
                                             </div>
                                             <div className="col-sm-6">
                                                 {product.pickup_date +
@@ -132,7 +140,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-6">
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                Address
+                                                <label className="label-bold">
+                                                    Address
+                                                </label>
                                             </div>
                                             <div className="col-sm-6">
                                                 {product.address.address}
@@ -142,7 +152,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-6">
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                Landmark
+                                                <label className="label-bold">
+                                                    Landmark
+                                                </label>
                                             </div>
                                             <div className="col-sm-6">
                                                 {product.address.land_mark}
@@ -153,7 +165,11 @@ const MyPickup = (props) => {
                                 <div className="row">
                                     <div className="col-sm-6">
                                         <div className="row">
-                                            <div className="col-sm-6">City</div>
+                                            <div className="col-sm-6">
+                                                <label className="label-bold">
+                                                    City
+                                                </label>
+                                            </div>
                                             <div className="col-sm-6">
                                                 {product.address.city}
                                             </div>
@@ -162,7 +178,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-6">
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                State
+                                                <label className="label-bold">
+                                                    State
+                                                </label>
                                             </div>
                                             <div className="col-sm-6">
                                                 {product.address.state}
@@ -174,7 +192,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-6">
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                Pincode
+                                                <label className="label-bold">
+                                                    Pincode
+                                                </label>
                                             </div>
                                             <div className="col-sm-6">
                                                 {product.address.pincode}
@@ -184,7 +204,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-6">
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                Country
+                                                <label className="label-bold">
+                                                    Country
+                                                </label>
                                             </div>
                                             <div className="col-sm-6">
                                                 {product.address.country}
@@ -196,7 +218,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-6">
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                Pickup Status
+                                                <label className="label-bold">
+                                                    Pickup Status
+                                                </label>
                                             </div>
                                             <div className="col-sm-6">
                                                 {product.status ==
@@ -227,7 +251,9 @@ const MyPickup = (props) => {
                                     <div className="col-sm-6">
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                Pickup Agent
+                                                <label className="label-bold">
+                                                    Pickup Agent
+                                                </label>
                                             </div>
                                             <div className="col-sm-6">
                                                 <span
@@ -243,7 +269,9 @@ const MyPickup = (props) => {
                                                             ","}
                                                     <br></br>
                                                 </span>
-                                                Contact:
+                                                <label className="label-bold">
+                                                    Agent Contact:
+                                                </label>
                                                 {product.agent &&
                                                     product.agent.phone_number}
                                             </div>
@@ -255,7 +283,7 @@ const MyPickup = (props) => {
                     </div>
                 </div>
                 <div className="margin-8"></div>
-                <div className="row">
+                {/* <div className="row">
                     <div className="col-12">
                         <div className="card">
                             <div className="card-body" style={cardBodyStyle}>
@@ -323,7 +351,7 @@ const MyPickup = (props) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="margin-8"></div>
                 <div className="row">
                     <div className="col-sm-10"></div>

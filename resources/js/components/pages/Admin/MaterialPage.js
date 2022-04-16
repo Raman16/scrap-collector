@@ -125,10 +125,10 @@ const MaterialPage = () => {
 
     return (
         <>
-            <div className="margin-8"></div>
+           <div className="margin-8"></div>
             <div className="row">
-                <div className="col-9  px-0 "></div>
-                <div className="col-3">
+                <div className="col-sm-9  px-0 "></div>
+                <div className="col-sm-3">
                     <Button onClick={handleMaterialModalShow}>
                         Add Material
                     </Button>
@@ -143,7 +143,7 @@ const MaterialPage = () => {
             </div>
             <div className="margin-8"></div>
             <div className="row m-0">
-                <div className="col-md-12 col-12 px-0 ">
+                <div className="col-md-12 col-sm-12 px-0 ">
                     <MaterialTypeList
                         materialTypes={materialTypes}
                         handleEdit={handleMaterialEdit}

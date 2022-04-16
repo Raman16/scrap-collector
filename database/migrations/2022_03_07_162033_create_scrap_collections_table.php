@@ -44,10 +44,10 @@ class CreateScrapCollectionsTable extends Migration
 
 
             $table->bigInteger('bank_id')->unsigned();
-            $table->foreign('bank_id')
-                ->references('id')
-                ->on('bank_details')
-                ->onDelete('cascade');
+            // $table->foreign('bank_id')
+            //     ->references('id')
+            //     ->on('bank_details')
+            //     ->onDelete('cascade');
 
             $table->bigInteger('pickup_agent_id')->unsigned()->nullable();
 

@@ -11,10 +11,11 @@ import StatePage from "./StatePage";
 
 const SettingsPage = () => {
     return (
-        <div className="basic-2 ">
+        <div className="basic-5">
             <div className="container ">
                 <div className="row" style={{minHeight:"450px"}}>
-                    <div className="col-sm-6 offset-3">
+                    <div className="col-sm-3"></div>
+                    <div className="col-sm-6">
                         <Tabs
                             defaultActiveKey={1}
                             id="uncontrolled-tab-example"

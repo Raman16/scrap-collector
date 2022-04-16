@@ -43,9 +43,9 @@ const MyPickups = (props) => {
                                     <td className="pb-0 pl-0">
                                         <strong>Status</strong>
                                     </td>
-                                    <td className="pb-0">
+                                    {/* <td className="pb-0">
                                         <strong>Bank Details</strong>
-                                    </td>
+                                    </td> */}
                                     <td className="pb-0">
                                         <strong>Pickup Location</strong>
                                     </td>
@@ -110,7 +110,7 @@ const MyPickups = (props) => {
                                             </span>
                                         )}
                                     </td>
-                                    <td>
+                                    {/* <td>
                                         <div className="d-flex align-items-center justify-content-between">
                                             <div>
                                                 <p
@@ -126,7 +126,7 @@ const MyPickups = (props) => {
                                             </div>
                                             <i className="bx bx-cloud font-large-2"></i>
                                         </div>
-                                    </td>
+                                    </td> */}
                                     <td>
                                         <div className="d-flex align-items-center justify-content-between">
                                             <div>

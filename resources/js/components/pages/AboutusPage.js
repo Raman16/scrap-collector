@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutUsPage() {
     return (
-            <div className="basic-aboutus" style={{paddingTop:"0px !important"}}>
+            <div className="basic-5" style={{paddingTop:"0px !important"}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12 col-xl-12">

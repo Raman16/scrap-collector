@@ -14,6 +14,7 @@ const AddAgent = (props) => {
     } = useForm();
 
     const onSubmit = (data) => {
+        data.country_code = "+91";
         props.agentRegistration(data);
     };
 
@@ -26,7 +27,7 @@ const AddAgent = (props) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="row">
+                    {/* <div className="row">
                         <div className="col-sm-12">
                             <InputH
                                 label="Country"
@@ -38,7 +39,7 @@ const AddAgent = (props) => {
                                 errors={errors}
                             />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="row">
                         <div className="col-sm-12">
                             <InputH
@@ -92,7 +93,7 @@ const AddAgent = (props) => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-sm-12">
+                        {/* <div className="col-sm-12">
                             <InputH
                                 id="username"
                                 label="Username"
@@ -102,7 +103,7 @@ const AddAgent = (props) => {
                                 errors={errors}
                                 required
                             />
-                        </div>
+                        </div> */}
                         <div className="col-sm-12">
                             <InputH
                                 id="email"

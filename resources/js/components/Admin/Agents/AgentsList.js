@@ -15,7 +15,7 @@ const AgentsList = (props) => {
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>E-mail</th>
-                    <th>Username</th>
+                    {/* <th>Username</th> */}
                     <th>Action</th>
                 </tr>
             </thead>
@@ -29,7 +29,7 @@ const AgentsList = (props) => {
                             <td>{agent.first_name}</td>
                             <td>{agent.last_name}</td>
                             <td>{agent.email}</td>
-                            <td>{agent.username}</td>
+                            {/* <td>{agent.username}</td> */}
 
                             <td>
                                 <button

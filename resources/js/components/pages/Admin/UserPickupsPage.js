@@ -185,12 +185,12 @@ const UserPickupsPage = () => {
 
     
     return (
-        <div className="basic-2">
+        <div className="basic-5">
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12">
                         <div className="row">
-                            <div className="col-sm-3">
+                            <div className="col-sm-3 col-xs-12 mb-2">
                                 <DatePicker
                                     renderInput={renderInput}
                                     value={dt}
@@ -218,7 +218,7 @@ const UserPickupsPage = () => {
                                     value={dt.format("D-M-Y")}
                                 />
                             </div>
-                            <div className="col-sm-3">
+                            <div className="col-sm-3 col-xs-12 mb-2">
                                 <select
                                     id="material_type"
                                     label="Material Type"
@@ -233,7 +233,7 @@ const UserPickupsPage = () => {
                                     {material_options}
                                 </select>
                             </div>
-                            <div className="col-sm-3">
+                            <div className="col-sm-3 col-xs-12 mb-2">
                                 <select
                                     id="status"
                                     label="Pickup Status"
@@ -248,7 +248,7 @@ const UserPickupsPage = () => {
                                     {bookingStatus_options}
                                 </select>
                             </div>
-                            <div className="col-sm-3">
+                            <div className="col-sm-3 col-xs-12 mb-2">
                                 <select
                                     id="agents"
                                     label="Agents"

@@ -407,7 +407,7 @@ const BookAPickup = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="margin-8"></div>
+                {/* <div className="margin-8"></div>
 
                 <div className="row">
                     <div className="col-12">
@@ -484,7 +484,7 @@ const BookAPickup = (props) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div style={{ marginTop: "20px" }}></div>
 
                 <div>

@@ -611,25 +611,25 @@ a.dropdown-item.active {
 
 
 /*********************/
-/*     About Us   */
+/*     About Us  & Setting Pages  */
 /*********************/
-.basic-aboutus {
-    padding-top: 3.5rem;
+.basic-5 {
+    padding-top: 2.5rem;
     padding-bottom: 5.5rem;
     background: url("../images/details-2-background.jpg") center center
         no-repeat;
     background-size: cover;
 }
 
-.basic-aboutus .text-container {
+.basic-5 .text-container {
     margin-bottom: 4rem;
 }
 
-.basic-aboutus h2 {
+.basic-5 h2 {
     margin-bottom: 1.75rem;
 }
 
-.basic-aboutus p {
+.basic-5 p {
     margin-bottom: 2rem;
 }
 
@@ -2030,4 +2030,8 @@ a.dropdown-item.active {
 .img-fluid-login{
     max-width: 83%;
     height: auto;
+}
+
+.label-bold{
+    font-weight: bold;
 }
