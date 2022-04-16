@@ -2,10 +2,10 @@ import React from "react";
 
 function AboutUsPage() {
     return (
-            <div className="basic-2">
+            <div className="basic-aboutus" style={{paddingTop:"0px !important"}}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-6 col-xl-5">
+                        <div className="col-lg-12 col-xl-12">
                             <div className="text-container">
                                 <h4>ABOUT US</h4>
                                 <p>
@@ -34,7 +34,7 @@ function AboutUsPage() {
                                 </p>
                             </div>
                         </div>
-                        <div className="col-lg-6 col-xl-7">
+                        <div className="col-lg-6 col-xl-6">
                             <div className="image-container">
                                 <img
                                     className="img-fluid"

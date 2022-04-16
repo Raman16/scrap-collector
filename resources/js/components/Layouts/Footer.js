@@ -8,27 +8,32 @@ const Footer = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 col-md-6 footer-contact">
-                                <a
-                                    className="logo-image"
-                                    href="index.html"
-                                >
-                                    <img
-                                        src="images/logo.png"
-                                        alt="alternative"
-                                        style={{width:"130px"}}
-                                    />
-                                </a>{" "}
-                                <p>
-                                    Road NO:7, Padma Nagar Street, Banashankar,{" "}
+                                <div style={{ marginBottom: "6px" }}>
+                                    <a className="logo-image" href="index.html">
+                                        <img
+                                            src="images/logo.png"
+                                            alt="alternative"
+                                            style={{ width: "130px" }}
+                                        />
+                                    </a>
+                                </div>
+                                <div>
+                                    <p>
+                                        Q Hub Business Center,
+                                        <br />
+                                        Road no:36 & 37, Besides Madhapur,{" "}
+                                        <br />
+                                        Jubilee Hills,Hyderabad,
+                                        <br />
+                                        Telangana 500033, India. <br />
+                                    </p>
+                                </div>
+                                <div>
+                                    <strong>Phone:</strong> +91 7337321213
                                     <br />
-                                    Bengalure, 560029.
-                                    <br />
-                                    India. <br />
-                                    <strong>Phone:</strong> +1431326871
-                                    <br />
-                                    <strong>Email:</strong> info@ewpotformotherearth.com
-                                    <br />
-                                </p>
+                                    <strong>Email: </strong>
+                                    mahesh@ew-pot.com
+                                </div>
                             </div>
 
                             <div className="col-lg-3 col-md-6 footer-links">
@@ -46,16 +51,16 @@ const Footer = () => {
                                             About Us
                                         </NavLink>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <i className="bx bx-chevron-right"></i>
                                         <a href="#">Contact Us</a>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
 
                             <div className="col-lg-3 col-md-6 footer-links">
-                                <h4>GET THE APP</h4>
-                                <ul>
+                                <h4>Get The App</h4>
+                                <ul style={{lineHeight:"48px"}}> 
                                     <li>
                                         <i className="bx bx-chevron-right"></i>
                                         <img
@@ -83,7 +88,7 @@ const Footer = () => {
                                     details, so you know what is happening at
                                     all times.
                                 </p>
-                                <div className="social-links mt-3">
+                                {/* <div className="social-links mt-3">
                                     <a href="#" className="twitter">
                                         <i className="bx bxl-twitter"></i>
                                     </a>
@@ -99,19 +104,26 @@ const Footer = () => {
                                     <a href="#" className="linkedin">
                                         <i className="bx bxl-linkedin"></i>
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="container footer-bottom clearfix">
-                    <div className="">
-                        &copy; Copyright
-                        <strong>
-                            <span>&nbsp; EW-POT(For Mother Earth)</span>
-                        </strong>
-                         All Rights Reserved
+                    <div class="row">
+                        <div className="col-sm-4">
+                            <strong>
+                                <span>&nbsp;K UMAMAHESWAR REDDY (Founder & CEO) </span>
+                            </strong>
+                        </div>
+                        <div className="col-sm-8">
+                                <span style={{ float: "right" }}>
+                                    &copy; Copyright 2022 EW-POT(For Mother
+                                    Earth) All Rights Reserved.
+                                </span>
+                               
+                        </div>
                     </div>
                 </div>
             </footer>

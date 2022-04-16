@@ -276,9 +276,8 @@ function HomePage() {
                             <h5>
                                 WHY E-WASTE IS IMPORTANT TO PROCESSED (OR)
                                 DISMANTELED IN SCIENTIFIC MANNER
-                            </h5>{" "}
-                            <br />
-                            <h6>E-WASTE GENERATION </h6>
+                            </h5>
+                            {/* <h6>E-WASTE GENERATION </h6> */}
                             The Global E-Waste Monitor 2020 shows that consumers
                             discarded 53.6 million tonnes worth of electronics
                             in 2019 globally, up 20 percent in 5 years. India
@@ -309,26 +308,20 @@ function HomePage() {
                             <h6>
                                 E-WASTE & ITS NEGATIVE EFFECTS ON THE
                                 ENVIRONMENT
-                                <br />
-                            </h6>{" "}
-                            <br />
-                            <br />
+                            </h6>
                             Contamination in the air occurs when e-waste is
                             informally disposed by dismantling, shredding or
                             melting the materials, releasing dust particles or
                             toxins, such as dioxins, into the environment that
                             cause air pollution and damage respiratory health.
-                            E-waste of little value is often burned, but burning
-                            also serves a way to get valuable metal from
-                            electronics, like copper. Chronic diseases and
-                            cancers are at a higher risk to occur when burning
-                            e-waste because it also releases fine particles,
-                            which can travel thousands of miles, creating
-                            numerous negative health risks to humans and
-                            animals. The negative effects on air from informal
-                            e-waste recycling are most dangerous for those who
-                            handle this waste, but the pollution can extend
-                            thousands of miles away from recycling sites
+                            Chronic diseases and cancers are at a higher risk to
+                            occur when burning e-waste because it also releases
+                            fine particles, creating numerous negative health
+                            risks. The negative effects on air
+                            from informal e-waste recycling are most dangerous
+                            for those who handle this waste, but the pollution
+                            can extend thousands of miles away from recycling
+                            sites
                         </div>
                     </div>
                 </div>
@@ -347,18 +340,15 @@ function HomePage() {
                         </div>
                         <div className="col-lg-6 col-xl-6">
                             <h6>THE NEGATIVE EFFECTS ON SOIL</h6>
-                            <br />
                             When improper disposal of e-waste in regular
                             landfills or in places where it is dumped illegally,
                             both heavy metals and flame retardants can seep
                             directly from the e-waste into the soil, causing
                             contamination of underlying groundwater or
-                            contamination of crops that may be planted near by
-                            or in the area in the future. When the soil is
+                            contamination of crops. When the soil is
                             contaminated by heavy metals, the crops become
                             vulnerable to absorbing these toxins, which can
-                            cause many illnesses and doesn’t allow the farmland
-                            to be as productive as possible. When large
+                            cause many illnesses effecting farmland. When large
                             particles are released from burning, shredding or
                             dismantling e-waste, they quickly re-deposit to the
                             ground and contaminate the soil as well, due to
@@ -381,7 +371,6 @@ function HomePage() {
                         </div>
                         <div className="col-lg-6 col-xl-6">
                             <h6>THE NEGATIVE EFFECTS ON HUMANS</h6>
-                            <br />
                             Electronic waste contains toxic components that are
                             dangerous to human health, such as mercury, lead,
                             cadmium, polybrominated flame retardants, barium and
@@ -558,13 +547,18 @@ function HomePage() {
                         </div>
                         <div className="col-lg-6">
                             <div className="section-heading">
-                                <h2 style={{marginTop:"10px"}}>Our Pickups </h2>
+                                <h2 style={{ marginTop: "10px" }}>
+                                    Our Pickups{" "}
+                                </h2>
                                 <span>Explore unlimited possibilities</span>
                                 <div className="row">
                                     <div className="col-lg-4">
                                         <div className="fact-item">
                                             <div className="count-area-content">
-                                            <i class="fa fa-truck ourpickup-img" aria-hidden="true"></i>
+                                                <i
+                                                    class="fa fa-truck ourpickup-img"
+                                                    aria-hidden="true"
+                                                ></i>
 
                                                 {/* <div className="icon">
                                                     <img
@@ -588,7 +582,10 @@ function HomePage() {
                                     <div className="col-lg-4">
                                         <div className="fact-item">
                                             <div className="count-area-content">
-                                            <i class="fa fa-truck ourpickup-img" aria-hidden="true"></i>
+                                                <i
+                                                    class="fa fa-truck ourpickup-img"
+                                                    aria-hidden="true"
+                                                ></i>
 
                                                 {/* <div className="icon">
                                                     <img
@@ -612,7 +609,10 @@ function HomePage() {
                                     <div className="col-lg-4">
                                         <div className="fact-item">
                                             <div className="count-area-content">
-                                            <i class="fa fa-truck ourpickup-img" aria-hidden="true"></i>
+                                                <i
+                                                    class="fa fa-truck ourpickup-img"
+                                                    aria-hidden="true"
+                                                ></i>
 
                                                 {/* <div className="icon">
                                                     <img
@@ -627,8 +627,8 @@ function HomePage() {
                                                     Overall
                                                 </div>
                                                 <p>
-                                                    We have picked total 12036 Materials till now.
-                                                    
+                                                    We have picked total 12036
+                                                    Materials till now.
                                                 </p>
                                             </div>
                                         </div>
@@ -703,10 +703,10 @@ function HomePage() {
                                         product.
                                     </p>
                                     <div className="testimonial-author">
-                                        Roe Smith
+                                        Hari B
                                     </div>
                                     <div className="occupation">
-                                        Director, Presentop
+                                        {/* Director, Presentop */}
                                     </div>
                                 </div>
                                 <div className="gradient-floor red-to-blue"></div>
@@ -724,10 +724,10 @@ function HomePage() {
                                         Digital Age
                                     </p>
                                     <div className="testimonial-author">
-                                        Sam Bloom
+                                        Raman Sai
                                     </div>
                                     <div className="occupation">
-                                        General Manager, Presentop
+                                        {/* General Manager, Presentop */}
                                     </div>
                                 </div>
                                 <div className="gradient-floor blue-to-purple"></div>
@@ -746,10 +746,10 @@ function HomePage() {
                                         ecosystems.
                                     </p>
                                     <div className="testimonial-author">
-                                        Bill McKenzie
+                                        Raghav Ram
                                     </div>
                                     <div className="occupation">
-                                        Publisher, Presentop
+                                        {/* Publisher, Presentop */}
                                     </div>
                                 </div>
                                 <div className="gradient-floor purple-to-green"></div>

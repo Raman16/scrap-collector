@@ -68,6 +68,7 @@ const LoginForm = () => {
         if (!isLogging) {
             toast("Loggin In...");
         }
+        requestData.country_code = '+91';
         requestData.device_name = navigator.userAgent;
         requestData.device_id = "unique Device Id";
         requestData.device_token = navigator.appVersion;
@@ -110,7 +111,9 @@ const LoginForm = () => {
                                         <form onSubmit={handleSubmit(onSubmit)}>
                                             <div className="form-group mb-50">
                                                 <div className="row">
-                                                    <div className="col-sm-1"></div>
+                                                <div className="col-sm-1"></div>
+
+                                                    {/* <div className="col-sm-1"></div>
                                                     <div className="col-sm-3">
                                                         <Input
                                                             label="Country"
@@ -120,20 +123,20 @@ const LoginForm = () => {
                                                             required
                                                             value="+91"
                                                         />
-                                                    </div>
-                                                    <div className="col-sm-7">
+                                                    </div> */}
+                                                    <div className="col-sm-10">
                                                         {/* <Input2 label="FirstName" register={register} required /> */}
                                                         <Input
-                                                            label="Phone Number"
+                                                            label="Mobile Number"
                                                             id="phone_number"
                                                             type="text"
-                                                            placeholder="Enter Phone Number"
+                                                            placeholder="Enter Mobile Number"
                                                             register={register}
                                                             required
                                                         />
                                                         <span className="text-danger">
                                                             {errors.phone_number &&
-                                                                "Phone Number is Required"}
+                                                                "Mobile Number is Required"}
                                                         </span>
                                                     </div>
 
@@ -190,7 +193,7 @@ const LoginForm = () => {
                             </div>
                             <div className="col-md-6 d-md-block d-none text-center align-self-center p-3">
                                 <img
-                                    className="img-fluid"
+                                    className="img-fluid-login"
                                     src="../../../app-assets/images/pages/login.png"
                                     alt="branding logo"
                                 />

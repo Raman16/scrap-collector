@@ -36,7 +36,7 @@ class RegistrationRequest extends FormRequest
         return [
             'first_name'                => 'required',
             'last_name'                 => 'required',
-            'username'                  => 'required',
+            // 'username'                  => 'required',
             'email'                     => 'string|max:255|unique:users',
             'country_code'              => 'required',
             'phone_number'              => 'required|digits:10',

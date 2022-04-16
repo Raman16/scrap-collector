@@ -56,7 +56,7 @@ const RegisterForm = () => {
         // setShowModal(true);
 
         let requestData = {
-            country_code: getValues("country_code"),
+            country_code: "+91",
             phone_number: getValues("phone_number"),
             type: "USER_REGISTRATION",
         };
@@ -83,6 +83,8 @@ const RegisterForm = () => {
         otpRequest();
     };
     const submitForm = (otpValues) => {
+        formData.country_code = "+91";
+
         formData.device_name = navigator.userAgent;
         formData.device_id = "unique Device Id";
         formData.device_token = navigator.appVersion;
@@ -145,8 +147,26 @@ const RegisterForm = () => {
                                             >
                                                 <div className="form-group mb-50">
                                                     <div className="row">
-                                                        <div className="col-sm-3">
+                                                        <div className="col-sm-6">
+                                                            {/* <Input2 label="FirstName" register={register} required /> */}
                                                             <Input
+                                                                label="Mobile Number"
+                                                                id="phone_number"
+                                                                type="text"
+                                                                placeholder="Enter Mobile Number"
+                                                                register={
+                                                                    register
+                                                                }
+                                                                required
+                                                            />
+                                                            <span className="text-danger">
+                                                                {errors.phone_number &&
+                                                                    "Mobile Number is Required"}
+                                                            </span>
+                                                        </div>
+                                                        {/* <div className="col-sm-2"></div> */}
+                                                        <div className="col-sm-6">
+                                                            {/* <Input
                                                                 label="Country"
                                                                 id="country_code"
                                                                 type="text"
@@ -155,60 +175,20 @@ const RegisterForm = () => {
                                                                 }
                                                                 required
                                                                 value="+91"
-                                                            />
-                                                        </div>
-                                                        <div className="col-sm-7">
-                                                            {/* <Input2 label="FirstName" register={register} required /> */}
+                                                            /> */}
                                                             <Input
-                                                                label="Phone Number"
-                                                                id="phone_number"
-                                                                type="text"
-                                                                placeholder="Enter Phone Number"
-                                                                register={
-                                                                    register
-                                                                }
-                                                                required
-                                                            />
-                                                        </div>
-                                                        <div className="col-sm-2"></div>
-                                                        <span className="text-danger">
-                                                            {errors.phone_number &&
-                                                                "Phone Number is Required"}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="form-group mb-50">
-                                                    <div className="row">
-                                                        <div className="col-sm-6">
-                                                            <Input
-                                                                id="password"
-                                                                label="Password"
-                                                                type="password"
-                                                                placeholder="Enter Password"
+                                                                id="email"
+                                                                label="E-mail"
+                                                                type="email"
+                                                                placeholder="Enter Email"
                                                                 register={
                                                                     register
                                                                 }
                                                                 required
                                                             />
                                                             <span className="text-danger">
-                                                                {errors.password &&
-                                                                    "Password is Required"}
-                                                            </span>
-                                                        </div>
-                                                        <div className="col-sm-6">
-                                                            <Input
-                                                                id="password_confirmation"
-                                                                label="Confirm Password"
-                                                                type="password"
-                                                                placeholder="Enter Confirm Password"
-                                                                register={
-                                                                    register
-                                                                }
-                                                                required
-                                                            />
-                                                            <span className="text-danger">
-                                                                {errors.password_confirmation &&
-                                                                    "Confirm Password is Required"}
+                                                                {errors.email &&
+                                                                    "Enter Email is Required"}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -253,6 +233,43 @@ const RegisterForm = () => {
                                                     <div className="row">
                                                         <div className="col-sm-6">
                                                             <Input
+                                                                id="password"
+                                                                label="Password"
+                                                                type="password"
+                                                                placeholder="Enter Password"
+                                                                register={
+                                                                    register
+                                                                }
+                                                                required
+                                                            />
+                                                            <span className="text-danger">
+                                                                {errors.password &&
+                                                                    "Password is Required"}
+                                                            </span>
+                                                        </div>
+                                                        <div className="col-sm-6">
+                                                            <Input
+                                                                id="password_confirmation"
+                                                                label="Confirm Password"
+                                                                type="password"
+                                                                placeholder="Enter Confirm Password"
+                                                                register={
+                                                                    register
+                                                                }
+                                                                required
+                                                            />
+                                                            <span className="text-danger">
+                                                                {errors.password_confirmation &&
+                                                                    "Confirm Password is Required"}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {/* <div className="form-group mb-50">
+                                                    <div className="row">
+                                                        <div className="col-sm-6">
+                                                            <Input
                                                                 id="username"
                                                                 label="Username"
                                                                 type="text"
@@ -268,23 +285,10 @@ const RegisterForm = () => {
                                                             </span>
                                                         </div>
                                                         <div className="col-sm-6">
-                                                            <Input
-                                                                id="email"
-                                                                label="E-mail"
-                                                                type="email"
-                                                                placeholder="Enter Email"
-                                                                register={
-                                                                    register
-                                                                }
-                                                                required
-                                                            />
-                                                            <span className="text-danger">
-                                                                {errors.email &&
-                                                                    "Enter Email is Required"}
-                                                            </span>
+                                                           
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                                 <Button type="submit">
                                                     SIGN UP
                                                 </Button>
@@ -328,12 +332,14 @@ const RegisterForm = () => {
                                 )}
                             </div>
 
-                            <div className="col-md-6 d-md-block d-none text-center align-self-center p-3">
-                                <img
-                                    className="img-fluid"
-                                    src="../../../app-assets/images/pages/register.png"
-                                    alt="branding logo"
-                                />
+                            <div className="col-md-6 d-md-block d-none text-center align-self-center">
+                                <div>
+                                    <img
+                                        className="img-fluid-reg"
+                                        src="../../../app-assets/images/pages/register.png"
+                                        alt="branding logo"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
