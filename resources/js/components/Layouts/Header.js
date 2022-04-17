@@ -67,7 +67,7 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to=""
-                                            className="dropdown-item nav-link"
+                                            className="dropdown-item nav-link menu-padding"
                                             onClick={toggleClose}
                                         >
                                             Home
@@ -76,7 +76,7 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="about-us"
-                                            className="dropdown-item nav-link"
+                                            className="dropdown-item nav-link menu-padding"
                                             onClick={toggleClose}
                                         >
                                             About Us
@@ -85,7 +85,7 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="login"
-                                            className="dropdown-item nav-link"
+                                            className="dropdown-item nav-link menu-padding"
                                             onClick={toggleClose}
                                         >
                                             Login
@@ -95,7 +95,7 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="register"
-                                            className="dropdown-item nav-link"
+                                            className="dropdown-item nav-link menu-padding"
                                             onClick={toggleClose}
                                         >
                                             Register
@@ -116,7 +116,7 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="admin/user-pickups"
-                                            className="dropdown-item"
+                                            className="dropdown-item menu-padding"
                                             onClick={toggleClose}
                                         >
                                             Pickup List
@@ -125,7 +125,7 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="admin/pickup-agents"
-                                            className="dropdown-item"
+                                            className="dropdown-item menu-padding"
                                             onClick={toggleClose}
                                         >
                                             Pickup Agents
@@ -148,7 +148,7 @@ const Header = (props) => {
                                             <li>
                                                 <NavLink
                                                     to="/admin/settings"
-                                                    className="dropdown-item"
+                                                    className="dropdown-item menu-padding"
                                                     onClick={toggleClose}
                                                 >
                                                     Settings
@@ -157,7 +157,7 @@ const Header = (props) => {
                                             <li className="nav-item">
                                                 <NavLink
                                                     to="logout"
-                                                    className="dropdown-item"
+                                                    className="dropdown-item menu-padding"
                                                     onClick={logoutHandler}
                                                 >
                                                     Logout
@@ -172,7 +172,7 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="book-a-pickup"
-                                            className="dropdown-item"
+                                            className="dropdown-item menu-padding"
                                             onClick={toggleClose}
                                         >
                                             Book A Pickup
@@ -181,7 +181,7 @@ const Header = (props) => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="my-pickups"
-                                            className="dropdown-item"
+                                            className="dropdown-item menu-padding"
                                             onClick={toggleClose}
                                         >
                                             Pickup List
@@ -193,7 +193,7 @@ const Header = (props) => {
                                             className="nav-link dropdown-toggle"
                                             href="#"
                                             id="dropdown01"
-                                            data-bs-toggle="dropdown"
+                                            data-bs-toggle="dropdown menu-padding"
                                             aria-expanded="false"
                                         >
                                             {authCtx.user.first_name +' '+ authCtx.user.last_name}
@@ -205,20 +205,20 @@ const Header = (props) => {
                                             <li>
                                                 <NavLink
                                                     to="profile"
-                                                    className="dropdown-item"
+                                                    className="dropdown-item menu-padding"
                                                     onClick={toggleClose}
                                                 >
                                                     Profile
                                                 </NavLink>
                                                 <a
-                                                    className="dropdown-item"
+                                                    className="dropdown-item menu-padding"
                                                     href="article.html"
                                                 ></a>
                                             </li>
                                             <li className="nav-item">
                                                 <NavLink
                                                     to="logout"
-                                                    className="dropdown-item"
+                                                    className="dropdown-item menu-padding"
                                                     onClick={logoutHandler}
                                                 >
                                                     Logout
@@ -236,7 +236,7 @@ const Header = (props) => {
                                             className="nav-link dropdown-toggle"
                                             href="#"
                                             id="dropdown01"
-                                            data-bs-toggle="dropdown"
+                                            data-bs-toggle="dropdown menu-padding"
                                             aria-expanded="false"
                                         >
                                             {authCtx.user.username}
@@ -248,7 +248,7 @@ const Header = (props) => {
                                             <li className="nav-item">
                                                 <NavLink
                                                     to="logout"
-                                                    className="dropdown-item"
+                                                    className="dropdown-item menu-padding"
                                                     onClick={logoutHandler}
                                                 >
                                                     Logout
