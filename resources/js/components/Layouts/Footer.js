@@ -60,13 +60,13 @@ const Footer = () => {
 
                             <div className="col-lg-3 col-md-6 footer-links">
                                 <h4>Get The App</h4>
-                                <ul style={{lineHeight:"48px"}}> 
+                                <ul> 
                                     <li>
                                         <i className="bx bx-chevron-right"></i>
                                         <img
                                             src="images/android-app.jpg"
                                             alt="alternative"
-                                            style={{ width: "60%" }}
+                                            style={{ width: "60%";marginBottom:"12px" }}
                                         />
                                     </li>
                                     <li>
