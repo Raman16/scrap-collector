@@ -190,10 +190,10 @@ const Header = (props) => {
 
                                     <li className="nav-item dropdown">
                                         <a
-                                            className="nav-link dropdown-toggle"
+                                            className="nav-link dropdown-toggle menu-padding"
                                             href="#"
                                             id="dropdown01"
-                                            data-bs-toggle="dropdown menu-padding"
+                                            data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                         >
                                             {authCtx.user.first_name +' '+ authCtx.user.last_name}
@@ -210,10 +210,6 @@ const Header = (props) => {
                                                 >
                                                     Profile
                                                 </NavLink>
-                                                <a
-                                                    className="dropdown-item menu-padding"
-                                                    href="article.html"
-                                                ></a>
                                             </li>
                                             <li className="nav-item">
                                                 <NavLink
@@ -233,10 +229,10 @@ const Header = (props) => {
                                 <>
                                     <li className="nav-item dropdown">
                                         <a
-                                            className="nav-link dropdown-toggle"
+                                            className="nav-link dropdown-toggle  menu-padding"
                                             href="#"
                                             id="dropdown01"
-                                            data-bs-toggle="dropdown menu-padding"
+                                            data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                         >
                                             {authCtx.user.username}

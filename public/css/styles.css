@@ -410,8 +410,9 @@ a:hover {
 .navbar .nav-item.dropdown.show .nav-link,
 .navbar .nav-item .nav-link:hover,
 .navbar .nav-item .nav-link.active {
-    color: rgba(90, 141, 238, 0.15);
+    /* color: rgba(90, 141, 238, 0.15); */
 }
+
 a.dropdown-item.active {
     background-color:#0a6e3f !important;
     color: #ffffff !important;
