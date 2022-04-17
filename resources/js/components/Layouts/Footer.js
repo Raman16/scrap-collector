@@ -111,7 +111,7 @@ const Footer = () => {
                 </div>
 
                 <div className="container footer-bottom clearfix">
-                    <div class="row">
+                    <div className="row">
                         <div className="col-sm-4">
                             <strong>
                                 <span>&nbsp;K UMAMAHESWAR REDDY (Founder & CEO) </span>

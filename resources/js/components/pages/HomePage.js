@@ -556,7 +556,7 @@ function HomePage() {
                                         <div className="fact-item">
                                             <div className="count-area-content">
                                                 <i
-                                                    class="fa fa-truck ourpickup-img"
+                                                    className="fa fa-truck ourpickup-img"
                                                     aria-hidden="true"
                                                 ></i>
 
@@ -583,7 +583,7 @@ function HomePage() {
                                         <div className="fact-item">
                                             <div className="count-area-content">
                                                 <i
-                                                    class="fa fa-truck ourpickup-img"
+                                                    className="fa fa-truck ourpickup-img"
                                                     aria-hidden="true"
                                                 ></i>
 
@@ -610,7 +610,7 @@ function HomePage() {
                                         <div className="fact-item">
                                             <div className="count-area-content">
                                                 <i
-                                                    class="fa fa-truck ourpickup-img"
+                                                    className="fa fa-truck ourpickup-img"
                                                     aria-hidden="true"
                                                 ></i>
 

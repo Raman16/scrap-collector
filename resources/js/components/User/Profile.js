@@ -27,7 +27,6 @@ const Profile = () => {
         defaultValues: {
             first_name: auth.user.first_name,
             last_name: auth.user.last_name,
-            username: auth.user.username,
             email: auth.user.email,
         },
     });
@@ -71,6 +70,8 @@ const Profile = () => {
         }
         else{
             toast.success("Update Success");
+            auth.updateProfile(data);
+
         }
     };
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 //Context
 const AuthContext = React.createContext({
     user: "",
@@ -8,11 +7,11 @@ const AuthContext = React.createContext({
     is_admin: false,
     login: (data) => {},
     logout: () => {},
+    updateProfile: () => {},
 });
 
 //Provider
 export const AuthContextProvider = (props) => {
-    
     const initialUser = JSON.parse(localStorage.getItem("user"));
 
     const [user, setUser] = useState(initialUser);
@@ -29,12 +28,21 @@ export const AuthContextProvider = (props) => {
         localStorage.removeItem("user");
     };
 
+    const updateProfile = (data) => {
+        let userInfo = user;
+        userInfo.user = data.user;
+        const userUpdate = JSON.stringify(userInfo); //stringify
+        localStorage.setItem("user", userUpdate); //and store to localStorage
+        window.location.reload();
+    };
+
     const contextValue = {
-        user: user != null ? user.user :'',
+        user: user != null ? user.user : "",
         isLoggedIn: userIsLoggedIn,
-        token: user != null ? user.token : '',
+        token: user != null ? user.token : "",
         login: loginHandler,
         logout: logoutHandler,
+        updateProfile: updateProfile,
     };
     return (
         <AuthContext.Provider value={contextValue}>
