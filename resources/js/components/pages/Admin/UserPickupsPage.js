@@ -142,7 +142,7 @@ const UserPickupsPage = () => {
         if (adminCtx.products.length == 0) {
             scrapProductsCard = (
                 <img
-                    src="../../../images/empty.PNG"
+                    src="../../../images/empty.png"
                     className="rounded"
                     alt="group image"
                     style={{ width: "70%", height: "70%" }}
