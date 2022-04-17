@@ -34,6 +34,7 @@ function AboutUsPage() {
                                 </p>
                             </div>
                         </div>
+                        <div className="col-lg-3 col-xl-3"></div>
                         <div className="col-lg-6 col-xl-6">
                             <div className="image-container">
                                 <img
@@ -43,6 +44,8 @@ function AboutUsPage() {
                                 />
                             </div>
                         </div>
+                        <div className="col-lg-3 col-xl-3"></div>
+
                     </div>
                 </div>
             </div>

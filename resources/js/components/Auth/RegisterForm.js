@@ -124,7 +124,7 @@ const RegisterForm = () => {
                 // id="auth-login"
                 className="row flexbox-container"
             >
-                <div className="col-xl-10 col-11">
+                <div className="col-xl-10 col-12">
                     <div className="card bg-authentication mb-0">
                         <div className="row m-0">
                             <div className="col-md-6 col-12 px-0">
@@ -136,7 +136,7 @@ const RegisterForm = () => {
                                         }}
                                     >
                                         <div className="card-body">
-                                            <h4 className="text-center mb-2">
+                                            <h4 className="text-center mb-4">
                                                 SignUp
                                             </h4>
                                             <form
@@ -145,9 +145,46 @@ const RegisterForm = () => {
                                                 )}
                                                 // autoComplete="off"
                                             >
-                                                <div className="form-group mb-50">
+                                                <div className="">
                                                     <div className="row">
-                                                        <div className="col-sm-6">
+                                                        <div className="col-sm-6 mb-4">
+
+                                                            <Input
+                                                                id="first_name"
+                                                                label="First Name"
+                                                                type="text"
+                                                                placeholder="Enter First Name"
+                                                                register={
+                                                                    register
+                                                                }
+                                                                required
+                                                            />
+                                                            <span className="text-danger">
+                                                                {errors.first_name &&
+                                                                    "First Name is Required"}
+                                                            </span>
+                                                        </div>
+                                                        <div className="col-sm-6 mb-4">
+                                                            <Input
+                                                                id="last_name"
+                                                                label="Last Name"
+                                                                type="text"
+                                                                placeholder="Enter Last Name"
+                                                                register={
+                                                                    register
+                                                                }
+                                                                required
+                                                            />
+                                                            <span className="text-danger">
+                                                                {errors.last_name &&
+                                                                    "Last Name is Required"}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="">
+                                                    <div className="row">
+                                                        <div className="col-sm-6 mb-4">
                                                             {/* <Input2 label="FirstName" register={register} required /> */}
                                                             <Input
                                                                 label="Mobile Number"
@@ -165,7 +202,7 @@ const RegisterForm = () => {
                                                             </span>
                                                         </div>
                                                         {/* <div className="col-sm-2"></div> */}
-                                                        <div className="col-sm-6">
+                                                        <div className="col-sm-6 mb-4">
                                                             {/* <Input
                                                                 label="Country"
                                                                 id="country_code"
@@ -193,45 +230,10 @@ const RegisterForm = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="form-group mb-50">
+
+                                                <div className="">
                                                     <div className="row">
-                                                        <div className="col-sm-6">
-                                                            <Input
-                                                                id="first_name"
-                                                                label="First Name"
-                                                                type="text"
-                                                                placeholder="Enter First Name"
-                                                                register={
-                                                                    register
-                                                                }
-                                                                required
-                                                            />
-                                                            <span className="text-danger">
-                                                                {errors.first_name &&
-                                                                    "First Name is Required"}
-                                                            </span>
-                                                        </div>
-                                                        <div className="col-sm-6">
-                                                            <Input
-                                                                id="last_name"
-                                                                label="Last Name"
-                                                                type="text"
-                                                                placeholder="Enter Last Name"
-                                                                register={
-                                                                    register
-                                                                }
-                                                                required
-                                                            />
-                                                            <span className="text-danger">
-                                                                {errors.last_name &&
-                                                                    "Last Name is Required"}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="form-group mb-50">
-                                                    <div className="row">
-                                                        <div className="col-sm-6">
+                                                        <div className="col-sm-6 mb-4">
                                                             <Input
                                                                 id="password"
                                                                 label="Password"
@@ -247,7 +249,7 @@ const RegisterForm = () => {
                                                                     "Password is Required"}
                                                             </span>
                                                         </div>
-                                                        <div className="col-sm-6">
+                                                        <div className="col-sm-6 mb-4">
                                                             <Input
                                                                 id="password_confirmation"
                                                                 label="Confirm Password"
@@ -299,7 +301,15 @@ const RegisterForm = () => {
                                                     Already have an account ?
                                                 </small>
                                                 <NavLink to="/login">
-                                                    <small> Login</small>
+                                                    <small
+                                                        style={{
+                                                            color: "#006837",
+                                                            fontWeight: "bold",
+                                                        }}
+                                                    >
+                                                        {" "}
+                                                        Login
+                                                    </small>
                                                 </NavLink>
                                             </div>
                                         </div>

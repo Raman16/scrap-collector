@@ -63,12 +63,11 @@ const LoginForm = () => {
         }
     };
 
-    
     const onSubmit = (requestData) => {
         if (!isLogging) {
             toast("Loggin In...");
         }
-        requestData.country_code = '+91';
+        requestData.country_code = "+91";
         requestData.device_name = navigator.userAgent;
         requestData.device_id = "unique Device Id";
         requestData.device_token = navigator.appVersion;
@@ -85,9 +84,7 @@ const LoginForm = () => {
 
     useEffect(() => {
         if (loginError) {
-            toast.warn(
-                "Error:" + loginError.response.data.message
-            );
+            toast.warn("Error:" + loginError.response.data.message);
         }
     }, [loginError]);
     return (
@@ -96,7 +93,7 @@ const LoginForm = () => {
                 // id="auth-login"
                 className="row flexbox-container"
             >
-                <div className="col-xl-9 col-11">
+                <div className="col-xl-9 col-12">
                     <div className="card bg-authentication mb-0">
                         <div className="row m-0">
                             <div className="col-md-6 col-12 px-0">
@@ -109,9 +106,9 @@ const LoginForm = () => {
                                             Login
                                         </h4>
                                         <form onSubmit={handleSubmit(onSubmit)}>
-                                            <div className="form-group mb-50">
+                                            <div className="form-group mb-4">
                                                 <div className="row">
-                                                <div className="col-sm-1"></div>
+                                                    <div className="col-sm-1"></div>
 
                                                     {/* <div className="col-sm-1"></div>
                                                     <div className="col-sm-3">
@@ -185,7 +182,15 @@ const LoginForm = () => {
                                                 <small>Sign up</small>
                                             </a> */}
                                             <NavLink to="/register">
-                                                <small> Register</small>
+                                                <small
+                                                    style={{
+                                                        color: "#006837",
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    {" "}
+                                                    Register
+                                                </small>
                                             </NavLink>
                                         </div>
                                     </div>

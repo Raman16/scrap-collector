@@ -3,9 +3,9 @@ const Input = (props) => {
     const { label, register, required } = props;
     const style = {
         color : "#475F7B",
-        textTransform:"uppercase",
+        // textTransform:"uppercase",
         fontWeight:"bold",
-        fontSize:"12px"
+        fontSize:"14px"
     }
     return (
         <>

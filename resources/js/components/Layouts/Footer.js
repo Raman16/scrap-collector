@@ -66,7 +66,7 @@ const Footer = () => {
                                         <img
                                             src="images/android-app.jpg"
                                             alt="alternative"
-                                            style={{ width: "60%";marginBottom:"12px" }}
+                                            style={{ width: "60%",marginBottom:"12px" }}
                                         />
                                     </li>
                                     <li>
