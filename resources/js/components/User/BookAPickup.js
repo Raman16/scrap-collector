@@ -10,19 +10,23 @@ import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 
 import DatePicker from "react-datetime";
-const renderInput = ( props, openCalendar )=>{
-    
+const renderInput = (props, openCalendar) => {
     return (
         <div className="input-group" onClick={openCalendar}>
-        <input type="text" className="form-control" placeholder="Search this blog" {...props}/>
-        <div className="input-group-append">
-        <button className="btn btn-secondary" type="button">
-        <i className="fa fa-calendar" ></i>
-        </button>
+            <input
+                type="text"
+                className="form-control"
+                placeholder="Search this blog"
+                {...props}
+            />
+            <div className="input-group-append">
+                <button className="btn btn-secondary" type="button">
+                    <i className="fa fa-calendar"></i>
+                </button>
+            </div>
         </div>
-        </div>
-    )
-    };
+    );
+};
 
 const BookAPickup = (props) => {
     const [materialType, setMaterialType] = useState([]);
@@ -122,15 +126,17 @@ const BookAPickup = (props) => {
 
     // }
 
+    const onSubmitPickup = (data) => {
+        data.pickup_date = dt.format("D-M-Y LT");
+        props.onSubmit(data);
+    };
 
     return (
         <>
             <h5>Book Your Pickup</h5>
             {/* <input type="datetime-local" /> */}
 
-           
-
-            <form onSubmit={handleSubmit(props.onSubmit)} >
+            <form onSubmit={handleSubmit(onSubmitPickup)}>
                 <div className="row">
                     <div className="col-12">
                         <div className="card shadow">
@@ -220,14 +226,27 @@ const BookAPickup = (props) => {
                                                 Pickup Date:
                                             </label>
                                             <div className="col-sm-8">
-                                            <DatePicker renderInput={ renderInput } 
-                                              value={dt}
-                                              dateFormat="DD-MM-YYYY"
-                                              timeFormat="hh:mm A"
-                                              onChange={(val) =>
-                                                  setDt(val)
-                                              }
-                                            />
+                                                <DatePicker
+                                                    renderInput={renderInput}
+                                                    value={dt}
+                                                    dateFormat="DD-MM-YYYY"
+                                                    timeFormat="hh:mm A"
+                                                    onChange={(val) =>
+                                                        setDt(val)
+                                                    }
+                                                />
+                                                {/* <InputH
+                                                    id="pickup_date"
+                                                    name="pickup_date"
+                                                    type="hidden"
+                                                    placeholder="Enter Date"
+                                                    register={register}
+                                                    required
+                                                    errors={errors}
+                                                    value={dt.format(
+                                                        "D-M-Y LT"
+                                                    )}
+                                                /> */}
 
                                                 {/* <DatePicker
                                                     inputProps={{
@@ -243,18 +262,6 @@ const BookAPickup = (props) => {
                                                     }
                                                 /> */}
 
-                                                <InputH
-                                                    id="pickup_date"
-                                                    name="pickup_date"
-                                                    type="hidden"
-                                                    placeholder="Enter Date"
-                                                    register={register}
-                                                    required
-                                                    errors={errors}
-                                                    value={dt.format(
-                                                        "D-M-Y LT"
-                                                    )}
-                                                />
                                                 {/* <input
                                                     type="hidden"
                                                     value={dt.format(

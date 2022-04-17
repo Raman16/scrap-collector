@@ -121,7 +121,7 @@ const UserPickup = (props) => {
             aria-labelledby="contained-modal-title"
             size="lg"
         >
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <Modal.Title><label className="label-bold">{product.material_name}</label></Modal.Title>
             </Modal.Header>
             <Modal.Body>

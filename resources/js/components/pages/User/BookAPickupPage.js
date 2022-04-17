@@ -66,6 +66,7 @@ const BookAPickupPage = () => {
     };
 
     const handleSubmit = (requestData) => {
+        console.log(requestData);
         requestData.address_type = "1";
         requestData.latitude = locationCoordinates.lat;
         requestData.longitude = locationCoordinates.lng;

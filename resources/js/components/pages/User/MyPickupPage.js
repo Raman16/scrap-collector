@@ -181,7 +181,7 @@ const MyPickupPage = () => {
                                             label="Material Type"
                                             name="material_type_id"
                                             placeholder="--select material--"
-                                            className="form-control shadow"
+                                            className="form-control shadow form-select"
                                             onChange={handleSeachByMaterial}
                                         >
                                             <option  value={-1}>
