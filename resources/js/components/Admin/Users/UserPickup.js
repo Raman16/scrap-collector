@@ -122,7 +122,9 @@ const UserPickup = (props) => {
             size="lg"
         >
             <Modal.Header>
-                <Modal.Title><label className="label-bold">{product.material_name}</label></Modal.Title>
+                <Modal.Title><label className="label-bold">
+                    <h4>{product.material_name}</h4>
+                    </label></Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className="row">

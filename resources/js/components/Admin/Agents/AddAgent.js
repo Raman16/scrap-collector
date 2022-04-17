@@ -21,9 +21,9 @@ const AddAgent = (props) => {
     return (
         <Modal show={props.modalShow} aria-labelledby="contained-modal-title">
             <form onSubmit={handleSubmit(onSubmit)} autoComplete="none">
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title id="contained-modal-title">
-                        Add Pickup Agent
+                        <h4>Add Pickup Agent</h4>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -40,32 +40,6 @@ const AddAgent = (props) => {
                             />
                         </div>
                     </div> */}
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <InputH
-                                label="Phone Number"
-                                id="phone_number"
-                                type="text"
-                                placeholder="Enter Phone Number"
-                                register={register}
-                                required
-                                errors={errors}
-                            />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <InputH
-                                id="password"
-                                label="Password"
-                                type="password"
-                                placeholder="Enter Password"
-                                register={register}
-                                required
-                                errors={errors}
-                            />
-                        </div>
-                    </div>
                     <div className="row">
                         <div className="col-sm-12">
                             <InputH
@@ -93,6 +67,19 @@ const AddAgent = (props) => {
                         </div>
                     </div>
                     <div className="row">
+                        <div className="col-sm-12">
+                            <InputH
+                                label="Phone Number"
+                                id="phone_number"
+                                type="text"
+                                placeholder="Enter Phone Number"
+                                register={register}
+                                required
+                                errors={errors}
+                            />
+                        </div>
+                    </div>
+                    <div className="row">
                         {/* <div className="col-sm-12">
                             <InputH
                                 id="username"
@@ -113,6 +100,19 @@ const AddAgent = (props) => {
                                 register={register}
                                 errors={errors}
                                 required
+                            />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <InputH
+                                id="password"
+                                label="Password"
+                                type="password"
+                                placeholder="Enter Password"
+                                register={register}
+                                required
+                                errors={errors}
                             />
                         </div>
                     </div>

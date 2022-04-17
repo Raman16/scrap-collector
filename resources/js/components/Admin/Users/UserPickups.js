@@ -164,7 +164,7 @@ const UserPickups = (props) => {
                                                 className="btn mr-1 mb-1 btn-primary btn-sm"
                                                 onClick={showModalHandler}
                                             >
-                                                View More
+                                                View
                                             </button>
                                         </div>
                                     </td>

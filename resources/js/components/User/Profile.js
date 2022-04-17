@@ -145,9 +145,8 @@ const Profile = () => {
                                 </div>
                             </div>
                         </div> */}
-                        <div className="form-group mb-50">
                             <div className="row">
-                                <div className="col-sm-6">
+                                <div className="col-sm-6  mb-4">
                                     <Input
                                         id="first_name"
                                         label="First Name"
@@ -161,7 +160,7 @@ const Profile = () => {
                                             "First Name is Required"}
                                     </span>
                                 </div>
-                                <div className="col-sm-6">
+                                <div className="col-sm-6 mb-4">
                                     <Input
                                         id="last_name"
                                         label="Last Name"
@@ -176,8 +175,6 @@ const Profile = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                        <div className="form-group mb-50">
                             <div className="row">
                                 {/* <div className="col-sm-6">
                                     <Input
@@ -193,7 +190,7 @@ const Profile = () => {
                                             "Username is Required"}
                                     </span>
                                 </div> */}
-                                <div className="col-sm-6">
+                                <div className="col-sm-6 mb-4">
                                     <Input
                                         id="email"
                                         label="E-mail"
@@ -207,7 +204,6 @@ const Profile = () => {
                                             "Enter Email is Required"}
                                     </span>
                                 </div>
-                            </div>
                         </div>
                         <Button type="submit">Update Profile</Button>
                     </form>

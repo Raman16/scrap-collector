@@ -11,14 +11,12 @@ import MyPickups from "../../User/MyPickups";
 import RecentPickup from "../../User/RecentPickup";
 
 const MyPickupPage = () => {
-
     const scrapData = useContext(ScrapContext);
     const [showModal, setShowModal] = useState(false);
     const [showScrapDetail, setShowScrapDetail] = useState([]);
     const [recentPickup, setRecentPickup] = useState([]);
     const [materialType, setMaterialType] = useState([]);
 
-   
     let scrapProductsCard = "";
     let material_options = [];
 
@@ -47,7 +45,6 @@ const MyPickupPage = () => {
     } = useAxios();
 
     useEffect(() => {
-      
         const pickUpResponse = (data) => {
             scrapData.userPickUps(data.pickup_list);
         };
@@ -87,7 +84,7 @@ const MyPickupPage = () => {
 
     const cancelResponse = (data) => {
         toast(data.message);
-       
+
         scrapData.updatePickUp(data.pickup);
 
         updateRecentPickupIfAny(data.pickup);
@@ -128,16 +125,16 @@ const MyPickupPage = () => {
         setShowModal(false);
     };
 
-    
     if (!isLoading) {
         if (scrapData.products.length == 0) {
             scrapProductsCard = (
-                <img
-                    src="../../../images/empty.PNG"
-                    className="rounded"
-                    alt="group image"
-                    style={{ width: "70%", height: "70%" }}
-                />
+                <center>
+                    <img
+                        src="../../../images/empty.png"
+                        className="rounded"
+                        alt="group image"
+                    />
+                </center>
             );
         } else {
             scrapProductsCard = scrapData.products.map((product) => (
@@ -151,7 +148,7 @@ const MyPickupPage = () => {
         }
     }
     if (isLoading) {
-        scrapProductsCard = <Loader/>
+        scrapProductsCard = <Loader />;
     }
 
     if (!isMaterialLoading) {
@@ -184,7 +181,7 @@ const MyPickupPage = () => {
                                             className="form-control shadow form-select"
                                             onChange={handleSeachByMaterial}
                                         >
-                                            <option  value={-1}>
+                                            <option value={-1}>
                                                 --Seach By Material--
                                             </option>
                                             {material_options}
@@ -193,7 +190,7 @@ const MyPickupPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="margin-8"></div>
+                        <div style={{ marginTop: "40px" }}></div>
 
                         {scrapProductsCard}
                         {showModal && (
@@ -202,7 +199,7 @@ const MyPickupPage = () => {
                                 product={showScrapDetail}
                                 modalShow={showModal}
                             />
-                        )}        
+                        )}
 
                         <Notification />
                     </div>

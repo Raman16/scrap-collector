@@ -36,7 +36,7 @@ const AgentsList = (props) => {
                                     className={`btn mr-1 mb-1 ${
                                         agent.status == 0
                                             ? "btn-danger"
-                                            : "btn-success"
+                                            : "btn btn-primary"
                                     } btn-sm`}
                                     onClick={() =>
                                         props.handleStatusChange(

@@ -11,28 +11,28 @@ const ContactCard = () => {
                         <i className="bx bx-briefcase mr-50 cursor-pointer"></i>
                         <span>
                             Call Us on:
-                            <a>+1426832782</a>
+                            <a> +91 7337321213</a>
                         </span>
                     </li>
                     <li className="d-flex align-items-center mb-25">
                         <i className="bx bx-briefcase mr-50 cursor-pointer"></i>
                         <span>
                             Email:
-                            <a>info@scrapcollection.com</a>
+                            <a> mahesh@ew-pot.com</a>
                         </span>
                     </li>
                     <li className="d-flex align-items-center mb-25">
                         <i className="bx bx-receipt mr-50 cursor-pointer"></i>
                         <span>
                             Working Hours
-                            <a>&nbsp;24*7</a>
+                            <a>&nbsp; 24*7</a>
                         </span>
                     </li>
                     <li className="d-flex align-items-center mb-25">
                         <i className="bx bx-receipt mr-50 cursor-pointer"></i>
                         <span>
                             Location:
-                            <a>&nbsp;Bangalore</a>
+                            <a>&nbsp; Hyderabad</a>
                         </span>
                     </li>
                 </ul>

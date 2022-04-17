@@ -141,12 +141,13 @@ const UserPickupsPage = () => {
     if (!isPickupsLoading) {
         if (adminCtx.products.length == 0) {
             scrapProductsCard = (
-                <img
+                <center>
+                    <img
                     src="../../../images/empty.png"
                     className="rounded"
                     alt="group image"
-                    style={{ width: "70%", height: "70%" }}
                 />
+                </center>
             );
         } else {
             scrapProductsCard = adminCtx.products.map((product) => (
@@ -264,7 +265,7 @@ const UserPickupsPage = () => {
                                 </select>
                             </div>
                         </div>
-                        <div className="margin-8"></div>
+                        <div style={{marginTop:"40px"}}></div>
                         {scrapProductsCard}
                         {showModal && (
                             <>

@@ -4,7 +4,7 @@ const HowWeOperate = () => {
             <div className="card-title"></div>
             <div className="card-body">
                 <h5>How We Operate</h5>
-                <ul className="timeline">
+                <ul className="" >
                     <li className="timeline-item timeline-icon-success">
                         {/* <div className="timeline-time">
                             </div> */}
