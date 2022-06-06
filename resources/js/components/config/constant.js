@@ -1,4 +1,4 @@
-export const API_SERVER = "http://ew-pot.com/api";
+export const API_SERVER = "https://ew-pot.com/api";
 //export const API_SERVER = "http://localhost:8000/api";
 
 
