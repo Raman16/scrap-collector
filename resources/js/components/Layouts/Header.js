@@ -92,7 +92,7 @@ const Header = (props) => {
                                         </NavLink>
                                     </li>
 
-                                    <li className="nav-item">
+                                    {/* <li className="nav-item">
                                         <NavLink
                                             to="register"
                                             className="dropdown-item nav-link menu-padding"
@@ -100,7 +100,7 @@ const Header = (props) => {
                                         >
                                             Register
                                         </NavLink>
-                                    </li>
+                                    </li> */}
                                 </>
                             )}
                             {isLoggedIn && user_role.role_id == 1 && (
@@ -196,7 +196,7 @@ const Header = (props) => {
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                         >
-                                            {authCtx.user.first_name +' '+ authCtx.user.last_name}
+                                           Settings
                                         </a>
                                         <ul
                                             className="dropdown-menu"

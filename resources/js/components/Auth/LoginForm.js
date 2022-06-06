@@ -37,9 +37,10 @@ const LoginForm = () => {
     const otpResponse = (data) => {
         toast.success(data.message);
     };
+
     const otpRequest = () => {
         let requestData = {
-            country_code: getValues("country_code"),
+            country_code: '+91',
             phone_number: getValues("phone_number"),
             type: "USER_LOGIN",
         };
@@ -64,6 +65,7 @@ const LoginForm = () => {
     };
 
     const onSubmit = (requestData) => {
+
         if (!isLogging) {
             toast("Loggin In...");
         }
@@ -72,6 +74,8 @@ const LoginForm = () => {
         requestData.device_id = "unique Device Id";
         requestData.device_token = navigator.appVersion;
         requestData.device_type = "1";
+        requestData.otp = getValues("otp");
+
         loginRequest(
             {
                 method: "POST",
@@ -135,27 +139,46 @@ const LoginForm = () => {
                                                             {errors.phone_number &&
                                                                 "Mobile Number is Required"}
                                                         </span>
+                                                        
+                                                        <span className="font-weight-bold
+                                                                         text-danger
+                                                                         cursor-pointer	
+                                                                         pull-right
+                                                                         text-decoration-underline"
+                                                              onClick={otpRequest} 
+                                                        >
+                                                            Send OTP
+                                                        </span>
                                                     </div>
 
                                                     <div className="col-sm-1"></div>
                                                 </div>
                                             </div>
+                                           
                                             <div className="form-group mb-50">
                                                 <div className="row">
                                                     <div className="col-sm-1"></div>
 
                                                     <div className="col-sm-10">
-                                                        <Input
+                                                        {/* <Input
                                                             id="password"
                                                             label="Password"
                                                             type="password"
                                                             placeholder="Enter Password"
                                                             register={register}
                                                             required
+                                                        /> */}
+                                                         <Input
+                                                            id="otp"
+                                                            label="OTP"
+                                                            type="text"
+                                                            placeholder="Enter OTP"
+                                                            register={register}
+                                                            required
                                                         />
                                                         <span className="text-danger">
-                                                            {errors.password &&
-                                                                "Password is Required"}
+                                                            {errors.otp &&
+                                                                "OTP is Required"}
                                                         </span>
                                                     </div>
                                                     <div className="col-sm-1"></div>

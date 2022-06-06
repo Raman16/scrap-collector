@@ -32,21 +32,24 @@ class AuthController extends Controller
 
         if (json_encode(in_array($validated['type'], $OTP_TYPES))) {
 
-            if ($validated['type'] == 'USER_REGISTRATION') {
-                $user = User::where('phone_number', $validated['phone_number'])->first();
-                if (isset($user) && $user['id']) {
-                    return response()->json([
-                        'message' => 'User with phone number ' .
-                            $validated['phone_number_with_code'] . ' already exist'
-                    ], 422);
-                }
-            }
+            // if ($validated['type'] == 'USER_REGISTRATION') {
+            //     $user = User::where('phone_number', $validated['phone_number'])->first();
+            //     if (isset($user) && $user['id']) {
+            //         return response()->json([
+            //             'message' => 'User with phone number ' .
+            //                 $validated['phone_number_with_code'] . ' already exist'
+            //         ], 422);
+            //     }
+            // }
             
             $smsResponse = $sms->sendOTP($request);
             if ($smsResponse->status() == 201) {
                 return response()->json(['message' => "OTP sent successfully"], 201);
             }
         }
+
+
+
     }
 
     public function register(RegistrationRequest $request, SMSController $sms)
@@ -57,6 +60,7 @@ class AuthController extends Controller
        $smsResponse = $sms->verifyOTP($request);
 
         try {
+
             if ($smsResponse->status() == 201) {
               if(true){
 
@@ -100,41 +104,68 @@ class AuthController extends Controller
         $user = User::where('phone_number_with_code', $loginValidated['phone_number_with_code'])
                       ->first();
 
-        if (!$user) {
-           return response()->json(['message' =>"Incorrect Phone Number"],  Response::HTTP_NOT_FOUND);
-            // throw ValidationException::withMessages([
-            //     'phone number' => ['Incorrect Phone Number'],
-            // ]);
-        }
+        // if (!$user) {
+        //    return response()->json(['message' =>"Incorrect Phone Number"],  Response::HTTP_NOT_FOUND);
+        //     // throw ValidationException::withMessages([
+        //     //     'phone number' => ['Incorrect Phone Number'],
+        //     // ]);
+        // }
 
-        if (!Hash::check($loginValidated['password'], $user->password)) {
-            // throw ValidationException::withMessages([
-            //     'password' => ['Incorrect Password'],
-            // ]);
-            return response()->json(['message' =>"Incorrect Password"],  Response::HTTP_NOT_FOUND);
-
-        }
-     
-       // $smsResponse = $sms->verifyOTP($loginRequest);
-
+        // if (!Hash::check($loginValidated['password'], $user->password)) {
+        //     // throw ValidationException::withMessages([
+        //     //     'password' => ['Incorrect Password'],
+        //     // ]);
+        //     return response()->json(['message' =>"Incorrect Password"],  Response::HTTP_NOT_FOUND);
+        // }
+        $smsResponse = $sms->verifyOTP($loginRequest);
+        if ($smsResponse->status() == 201) {
         try {
-            if (201) {
+               
+                if (!$user) {
 
-                $user->tokens()->where('name', $loginRequest['device_name'])->delete();
+                    DB::beginTransaction();
 
-                $tokenObj = $user->createToken($loginValidated['device_name']);
-                $token = PersonalAccessToken::where('id', $tokenObj->accessToken->id)->first();
-                $token->update($loginValidated);
-                
+                    // $loginValidated['email'] = null;
+                    // $loginValidated['password'] = null;
+
+                    $user = User::create($loginValidated);
+    
+                    $user->tokens()->where('name', $loginValidated['device_name'])->delete();
+    
+                    $tokenObj = $user->createToken($loginValidated['device_name']);
+                    $token = PersonalAccessToken::where('id', $tokenObj->accessToken->id)->first();
+                    $token->update($loginValidated);
+                     
+    
+                    DB::table('user_roles')->insert([
+                        'user_id'       => $user->id,
+                        'role_id'       => 2,
+                        'created_at'    => date('Y-m-d H:i:s'),
+                        'updated_at'    => date('Y-m-d H:i:s')
+                    ]);
+                    DB::commit();
+    
+                }
+                else{
+
+                    $user->tokens()->where('name', $loginRequest['device_name'])->delete();
+                    $tokenObj = $user->createToken($loginValidated['device_name']);
+                    $token = PersonalAccessToken::where('id', $tokenObj->accessToken->id)->first();
+                    $token->update($loginValidated);
+
+                }
+
                 return response()->json([
                     //'token'   => new TokenResource($tokenObj),
                     'user'    => new UserResource($user),
                     'message' => 'User login succesfully.'
                 ], 200,['auth-token'=>$tokenObj->plainTextToken]);
-            }
+
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 422);
-        }
+         }
+       }
+                
     }
 
 
