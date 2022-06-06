@@ -53,7 +53,7 @@ const LoginForm = () => {
         );
     };
     const loginResponse = async (data) => {
-        console.log(data);
+        // console.log(data);
         await authCtx.login(data);
         if (data.user.role[0].role_id == 1) {
             navigate("/admin/user-pickups");
