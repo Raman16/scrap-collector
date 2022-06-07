@@ -88,10 +88,8 @@ const UserPickups = (props) => {
                                     </td>
                                     <td>
                                         <p className="mb-0" style={fontStyle}>
-                                            {user.first_name +
-                                                " " +
-                                                user.last_name}
-                                            ,
+                                            {user.first_name !=null && `${user.first_name} ${user.last_name}, `}
+                                            
                                             <br />
                                             {user.phone_number}
                                             <br />

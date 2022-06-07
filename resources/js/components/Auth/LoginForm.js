@@ -141,7 +141,7 @@ const LoginForm = () => {
                                                         </span>
                                                         
                                                         <span className="font-weight-bold
-                                                                         text-danger
+                                                                         text-success
                                                                          cursor-pointer	
                                                                          pull-right
                                                                          text-decoration-underline"
