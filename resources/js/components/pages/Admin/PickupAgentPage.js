@@ -70,7 +70,18 @@ const PickupAgentPage = () => {
             },
             getResponse
         );
-    }, []);
+
+        if (isRegisterError) {
+            if (
+                isRegisterError.response.data.hasOwnProperty("errors") &&
+                isRegisterError.response.data.errors.hasOwnProperty("phone_number_with_code")
+            ) {
+                toast.warn(
+                    "Error:" + isRegisterError.response.data.errors.phone_number_with_code[0]
+                );
+            }
+        }
+    }, [isRegisterError]);
 
     const updateResponse = (data) => {
         let agents = agentsList;
@@ -110,13 +121,18 @@ const PickupAgentPage = () => {
     return (
         <div className="basic-5">
             <div className="container card">
-                <div className="row" style={{ minHeight: "500px",padding:"15px" }}>
+                <div
+                    className="row"
+                    style={{ minHeight: "500px", padding: "15px" }}
+                >
                     <div className="col-sm-12 ">
                         <>
                             <div className="margin-8"></div>
                             <div className="row">
                                 <div className="col-sm-10  px-0 ">
-                                        <h5 style={{marginLeft:"15px"}}>PickUp Agents</h5>
+                                    <h5 style={{ marginLeft: "15px" }}>
+                                        PickUp Agents
+                                    </h5>
                                 </div>
                                 <div className="col-sm-2">
                                     <Button onClick={handleModalShow}>

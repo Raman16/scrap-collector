@@ -17,7 +17,7 @@ class PickupAgentController extends Controller
     public function store(AddPickupAgentRequest $request)
     {
         $validated = $request->validated();
-        $validated['password'] = Hash::make($validated['password']);
+        //$validated['password'] = Hash::make($validated['password']);
         try {
                 DB::beginTransaction();
                 $user = User::create($validated);
@@ -32,6 +32,7 @@ class PickupAgentController extends Controller
                     'user'    => new UserResource($user),
                     'message' => 'Agent registered succesfully.'
                 ], 200);
+
         } catch (\Illuminate\Database\QueryException $e)  {
             
             return response()->json(['error' =>$e->errorInfo], 422);
@@ -48,6 +49,7 @@ class PickupAgentController extends Controller
         return response()->json([
             'users' => UserResource::collection($user),
         ], 201);
+        
     }
 
     public function update(Request $request){

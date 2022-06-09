@@ -1,14 +1,28 @@
 import React from "react";
 const TextArea = (props) => {
-    const { label, register, required,errors } = props;
+    const { label, register, required, errors } = props;
 
+    // if (typeof errors !== "undefined") {
+    //     errorMessage = (
+    //         <span className="text-danger">
+    //             {errors.message && `${label} is required`}
+    //         </span>
+    //     );
+    // }
     let errorMessage = "";
-    if (typeof errors !== "undefined") {
-        errorMessage = (
-            <span className="text-danger">
-                {errors.message && `${label} is required`}
-            </span>
-        );
+
+    if (!_.isEmpty(errors)) {
+        if (errors.hasOwnProperty(props.id)) {
+            errorMessage = (
+                <>
+                    <span className="text-danger">
+                        {`${label} is required`}
+                    </span>
+                </>
+            );
+        }
+    } else {
+        errorMessage = "";
     }
 
     return (

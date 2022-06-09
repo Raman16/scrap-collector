@@ -10,6 +10,7 @@ import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 
 import DatePicker from "react-datetime";
+import InputNumber from "../UI/InputPincodeNumber";
 const renderInput = (props, openCalendar) => {
     return (
         <div className="input-group" onClick={openCalendar}>
@@ -64,6 +65,7 @@ const BookAPickup = (props) => {
         },
         [getDropdowns]
     );
+
     const handleCountry = (event) => {
         if (event.target.value != "") {
             const country_states = countries.find(
@@ -74,8 +76,10 @@ const BookAPickup = (props) => {
     };
 
     let material_options = [{ id: "", value: "Select Type" }];
-    let country_options = [{ id: "", value: "Select County" }];
-    let state_options = [{ id: "", value: "Select State" }];
+    // let country_options = [{ id: "", value: "Select County" }];
+    let country_options = [];
+    // let state_options = [{ id: "", value: "Select State" }];
+    let state_options = [];
 
     if (!isLoading) {
         materialType.map((matrl) => {
@@ -89,13 +93,21 @@ const BookAPickup = (props) => {
                 id: ctry.id,
                 value: ctry.name,
             });
-        });
-        countryState.map((st) => {
-            state_options.push({
-                id: st.id,
-                value: st.name,
+            ctry.state.map((st) => {
+                state_options.push({
+                    id: st.id,
+                    value: st.name,
+                });
             });
+            setValue("country_id", 1);
+            setValue("state_id", 1);
         });
+        // countryState.map((st) => {
+        //     state_options.push({
+        //         id: st.id,
+        //         value: st.name,
+        //     });
+        // });
     }
 
     // if (!navigator.geolocation) {
@@ -127,8 +139,11 @@ const BookAPickup = (props) => {
     // }
 
     const onSubmitPickup = (data) => {
+        
         data.pickup_date = dt.format("D-M-Y LT");
+
         props.onSubmit(data);
+
     };
 
     return (
@@ -334,13 +349,13 @@ const BookAPickup = (props) => {
                                                 placeholder="--select country--"
                                                 register={register}
                                                 errors={errors}
-                                                onChange={(e) => {
-                                                    handleCountry(e);
-                                                    setValue(
-                                                        "country_id",
-                                                        e.target.value
-                                                    );
-                                                }}
+                                                // onChange={(e) => {
+                                                //     handleCountry(e);
+                                                //     setValue(
+                                                //         "country_id",
+                                                //         e.target.value
+                                                //     );
+                                                // }}
                                                 options={country_options}
                                             />
 
@@ -399,7 +414,7 @@ const BookAPickup = (props) => {
                                         />
                                     </div>
                                     <div className="col-sm-6">
-                                        <InputH
+                                        <InputNumber
                                             id="pincode"
                                             label="Pincode"
                                             type="text"

@@ -5,19 +5,40 @@ const Select = React.forwardRef(
         { onChange, onBlur, label, options, id, errors, register, require },
         ref
     ) => {
+
         const dropdownOptions = options.map((option) => (
             <option value={option.id} key={option.id}>
                 {option.value}
             </option>
         ));
+
+        //console.log(errors);
+        //console.log(id);
+
         let errorMessage = "";
-        if (typeof errors !== "undefined") {
-            errorMessage = (
-                <span className="text-danger">
-                    {errors.message && `${label} is required`}
-                </span>
-            );
+
+        if (!_.isEmpty(errors)) {
+            if (errors.hasOwnProperty(id)) {
+                errorMessage = (
+                    <>
+                        <span className="text-danger"  id={`error${id}`}>
+                            {`${label} is required`}
+                        </span>
+                    </>
+                );
+            }
+        } else {
+
+            errorMessage = "";
+        
         }
+        // if (typeof errors !== "undefined") {
+        //     errorMessage = (
+        //         <span className="text-danger">
+        //             {errors.message && `${label} is required`}
+        //         </span>
+        //     );
+        // }
 
         return (
             <div className="form-group row">

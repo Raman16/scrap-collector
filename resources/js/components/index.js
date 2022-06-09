@@ -16,6 +16,7 @@ import DashboardPage from "./pages/Admin/DashboardPage";
 import UserPickupsPage from "./pages/Admin/UserPickupsPage";
 import PickupAgentPage from "./pages/Admin/PickupAgentPage";
 import SettingsPage from "./pages/Admin/SettingsPage";
+import AgentPickupList from "./pages/Agent/AgentPickupList";
 
 function Index() {
     const authCtx = useContext(AuthContext);
@@ -68,12 +69,20 @@ function Index() {
                                     element={<MyPickupPage />}
                                 />
                                 <Route
-                                    path="/book-a-pickup"
+                                    path="book-a-pickup"
                                     element={<BookAPickupPage />}
                                 />
                                 <Route
                                     path="/profile"
                                     element={<ProfilePage />}
+                                />
+                            </>
+                        )}
+                        {authCtx.isLoggedIn && user_role.role_id == 3 && (
+                            <>
+                                <Route
+                                    path="/agent/pickups"
+                                    element={<AgentPickupList />}
                                 />
                             </>
                         )}

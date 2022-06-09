@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -7,11 +7,14 @@ import AuthContext from "../store/auth-context";
 
 import Button from "../UI/Button";
 import Input from "../UI/Input";
+import InputOTPNumber from "../UI/InputOTPNumber";
+import InputPhoneNumber from "../UI/InputPhoneNumber";
 
 const LoginForm = () => {
     const authCtx = useContext(AuthContext);
     const user = authCtx.user ?? "";
     const user_role = user != "" ? authCtx.user.role[0] : "";
+    const [otpFieldVisible, setOtpFieldVisible] = useState(true);
 
     const {
         register,
@@ -35,12 +38,13 @@ const LoginForm = () => {
     const navigate = useNavigate();
 
     const otpResponse = (data) => {
+        setOtpFieldVisible(true);
         toast.success(data.message);
     };
 
     const otpRequest = () => {
         let requestData = {
-            country_code: '+91',
+            country_code: "+91",
             phone_number: getValues("phone_number"),
             type: "USER_LOGIN",
         };
@@ -54,43 +58,58 @@ const LoginForm = () => {
         );
     };
     const loginResponse = async (data) => {
-        // console.log(data);
         await authCtx.login(data);
         if (data.user.role[0].role_id == 1) {
             navigate("/admin/user-pickups");
-        }
-        if (data.user.role[0].role_id == 2) {
+        } else if (data.user.role[0].role_id == 2) {
             navigate("/book-a-pickup");
+        } else if (data.user.role[0].role_id == 3) {
+            navigate("/agent/pickups");
+        } else {
+            alert("Invalid Entry");
         }
     };
 
     const onSubmit = (requestData) => {
+        if (!otpFieldVisible) {
+            otpRequest();
+        } else {
+            requestData.country_code = "+91";
+            requestData.device_name = navigator.userAgent;
+            requestData.device_id = "unique Device Id";
+            requestData.device_token = navigator.appVersion;
+            requestData.device_type = "1";
+            requestData.otp = getValues("otp");
 
-        if (!isLogging) {
-            toast("Loggin In...");
+            loginRequest(
+                {
+                    method: "POST",
+                    url: "/login",
+                    data: requestData,
+                },
+                loginResponse
+            );
         }
-        requestData.country_code = "+91";
-        requestData.device_name = navigator.userAgent;
-        requestData.device_id = "unique Device Id";
-        requestData.device_token = navigator.appVersion;
-        requestData.device_type = "1";
-        requestData.otp = getValues("otp");
-
-        loginRequest(
-            {
-                method: "POST",
-                url: "/login",
-                data: requestData,
-            },
-            loginResponse
-        );
     };
 
     useEffect(() => {
         if (loginError) {
-            toast.warn("Error:" + loginError.response.data.message);
+            if (
+                loginError.response.data.hasOwnProperty("errors") &&
+                loginError.response.data.errors.hasOwnProperty("otp")
+            ) {
+                toast.warn("Error:" + loginError.response.data.errors.otp[0]);
+            } else if (
+                loginError.response.data.hasOwnProperty("errors") &&
+                loginError.response.data.errors.hasOwnProperty("message")
+            ) {
+                toast.warn("Error:" + loginError.response.data.errors.message);
+            } else {
+                toast.warn("Error:" + loginError.response.data.message);
+            }
         }
     }, [loginError]);
+
     return (
         <>
             <section
@@ -109,12 +128,17 @@ const LoginForm = () => {
                                         <h4 className="text-center mb-2">
                                             Login
                                         </h4>
-                                        <form onSubmit={handleSubmit(onSubmit)}>
-                                            <div className="form-group mb-4">
-                                                <div className="row">
-                                                    <div className="col-sm-1"></div>
+                                        {!isLogging && (
+                                            <form
+                                                onSubmit={handleSubmit(
+                                                    onSubmit
+                                                )}
+                                            >
+                                                <div className="form-group mb-4">
+                                                    <div className="row">
+                                                        <div className="col-sm-1"></div>
 
-                                                    {/* <div className="col-sm-1"></div>
+                                                        {/* <div className="col-sm-1"></div>
                                                     <div className="col-sm-3">
                                                         <Input
                                                             label="Country"
@@ -125,42 +149,46 @@ const LoginForm = () => {
                                                             value="+91"
                                                         />
                                                     </div> */}
-                                                    <div className="col-sm-10">
-                                                        {/* <Input2 label="FirstName" register={register} required /> */}
-                                                        <Input
-                                                            label="Mobile Number"
-                                                            id="phone_number"
-                                                            type="text"
-                                                            placeholder="Enter Mobile Number"
-                                                            register={register}
-                                                            required
-                                                        />
-                                                        <span className="text-danger">
-                                                            {errors.phone_number &&
-                                                                "Mobile Number is Required"}
-                                                        </span>
-                                                        
-                                                        <span className="font-weight-bold
+                                                        <div className="col-sm-10">
+                                                            {/* <Input2 label="FirstName" register={register} required /> */}
+                                                            <InputPhoneNumber
+                                                                label="Mobile Number"
+                                                                id="phone_number"
+                                                                type="text"
+                                                                placeholder="Enter Mobile Number"
+                                                                register={
+                                                                    register
+                                                                }
+                                                                required
+                                                                errors={errors}
+                                                            />
+                                                            <span className="text-danger">
+                                                                {/* {errors.phone_number &&
+                                                                "Mobile Number is Required"} */}
+                                                            </span>
+
+                                                            {/* <span
+                                                            className="font-weight-bold
                                                                          text-success
                                                                          cursor-pointer	
                                                                          pull-right
                                                                          text-decoration-underline"
-                                                              onClick={otpRequest} 
+                                                            onClick={otpRequest}
                                                         >
                                                             Send OTP
-                                                        </span>
+                                                        </span> */}
+                                                        </div>
+
+                                                        <div className="col-sm-1"></div>
                                                     </div>
-
-                                                    <div className="col-sm-1"></div>
                                                 </div>
-                                            </div>
-                                           
-                                            <div className="form-group mb-50">
-                                                <div className="row">
-                                                    <div className="col-sm-1"></div>
 
-                                                    <div className="col-sm-10">
-                                                        {/* <Input
+                                                <div className="form-group mb-50">
+                                                    <div className="row">
+                                                        <div className="col-sm-1"></div>
+
+                                                        <div className="col-sm-10">
+                                                            {/* <Input
                                                             id="password"
                                                             label="Password"
                                                             type="password"
@@ -168,54 +196,94 @@ const LoginForm = () => {
                                                             register={register}
                                                             required
                                                         /> */}
-                                                         <Input
-                                                            id="otp"
-                                                            label="OTP"
-                                                            type="text"
-                                                            placeholder="Enter OTP"
-                                                            register={register}
-                                                            required
-                                                        />
-                                                        <span className="text-danger">
-                                                            {errors.otp &&
-                                                                "OTP is Required"}
-                                                        </span>
+                                                            {otpFieldVisible && (
+                                                                <>
+                                                                    <InputOTPNumber
+                                                                        id="otp"
+                                                                        label="OTP"
+                                                                        type="text"
+                                                                        placeholder="Enter OTP"
+                                                                        register={
+                                                                            register
+                                                                        }
+                                                                        required
+                                                                        errors={
+                                                                            errors
+                                                                        }
+                                                                    />
+                                                                    <div className="row">
+                                                                        <div className="col-sm-12">
+                                                                            <div className="text-center">
+                                                                                <small className="mr-25">
+                                                                                    Didn't
+                                                                                    get
+                                                                                    the
+                                                                                    code ? &nbsp; 
+                                                                                </small>
+                                                                                <a
+                                                                                    onClick={
+                                                                                        otpRequest
+                                                                                    }
+                                                                                    style={{
+                                                                                        textDecoration:
+                                                                                            "underline",
+                                                                                        cursor: "pointer",
+                                                                                    }}
+                                                                                >
+                                                                                    <small style={{color:"#006837"}}>
+                                                                                        Resend
+                                                                                    </small>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            )}
+                                                            {/* <span className="text-danger">
+                                                            {errors.otp && "OTP is Required"}
+                                                        </span> */}
+                                                        </div>
+                                                        <div className="col-sm-1"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="row">
+                                                    <div className="col-sm-1"></div>
+
+                                                    <div className="col-sm-10">
+                                                        {!otpFieldVisible && (
+                                                            <>
+                                                                <Button
+                                                                    type="submit"
+                                                                    // onClick={
+                                                                    //     otpRequest
+                                                                    // }
+                                                                >
+                                                                    Send OTP
+                                                                </Button>
+                                                            </>
+                                                        )}
+                                                        {otpFieldVisible && (
+                                                            <Button type="submit">
+                                                                LOGIN
+                                                            </Button>
+                                                        )}
                                                     </div>
                                                     <div className="col-sm-1"></div>
                                                 </div>
-                                            </div>
-
-                                            <div className="row">
-                                                <div className="col-sm-1"></div>
-
-                                                <div className="col-sm-10">
-                                                    <Button type="submit">
-                                                        LOGIN
-                                                    </Button>
-                                                </div>
-                                                <div className="col-sm-1"></div>
-                                            </div>
-                                        </form>
-                                        <hr />
-                                        <div className="text-center">
-                                            <small className="mr-25">
-                                                Don't have an account ?
-                                            </small>
-                                            {/* <a onClick={handleSignup} href="#">
-                                                <small>Sign up</small>
-                                            </a> */}
-                                            <NavLink to="/register">
-                                                <small
-                                                    style={{
-                                                        color: "#006837",
-                                                        fontWeight: "bold",
-                                                    }}
-                                                >
-                                                    {" "}
-                                                    Register
-                                                </small>
-                                            </NavLink>
+                                            </form>
+                                        )}
+                                        <div
+                                            style={{
+                                                marginTop: "70px",
+                                                marginLeft: "150px",
+                                            }}
+                                        >
+                                            {isLogging && (
+                                                <div class="dots-3"></div>
+                                            )}
                                         </div>
+                                        {/* <hr /> */}
                                     </div>
                                 </div>
                             </div>

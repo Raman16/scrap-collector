@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../store/auth-context";
 
 function HomePage() {
+    const authCtx = useContext(AuthContext);
+    const user = authCtx.user ?? "";
+    const user_role = user != "" ? authCtx.user.role[0] : "";
+    const isLoggedIn = authCtx.isLoggedIn;
+
     const myStyle = {
         backgroundImage: "url('images/header-image1.jpg')",
         backgroundSize: "cover",
@@ -43,12 +49,23 @@ function HomePage() {
                                         follow. Together we can make a
                                         difference today & save tomorrow.
                                     </p>
-                                    <NavLink
-                                        to="login"
-                                        className="btn-solid-reg homepage-pickup-btn"
-                                    >
-                                        Book A Pickup
-                                    </NavLink>
+                                    {!isLoggedIn && (
+                                            <NavLink
+                                                to="login"
+                                                className="btn-solid-reg homepage-pickup-btn"
+                                            >
+                                                Book A Pickup
+                                            </NavLink>
+                                        )}
+                                    {(isLoggedIn &&
+                                        user_role.role_id == 2) && (
+                                            <NavLink
+                                                to="book-a-pickup"
+                                                className="btn-solid-reg homepage-pickup-btn"
+                                            >
+                                                Book A Pickup
+                                            </NavLink>
+                                        )}
                                 </div>
                             </div>
                         </div>
@@ -317,11 +334,10 @@ function HomePage() {
                             Chronic diseases and cancers are at a higher risk to
                             occur when burning e-waste because it also releases
                             fine particles, creating numerous negative health
-                            risks. The negative effects on air
-                            from informal e-waste recycling are most dangerous
-                            for those who handle this waste, but the pollution
-                            can extend thousands of miles away from recycling
-                            sites
+                            risks. The negative effects on air from informal
+                            e-waste recycling are most dangerous for those who
+                            handle this waste, but the pollution can extend
+                            thousands of miles away from recycling sites
                         </div>
                     </div>
                 </div>

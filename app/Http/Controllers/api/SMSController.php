@@ -66,6 +66,7 @@ class SMSController extends Controller
         $phone      = preg_replace('/\s+/', '', $request->country_code . $request->phone_number);
         $twilio     = new Client($this->accountSid, $this->authToken);
 
+        
         try {
 
             $verification_check = $twilio
@@ -74,7 +75,7 @@ class SMSController extends Controller
                 ->services($this->verifySid)
                 ->verificationChecks
                 ->create($request->otp,  ["to" => $phone]);
-
+                
             if ($verification_check->status === "approved") {
                 return response()->json(['message' => "OTP Verified successfully"], 201);
             } else {
@@ -86,12 +87,12 @@ class SMSController extends Controller
         } catch (Exception $ex) {
 
             throw ValidationException::withMessages([
-                'message' => 'Unable to create record. Please check your mobile number. ' . $ex->getMessage()
+                'message' => 'Incorrect OTP'
             ], 422);
         } catch (RestException $ex) {
 
             throw ValidationException::withMessages([
-                'message' => 'Unable to create record. Please check your mobile number. ' . $ex->getMessage()
+                'message' => 'Incorrect OTP'
             ], 422);
         }
     }

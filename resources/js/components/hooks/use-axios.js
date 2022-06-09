@@ -39,7 +39,8 @@ const useAxios = () => {
             if (response.headers["auth-token"] != null) {
                 data.token = response.headers["auth-token"];
             }
-
+           
+            console.log(data);
             applyData(data);
             
         } catch (err) {

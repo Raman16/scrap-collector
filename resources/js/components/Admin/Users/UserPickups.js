@@ -68,7 +68,7 @@ const UserPickups = (props) => {
                                                 src={
                                                     product.image != ""
                                                         ? product.image
-                                                        : ""
+                                                        : "images/noImage.png"
                                                 }
                                                 style={{
                                                     width: "120px",

@@ -123,6 +123,7 @@ class AuthController extends Controller
             $smsResponse = $sms->verifyOTP($loginRequest);
         }
 
+       
         if (($smsResponse!='' && $smsResponse->status() == 201)
             || $loginValidated['otp'] == '987654') {
         try {

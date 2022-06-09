@@ -91,7 +91,7 @@ const AddAgent = (props) => {
                                 required
                             />
                         </div> */}
-                        <div className="col-sm-12">
+                        {/* <div className="col-sm-12">
                             <InputH
                                 id="email"
                                 label="E-mail"
@@ -101,9 +101,9 @@ const AddAgent = (props) => {
                                 errors={errors}
                                 required
                             />
-                        </div>
+                        </div> */}
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                         <div className="col-sm-12">
                             <InputH
                                 id="password"
@@ -115,7 +115,7 @@ const AddAgent = (props) => {
                                 errors={errors}
                             />
                         </div>
-                    </div>
+                    </div> */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.handleModalShow}>Close</Button>

@@ -9,6 +9,7 @@ const Header = (props) => {
     const isLoggedIn = authCtx.isLoggedIn;
     const navigate = useNavigate();
     const [toggle, setToggle] = useState("close");
+
     const logoutHandler = async () => {
         await authCtx.logout();
         navigate("/");
@@ -133,14 +134,13 @@ const Header = (props) => {
                                     </li>
                                     <li className="nav-item dropdown">
                                         <a
-                                            className="nav-link dropdown-toggle"
+                                            className="nav-link dropdown-toggle menu-padding"
                                             href="#"
                                             id="dropdown01"
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                         >
-                                            Welcome,
-                                            {/* {authCtx.user.first_name +' '+ authCtx.user.last_name} */}
+                                            Settings
                                         </a>
                                         <ul
                                             className="dropdown-menu"
@@ -152,7 +152,7 @@ const Header = (props) => {
                                                     className="dropdown-item menu-padding"
                                                     onClick={toggleClose}
                                                 >
-                                                    Settings
+                                                    Master Data
                                                 </NavLink>
                                             </li>
                                             <li className="nav-item">
@@ -197,7 +197,7 @@ const Header = (props) => {
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                         >
-                                           Settings
+                                            Settings
                                         </a>
                                         <ul
                                             className="dropdown-menu"
@@ -228,6 +228,15 @@ const Header = (props) => {
 
                             {isLoggedIn && user_role.role_id == 3 && (
                                 <>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            to="/agent/pickups"
+                                            className="dropdown-item menu-padding"
+                                            onClick={toggleClose}
+                                        >
+                                            Dashboard
+                                        </NavLink>
+                                    </li>
                                     <li className="nav-item dropdown">
                                         <a
                                             className="nav-link dropdown-toggle  menu-padding"
@@ -237,7 +246,7 @@ const Header = (props) => {
                                             aria-expanded="false"
                                         >
                                             {/* {authCtx.user.username} */}
-                                            Welcome,
+                                            Settings
                                         </a>
                                         <ul
                                             className="dropdown-menu"

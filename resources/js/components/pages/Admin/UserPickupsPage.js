@@ -228,8 +228,9 @@ const UserPickupsPage = () => {
                                     className="form-control shadow form-select"
                                     onChange={handleFilter}
                                 >
+                                    
                                     <option value={-1}>
-                                        --Seach By Material--
+                                        All Materials
                                     </option>
                                     {material_options}
                                 </select>
@@ -244,7 +245,7 @@ const UserPickupsPage = () => {
                                     onChange={handleFilter}
                                 >
                                     <option value={-1}>
-                                        --Seach By Status--
+                                        All Status
                                     </option>
                                     {bookingStatus_options}
                                 </select>
@@ -259,7 +260,7 @@ const UserPickupsPage = () => {
                                     onChange={handleFilter}
                                 >
                                     <option value={-1}>
-                                        --Seach By Pickup Agent--
+                                        All Agents
                                     </option>
                                     {agents_options}
                                 </select>
