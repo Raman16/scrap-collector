@@ -14,7 +14,7 @@ const LoginForm = () => {
     const authCtx = useContext(AuthContext);
     const user = authCtx.user ?? "";
     const user_role = user != "" ? authCtx.user.role[0] : "";
-    const [otpFieldVisible, setOtpFieldVisible] = useState(true);
+    const [otpFieldVisible, setOtpFieldVisible] = useState(false);
 
     const {
         register,
