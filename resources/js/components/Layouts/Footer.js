@@ -21,7 +21,7 @@ const Footer = () => {
                                     <p>
                                         Q Hub Business Center,
                                         <br />
-                                        Road no:36 & 37, Besides Madhapur,{" "}
+                                        Road no:36 & 37, Beside Madhapur,{" "}
                                         <br />
                                         Jubilee Hills,Hyderabad,
                                         <br />

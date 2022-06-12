@@ -43,10 +43,10 @@ const InputOTPNumber = (props) => {
                 autoComplete="off"
                 {...register(props.id, {
                     required: true,
-                    pattern: {
-                        value: /^\d{6}$/,
-                        message: "It should be 6 digits",
-                    },
+                    // pattern: {
+                    //     value: /^\d{6}$/,
+                    //     message: "It should be 6 digits",
+                    // },
                 })}
             />
             {errorMessage}

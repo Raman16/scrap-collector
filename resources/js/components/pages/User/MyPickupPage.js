@@ -182,7 +182,7 @@ const MyPickupPage = () => {
                                             onChange={handleSeachByMaterial}
                                         >
                                             <option value={-1}>
-                                                --Seach By Material--
+                                                All Materials
                                             </option>
                                             {material_options}
                                         </select>

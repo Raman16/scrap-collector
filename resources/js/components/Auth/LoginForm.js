@@ -14,14 +14,18 @@ const LoginForm = () => {
     const authCtx = useContext(AuthContext);
     const user = authCtx.user ?? "";
     const user_role = user != "" ? authCtx.user.role[0] : "";
-    const [otpFieldVisible, setOtpFieldVisible] = useState(false);
+    const [otpFieldVisible, setOtpFieldVisible] = useState(true);
+    const [otpStatus, setOtpStatus] = useState(false);
 
     const {
         register,
         handleSubmit,
         getValues,
         formState: { errors },
-    } = useForm();
+
+    } = useForm({
+        mode: "onChange"
+    });
 
     const {
         isLoading: OTPsending,
@@ -40,9 +44,12 @@ const LoginForm = () => {
     const otpResponse = (data) => {
         setOtpFieldVisible(true);
         toast.success(data.message);
+        setOtpStatus(false);
     };
 
     const otpRequest = () => {
+        setOtpStatus(true);
+
         let requestData = {
             country_code: "+91",
             phone_number: getValues("phone_number"),
@@ -125,7 +132,8 @@ const LoginForm = () => {
                                     style={{ height: "100%" }}
                                 >
                                     <div className="card-body">
-                                        <h4 className="text-center mb-2">
+                                        <div className="mt-3"></div>
+                                        <h4 className="text-center mb-5">
                                             Login
                                         </h4>
                                         {!isLogging && (
@@ -159,7 +167,7 @@ const LoginForm = () => {
                                                                 register={
                                                                     register
                                                                 }
-                                                                required
+                                                                
                                                                 errors={errors}
                                                             />
                                                             <span className="text-danger">
@@ -182,6 +190,15 @@ const LoginForm = () => {
                                                         <div className="col-sm-1"></div>
                                                     </div>
                                                 </div>
+
+                                                {otpStatus && (
+                                                    <div
+                                                        class="dots-3"
+                                                        style={{
+                                                            marginLeft: "150px",
+                                                        }}
+                                                    ></div>
+                                                )}
 
                                                 <div className="form-group mb-50">
                                                     <div className="row">
@@ -213,24 +230,35 @@ const LoginForm = () => {
                                                                     />
                                                                     <div className="row">
                                                                         <div className="col-sm-12">
-                                                                            <div className="text-center">
-                                                                                <small className="mr-25">
+                                                                            <div
+                                                                                className="text-center"
+                                                                                style={{
+                                                                                    marginTop:
+                                                                                        "10px",
+                                                                                }}
+                                                                            >
+                                                                                <small className="mt-25">
                                                                                     Didn't
                                                                                     get
                                                                                     the
-                                                                                    code ? &nbsp; 
+                                                                                    code?
+                                                                                    &nbsp;
                                                                                 </small>
                                                                                 <a
                                                                                     onClick={
                                                                                         otpRequest
                                                                                     }
                                                                                     style={{
-                                                                                        textDecoration:
-                                                                                            "underline",
                                                                                         cursor: "pointer",
                                                                                     }}
                                                                                 >
-                                                                                    <small style={{color:"#006837"}}>
+                                                                                    <small
+                                                                                        style={{
+                                                                                            color: "#006837",
+                                                                                            fontWeight:
+                                                                                                "bold",
+                                                                                        }}
+                                                                                    >
                                                                                         Resend
                                                                                     </small>
                                                                                 </a>
@@ -264,25 +292,30 @@ const LoginForm = () => {
                                                             </>
                                                         )}
                                                         {otpFieldVisible && (
-                                                            <Button type="submit">
-                                                                LOGIN
-                                                            </Button>
+                                                            <>
+                                                                <Button type="submit">
+                                                                    Submit
+                                                                </Button>
+                                                                <div className="mt-3"></div>
+                                                            </>
                                                         )}
                                                     </div>
                                                     <div className="col-sm-1"></div>
                                                 </div>
                                             </form>
                                         )}
-                                        <div
-                                            style={{
-                                                marginTop: "70px",
-                                                marginLeft: "150px",
-                                            }}
-                                        >
-                                            {isLogging && (
+
+                                        {isLogging && (
+                                            <div
+                                                style={{
+                                                    marginTop: "70px",
+                                                    marginLeft: "150px",
+                                                }}
+                                            >
                                                 <div class="dots-3"></div>
-                                            )}
-                                        </div>
+                                            </div>
+                                        )}
+
                                         {/* <hr /> */}
                                     </div>
                                 </div>

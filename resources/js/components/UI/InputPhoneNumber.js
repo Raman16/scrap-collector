@@ -2,6 +2,7 @@ import _ from "lodash";
 import React from "react";
 
 const InputPhoneNumber = (props) => {
+   
     const { label, register, required, errors } = props;
 
     const style = {
@@ -12,6 +13,7 @@ const InputPhoneNumber = (props) => {
     }
 
     let errorMessage = "";
+    
     if (!_.isEmpty(errors)) {
             console.log(errors)
 
@@ -46,10 +48,10 @@ const InputPhoneNumber = (props) => {
                 autoComplete="off"
                 {...register(props.id, {
                     required: true,
-                    pattern: {
-                        value: /^\d{10}$/,
-                        message: "It should be 10 digits",
-                    },
+                    // pattern: {
+                    //     value: /^\d{10}$/,
+                    //     message: "It should be 10 digits",
+                    // },
                 })}
             />
             {errorMessage}
