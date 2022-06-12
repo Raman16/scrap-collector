@@ -19,8 +19,6 @@ const useAxios = () => {
 
     const sendRequest = useCallback(async (requestConfig, applyData) => {
         try {
-
-
             setIsLoading(true);
             const AUTH_TOKEN = auth.token != "" ? `Bearer ${auth.token}` : "";
             HTTPRequestAPI.defaults.headers.common["Authorization"] =
@@ -32,23 +30,25 @@ const useAxios = () => {
                 data: requestConfig.data,
             });
 
-            const {data} = response;
+            const { data } = response;
             if (+response.status != 201 && +response.status != 200) {
                 throw new Error("Request Failed");
             }
             if (response.headers["auth-token"] != null) {
                 data.token = response.headers["auth-token"];
             }
-           
+
+            // const newResponseData = [...data, response.headers["auth-token"]];
+
+            // const newResponseData = Object.assign(data, response.headers["auth-token"]);
             console.log(data);
-            applyData(data);
-            
+            //applyData(newResponseData);
         } catch (err) {
             setError(err || "Something went wrong!");
         }
         setIsLoading(false);
-    },[]);
-    
+    }, []);
+
     return {
         isLoading,
         error,

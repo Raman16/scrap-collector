@@ -65,17 +65,17 @@ const LoginForm = () => {
         );
     };
     const loginResponse = async (data) => {
-        // console.log(data.user);
-        await authCtx.login(data);
-        if (data.user.role[0].role_id == 1) {
-            navigate("/admin/user-pickups");
-        } else if (data.user.role[0].role_id == 2) {
-            navigate("/book-a-pickup");
-        } else if (data.user.role[0].role_id == 3) {
-            navigate("/agent/pickups");
-        } else {
-            alert("Invalid Entry");
-        }
+         console.log(data);
+        // await authCtx.login(data);
+        // if (data.user.role[0].role_id == 1) {
+        //     navigate("/admin/user-pickups");
+        // } else if (data.user.role[0].role_id == 2) {
+        //     navigate("/book-a-pickup");
+        // } else if (data.user.role[0].role_id == 3) {
+        //     navigate("/agent/pickups");
+        // } else {
+        //     alert("Invalid Entry");
+        // }
     };
 
     const onSubmit = (requestData) => {
