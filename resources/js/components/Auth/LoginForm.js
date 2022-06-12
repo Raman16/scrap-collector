@@ -14,7 +14,7 @@ const LoginForm = () => {
     const authCtx = useContext(AuthContext);
     const user = authCtx.user ?? "";
     const user_role = user != "" ? authCtx.user.role[0] : "";
-    const [otpFieldVisible, setOtpFieldVisible] = useState(false);
+    const [otpFieldVisible, setOtpFieldVisible] = useState(true);
     const [otpStatus, setOtpStatus] = useState(false);
 
     const {
@@ -65,6 +65,7 @@ const LoginForm = () => {
         );
     };
     const loginResponse = async (data) => {
+        // console.log(data.user);
         await authCtx.login(data);
         if (data.user.role[0].role_id == 1) {
             navigate("/admin/user-pickups");
@@ -79,7 +80,7 @@ const LoginForm = () => {
 
     const onSubmit = (requestData) => {
         if (!otpFieldVisible) {
-            otpRequest();
+          //  otpRequest();
         } else {
             requestData.country_code = "+91";
             requestData.device_name = navigator.userAgent;
