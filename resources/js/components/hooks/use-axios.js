@@ -50,6 +50,8 @@ const useAxios = () => {
             // const newResponseData = Object.assign(data, response.headers["auth-token"]);
             //console.log(data);
             applyData(data);
+
+            
         } catch (err) {
             setError(err || "Something went wrong!");
         }

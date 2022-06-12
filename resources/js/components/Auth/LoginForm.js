@@ -81,7 +81,7 @@ const LoginForm = () => {
 
     const onSubmit = (requestData) => {
         if (!otpFieldVisible) {
-          //  otpRequest();
+          otpRequest();
         } else {
             requestData.country_code = "+91";
             requestData.device_name = navigator.userAgent;
