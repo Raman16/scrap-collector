@@ -34,7 +34,7 @@ const useAxios = () => {
             if (+response.status != 201 && +response.status != 200) {
                 throw new Error("Request Failed");
             }
-            console.log("header:",response.headers["auth-token"]);
+            console.log("header:",response.headers);
             
             if (response.headers["auth-token"] != null) {
                 data.token = response.headers["auth-token"];
