@@ -65,17 +65,18 @@ const LoginForm = () => {
         );
     };
     const loginResponse = async (data) => {
-         console.log(data);
-        // await authCtx.login(data);
-        // if (data.user.role[0].role_id == 1) {
-        //     navigate("/admin/user-pickups");
-        // } else if (data.user.role[0].role_id == 2) {
-        //     navigate("/book-a-pickup");
-        // } else if (data.user.role[0].role_id == 3) {
-        //     navigate("/agent/pickups");
-        // } else {
-        //     alert("Invalid Entry");
-        // }
+       
+        //console.log(data);
+        await authCtx.login(data);
+        if (data.user.role[0].role_id == 1) {
+            navigate("/admin/user-pickups");
+        } else if (data.user.role[0].role_id == 2) {
+            navigate("/book-a-pickup");
+        } else if (data.user.role[0].role_id == 3) {
+            navigate("/agent/pickups");
+        } else {
+            alert("Invalid Entry");
+        }
     };
 
     const onSubmit = (requestData) => {
@@ -101,21 +102,21 @@ const LoginForm = () => {
     };
 
     useEffect(() => {
-        // if (loginError) {
-        //     if (
-        //         loginError.response.data.hasOwnProperty("errors") &&
-        //         loginError.response.data.errors.hasOwnProperty("otp")
-        //     ) {
-        //         toast.warn("Error:" + loginError.response.data.errors.otp[0]);
-        //     } else if (
-        //         loginError.response.data.hasOwnProperty("errors") &&
-        //         loginError.response.data.errors.hasOwnProperty("message")
-        //     ) {
-        //         toast.warn("Error:" + loginError.response.data.errors.message);
-        //     } else {
-        //         toast.warn("Error:" + loginError.response.data.message);
-        //     }
-        // }
+        if (loginError) {
+            if (
+                loginError.response.data.hasOwnProperty("errors") &&
+                loginError.response.data.errors.hasOwnProperty("otp")
+            ) {
+                toast.warn("Error:" + loginError.response.data.errors.otp[0]);
+            } else if (
+                loginError.response.data.hasOwnProperty("errors") &&
+                loginError.response.data.errors.hasOwnProperty("message")
+            ) {
+                toast.warn("Error:" + loginError.response.data.errors.message);
+            } else {
+                toast.warn("Error:" + loginError.response.data.message);
+            }
+        }
     }, [loginError]);
 
     return (

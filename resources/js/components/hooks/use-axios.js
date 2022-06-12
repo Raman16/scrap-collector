@@ -35,19 +35,21 @@ const useAxios = () => {
                 throw new Error("Request Failed");
             }
 
+            // console.log("header:",data.token);
 
-            console.log("header:",response.headers);
+            // if(data.hasOwnProperty('token')){
 
-            
-            if (response.headers["auth-token"] != null) {
-                data.token = response.headers["auth-token"];
-            }
+            // }
+
+            // if (response.headers["auth-token"] != null) {
+            //     data.token = response.headers["auth-token"];
+            // }
 
             // const newResponseData = [...data, response.headers["auth-token"]];
 
             // const newResponseData = Object.assign(data, response.headers["auth-token"]);
-            console.log(data);
-            //applyData(newResponseData);
+            //console.log(data);
+            applyData(data);
         } catch (err) {
             setError(err || "Something went wrong!");
         }
