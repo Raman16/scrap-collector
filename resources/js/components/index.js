@@ -22,6 +22,13 @@ function Index() {
     const authCtx = useContext(AuthContext);
     const user = authCtx.user ?? "";
     const user_role = user != "" ? authCtx.user.role[0] : "";
+
+
+    console.log(user);
+    console.log(user_role);
+    console.log(authCtx);
+
+
     return (
         <div className="">
             <Layout>
