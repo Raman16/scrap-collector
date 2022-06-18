@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { BOOKING_STATUS } from "../config/constant";
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
-
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 const MyPickups = (props) => {
     const { product } = props;
@@ -56,19 +55,22 @@ const MyPickups = (props) => {
                                 <tr>
                                     <td className="pl-0">
                                         <div className="thumbnail-container-lg">
-                                        <Zoom>
-                                            <img
-                                                alt="No Image"
-                                                src={
-                                                    product.image != ""
-                                                        ? product.image
-                                                        : "images/noImage.png"
-                                                }
-                                                style={{
-                                                    width: "120px",
-                                                }}
-                                            />
-                                        </Zoom>
+                                            <Zoom>
+                                                <img
+                                                    alt="No Image"
+                                                    src={
+                                                        product.image != ""
+                                                            ? product.image
+                                                            : "images/noImage.png"
+                                                    }
+                                                    style={{
+                                                        width:
+                                                            product.image != ""
+                                                                ? "120px"
+                                                                : "115px",
+                                                    }}
+                                                />
+                                            </Zoom>
 
                                             {/* <img
                                                 className="img-fluid"
@@ -97,14 +99,17 @@ const MyPickups = (props) => {
                                     </td>
                                     <td>
                                         {(product.status == BOOKING_STATUS[2] ||
-                                            product.status == BOOKING_STATUS[3]) && (
+                                            product.status ==
+                                                BOOKING_STATUS[3]) && (
                                             <span className="badge badge-light-danger text-bold-500 py-50">
                                                 {product.status}
                                             </span>
                                         )}
                                         {(product.status == BOOKING_STATUS[0] ||
-                                            product.status == BOOKING_STATUS[1] ||
-                                            product.status == BOOKING_STATUS[4]) && (
+                                            product.status ==
+                                                BOOKING_STATUS[1] ||
+                                            product.status ==
+                                                BOOKING_STATUS[4]) && (
                                             <span className="badge badge-light-success text-bold-500 py-50">
                                                 {product.status}
                                             </span>
@@ -159,8 +164,10 @@ const MyPickups = (props) => {
                                         {/* <strong>Action:</strong> */}
                                         <br />
                                         <div>
-                                            {product.status != BOOKING_STATUS[3] &&
-                                            product.status != BOOKING_STATUS[4] ? (
+                                            {product.status !=
+                                                BOOKING_STATUS[3] &&
+                                            product.status !=
+                                                BOOKING_STATUS[4] ? (
                                                 <button
                                                     className="btn mr-1 mb-1 btn-danger btn-sm"
                                                     onClick={handleCancel}

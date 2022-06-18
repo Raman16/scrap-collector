@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 const UserPickups = (props) => {
     const { product } = props;
@@ -71,11 +71,13 @@ const UserPickups = (props) => {
                                                         : "images/noImage.png"
                                                 }
                                                 style={{
-                                                    width: "120px",
+                                                    width:
+                                                        product.image != ""
+                                                            ? "120px"
+                                                            : "115px",
                                                 }}
                                             />
                                         </Zoom>
-
                                     </td>
                                     <td className="pl-0">
                                         <span className="badge badge-light-success text-bold-500 py-50">
@@ -88,8 +90,9 @@ const UserPickups = (props) => {
                                     </td>
                                     <td>
                                         <p className="mb-0" style={fontStyle}>
-                                            {user.first_name !=null && `${user.first_name} ${user.last_name}, `}
-                                            
+                                            {user.first_name != null &&
+                                                `${user.first_name} ${user.last_name}, `}
+
                                             <br />
                                             {user.phone_number}
                                             <br />
