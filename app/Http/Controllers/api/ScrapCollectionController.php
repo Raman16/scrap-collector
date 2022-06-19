@@ -80,12 +80,13 @@ class ScrapCollectionController extends Controller
             //         'branch'            => $validated['branch']
             //     ]
             // );
+           
 
             $scrap_collection =  auth()->user()->scrapCollection()->create(
                 [
                     'material_type_id'  => $validated['material_type_id'],
                     'message'           => $validated['message'],
-                    'pickup_date'       => date('Y-m-d H:m:s', strtotime($validated['pickup_date'])),
+                    'pickup_date'       => date('Y-m-d H:i:s', strtotime($validated['pickup_date'])),
                     'address_id'        => $address->id,
                     'bank_id'           => 0,
                     'pickup_agent_id'   => 0

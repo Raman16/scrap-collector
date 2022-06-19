@@ -74,7 +74,7 @@ const UserPickups = (props) => {
                                                     width:
                                                         product.image != ""
                                                             ? "120px"
-                                                            : "115px",
+                                                            : "55px",
                                                 }}
                                             />
                                         </Zoom>

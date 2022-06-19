@@ -139,11 +139,12 @@ const BookAPickup = (props) => {
     // }
 
     const onSubmitPickup = (data) => {
-        
+        // console.log(dt);
+        // console.log(dt.format("D-M-Y LT"));
+
         data.pickup_date = dt.format("D-M-Y LT");
-
+        //console.log(data);
         props.onSubmit(data);
-
     };
 
     return (

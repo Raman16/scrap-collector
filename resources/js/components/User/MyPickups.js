@@ -54,6 +54,7 @@ const MyPickups = (props) => {
                                 </tr>
                                 <tr>
                                     <td className="pl-0">
+                                        
                                         <div className="thumbnail-container-lg">
                                             <Zoom>
                                                 <img
@@ -63,12 +64,8 @@ const MyPickups = (props) => {
                                                             ? product.image
                                                             : "images/noImage.png"
                                                     }
-                                                    style={{
-                                                        width:
-                                                            product.image != ""
-                                                                ? "120px"
-                                                                : "115px",
-                                                    }}
+                                                    width="100"
+
                                                 />
                                             </Zoom>
 
