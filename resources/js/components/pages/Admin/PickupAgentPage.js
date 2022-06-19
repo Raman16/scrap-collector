@@ -80,6 +80,14 @@ const PickupAgentPage = () => {
                     "Error:" + isRegisterError.response.data.errors.phone_number_with_code[0]
                 );
             }
+            if (
+                isRegisterError.response.data.hasOwnProperty("errors") &&
+                isRegisterError.response.data.errors.hasOwnProperty("phone_number")
+            ) {
+                toast.warn(
+                    "Error:" + isRegisterError.response.data.errors.phone_number[0]
+                );
+            }
         }
     }, [isRegisterError]);
 

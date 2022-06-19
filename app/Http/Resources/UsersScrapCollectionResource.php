@@ -22,7 +22,7 @@ class UsersScrapCollectionResource extends JsonResource
             'material_name'       => $this->materialType->name,
             'message'             => $this->message,
             'pickup_date'         => date('d-m-Y',strtotime($this->pickup_date)),
-            'pickup_time'         => date('H:i a',strtotime($this->pickup_date)),
+            'pickup_time'         => date('h:i a',strtotime($this->pickup_date)),
             //'status'            => array_search($this->status, ScrapCollection::BOOKING_STATUS),
             'status'              => $this->status,
             'address'             => new AddressResource($this->whenLoaded('address')),
