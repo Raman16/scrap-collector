@@ -66,7 +66,7 @@ const MyPickups = (props) => {
                                                     style={{
                                                         width:
                                                             product.image != ""
-                                                                ? "120px"
+                                                                ? "100px"
                                                                 : "105px",
                                                     }}
                                                 />
