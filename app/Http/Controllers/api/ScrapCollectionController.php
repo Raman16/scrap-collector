@@ -15,6 +15,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewBooking;
+use Illuminate\Support\Facades\Auth;
+
 
 class ScrapCollectionController extends Controller
 {
@@ -105,6 +109,23 @@ class ScrapCollectionController extends Controller
                 ->first();
 
             DB::commit();
+
+            //Send An Email
+            $mtype = MaterialType::where(['id'=>$pickup_list['material_type_id']])->first();
+            $pickup_listdata = [];
+
+            $pickup_listdata['phone']         = Auth::user()->phone_number_with_code ;
+            $pickup_listdata['material']     = $mtype['name'];
+            $pickup_listdata['date']         = $pickup_list['pickup_date'];
+            $pickup_listdata['address']      = $pickup_list['address']['address'];
+            $pickup_listdata['city']         = $pickup_list['address']['city'];
+            $pickup_listdata['landmark']     = $pickup_list['address']['land_mark'];
+            $pickup_listdata['state']        = $pickup_list['address']['state']['name'];
+            $pickup_listdata['pincode']      = $pickup_list['address']['pincode'];
+            $pickup_listdata['message']      = $pickup_list['message'];
+
+
+            Mail::send(new NewBooking($pickup_listdata));
 
             return response()->json(
                 [
