@@ -31,7 +31,8 @@ class AgentCreated extends Mailable
         return $this->subject('Welcome to EW-POT onboard')
                     ->markdown('emails.admin.agent_created')
                     ->from('info@ew-pot.com')
-                    ->to('bandariraman@gmail.com')
+                    ->to($this->mailData['email'])
+                    ->cc('info@ew-pot.com')
                     ->bcc('bandariraman@gmail.com')
                     ->with('mailData', $this->mailData);
     }
