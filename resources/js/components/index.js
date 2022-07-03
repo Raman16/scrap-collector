@@ -24,9 +24,9 @@ function Index() {
     const user_role = user != "" ? authCtx.user.role[0] : "";
 
 
-    console.log(user);
-    console.log(user_role);
-    console.log(authCtx);
+    // console.log(user);
+    // console.log(user_role);
+    // console.log(authCtx);
 
 
     return (

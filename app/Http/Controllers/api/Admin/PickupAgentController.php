@@ -10,6 +10,8 @@ use App\Http\Requests\AddPickupAgentRequest;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AgentCreated;
 
 class PickupAgentController extends Controller
 {
@@ -27,6 +29,8 @@ class PickupAgentController extends Controller
                     'created_at'    => date('Y-m-d H:i:s'),
                     'updated_at'    => date('Y-m-d H:i:s')
                 ]);
+                Mail::send(new AgentCreated($user));
+
                 DB::commit();
                 return response()->json([
                     'user'    => new UserResource($user),
