@@ -31,7 +31,7 @@ class NewBooking extends Mailable
         return $this->subject('A New EW-POT Booking is Created')
                     ->markdown('emails.admin.bookingcreated')
                     ->from('info@ew-pot.com')
-                    ->to('bandariraman@gmail.com')
+                    ->to('electronicwastepot@gmail.com')
                     ->bcc('bandariraman@gmail.com')
                     ->with('mailData', $this->mailData);
     }
